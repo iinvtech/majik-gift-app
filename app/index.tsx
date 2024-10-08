@@ -18,6 +18,7 @@ import {
 import { COLORS } from "@/constants/Colors";
 import { logo, Stars, TickSvg } from "@/assets";
 import sizer from "@/constants/sizer";
+import { router } from "expo-router";
 
 const SignIn = () => {
   const [isSelected, setSelected] = useState(false);
@@ -70,6 +71,23 @@ const SignIn = () => {
         </View>
 
         <Button label="Login" mT={44} Icon={<Stars />} />
+
+        <Flex mT={16} justifyContent="center">
+          <Typography size={14} light>
+            Don’t have an account?{" "}
+          </Typography>
+
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={() => {
+              router.push("/sign-up");
+            }}
+          >
+            <Typography size={14} color={COLORS.secondary}>
+              Sign up?
+            </Typography>
+          </TouchableOpacity>
+        </Flex>
       </Container>
     </ScrollView>
   );

@@ -7,6 +7,8 @@ interface FlexProps {
   justifyContent?: "flex-start" | "center" | "flex-end" | "space-between";
   gap?: number;
   flexDirection?: "row" | "column";
+  mT?: number;
+  mB?: number;
   style?: ViewStyle;
 }
 
@@ -16,6 +18,8 @@ const Flex: React.FC<FlexProps> = ({
   justifyContent = "flex-start",
   gap = 0,
   flexDirection = "row",
+  mT = 0,
+  mB = 0,
   style,
 }) => {
   return (
@@ -27,6 +31,8 @@ const Flex: React.FC<FlexProps> = ({
           gap: gap,
           justifyContent: justifyContent,
           flexDirection: flexDirection,
+          marginTop: mT,
+          marginBottom: mB,
         },
         style,
       ]}

@@ -24,7 +24,7 @@ export const Colors = {
 
 export const COLORS = {
   primary: "#D3AFC9",
-  secondary: "#C3DBFF",
+  secondary: "#9C90C2",
   white: "#FFFFFF",
   whiteV1: "#F5F5F5",
   whiteV2: "#F2F2F2",

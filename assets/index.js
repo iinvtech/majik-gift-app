@@ -8,6 +8,10 @@ import EyeSvg from "./images/eye-open.svg";
 import ErrorTextSvg from "./images/error-text.svg";
 import TickSvg from "./images/tick.svg";
 import Stars from "./images/stars.svg";
+import UserIcon from "./images/user-icon.svg";
+import MailIcon from "./images/mail-icon.svg";
+import LocationIcon from "./images/location-icon.svg";
+import NoteIcon from "./images/note-icon.svg";
 
 export {
   notificationIcon,
@@ -20,4 +24,8 @@ export {
   ErrorTextSvg,
   TickSvg,
   Stars,
+  UserIcon,
+  MailIcon,
+  LocationIcon,
+  NoteIcon,
 };
