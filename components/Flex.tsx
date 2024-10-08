@@ -42,6 +42,6 @@ const styles = StyleSheet.create({
   main: {
     // flex: 1,
     flexDirection: "row",
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
   },
 });

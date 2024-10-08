@@ -23,7 +23,7 @@ export const Colors = {
 };
 
 export const COLORS = {
-  primary: "#1E6BE4",
+  primary: "#D3AFC9",
   secondary: "#C3DBFF",
   white: "#FFFFFF",
   whiteV1: "#F5F5F5",
@@ -41,5 +41,7 @@ export const COLORS = {
   danger: "#B3261E",
   greyBg: "#CBCBCB",
 };
+
+export const baseOpacity = 0.6;
 
 export const paddingHorizontal = sizer.moderateScale(25);

@@ -7,6 +7,7 @@ import EyeCloseSvg from "./images/eye-close-icon.svg";
 import EyeSvg from "./images/eye-open.svg";
 import ErrorTextSvg from "./images/error-text.svg";
 import TickSvg from "./images/tick.svg";
+import Stars from "./images/stars.svg";
 
 export {
   notificationIcon,
@@ -18,4 +19,5 @@ export {
   EyeSvg,
   ErrorTextSvg,
   TickSvg,
+  Stars,
 };

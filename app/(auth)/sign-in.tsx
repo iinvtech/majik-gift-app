@@ -8,6 +8,7 @@ import {
 } from "react-native";
 
 import {
+  Button,
   Container,
   Flex,
   InputField,
@@ -15,7 +16,7 @@ import {
   Typography,
 } from "@/components";
 import { COLORS } from "@/constants/Colors";
-import { logo, TickSvg } from "@/assets";
+import { logo, Stars, TickSvg } from "@/assets";
 import sizer from "@/constants/sizer";
 
 const SignIn = () => {
@@ -68,7 +69,7 @@ const SignIn = () => {
           </TouchableOpacity>
         </View>
 
-        
+        <Button label="Login" mT={44} Icon={<Stars />} />
       </Container>
     </ScrollView>
   );
