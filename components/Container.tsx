@@ -1,6 +1,7 @@
 import { StyleSheet, View, ViewStyle } from "react-native";
 import React, { ReactNode } from "react";
 import sizer from "@/constants/sizer";
+import { COLORS } from "@/constants/Colors";
 
 interface ContainerProps {
   children: ReactNode;
@@ -16,6 +17,7 @@ export default Container;
 const styles = StyleSheet.create({
   main: {
     paddingHorizontal: sizer.moderateScale(25),
+    backgroundColor: COLORS.white,
     flex: 1,
   },
 });

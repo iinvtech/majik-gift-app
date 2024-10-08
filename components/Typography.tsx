@@ -57,9 +57,9 @@ const Typography: React.FC<TypographyProps> = ({
     fontFamily: bold
       ? `${selectedFontFamily}Bold`
       : medium
-      ? `${selectedFontFamily}-Medium`
+      ? `${selectedFontFamily}Medium`
       : light
-      ? `${selectedFontFamily}-Light`
+      ? `${selectedFontFamily}Light`
       : selectedFontFamily,
     ...style,
   };

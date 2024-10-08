@@ -20,8 +20,10 @@ export default function HomeScreen() {
   let [fontsLoaded] = useFonts({
     LibreBodoni: require("./../../assets/fonts/static/LibreBodoni-Regular.ttf"),
     LibreBodoniBold: require("./../../assets/fonts/static/LibreBodoni-Bold.ttf"),
+    LibreBodoniMedium: require("./../../assets/fonts/static/LibreBodoni-Medium.ttf"),
     Lato: require("./../../assets/fonts/Lato-Regular.ttf"),
     LatoBold: require("./../../assets/fonts/Lato-Bold.ttf"),
+    LatoLight: require("./../../assets/fonts/Lato-Light.ttf"),
   });
 
   if (!fontsLoaded) {

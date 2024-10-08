@@ -7,6 +7,8 @@ import Card from "./Card";
 import HorizontalFlatlist from "./HorizontalFlatlist";
 import Catagories from "./Catagories";
 import ScrollableCards from "./ScrollableCards";
+import InputField from "./InputField";
+import PasswordField from "./PasswordField";
 
 export {
   Header,
@@ -18,4 +20,6 @@ export {
   HorizontalFlatlist,
   Catagories,
   ScrollableCards,
+  InputField,
+  PasswordField,
 };
