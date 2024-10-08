@@ -1,70 +1,74 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { ActivityIndicator } from "react-native-paper";
+import { useFonts } from "expo-font";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import {
+  Card,
+  Catagories,
+  Container,
+  Header,
+  HorizontalFlatlist,
+  ScrollableCards,
+  SearchField,
+  Typography,
+} from "@/components";
+import { ScrollView, TouchableOpacity } from "react-native";
+import { useState } from "react";
 
 export default function HomeScreen() {
+  let [fontsLoaded] = useFonts({
+    LibreBodoni: require("./../../assets/fonts/static/LibreBodoni-Regular.ttf"),
+    LibreBodoniBold: require("./../../assets/fonts/static/LibreBodoni-Bold.ttf"),
+    Lato: require("./../../assets/fonts/Lato-Regular.ttf"),
+    LatoBold: require("./../../assets/fonts/Lato-Bold.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return <ActivityIndicator size="large" color="#0000ff" />;
+  }
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <>
+      <StatusBar backgroundColor={"#D3AFC9"} />
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
+        <Header />
+        <ScrollView>
+          <Container>
+            <SearchField />
+            <ScrollableCards />
+            <Typography fontType="secondary" mT={24} size={18} bold>
+              Catagories
+            </Typography>
+
+            <HorizontalFlatlist
+              data={[1, 2, 3, 4, 5, 6]}
+              renderItem={({ item }) => <Catagories mT={30} />}
+              contentContainerStyle={{ gap: 20 }}
+            />
+
+            <Typography fontType="secondary" mT={24} size={18}>
+              Most Popular 🔥
+            </Typography>
+
+            <HorizontalFlatlist
+              data={[1, 2, 3]}
+              renderItem={({ item }) => <Card mT={30} />}
+              contentContainerStyle={{ gap: 20 }}
+            />
+
+            <Typography fontType="secondary" mT={24} size={18}>
+              Upcoming Events
+            </Typography>
+
+            <HorizontalFlatlist
+              data={[1, 2, 3]}
+              renderItem={({ item }) => <Card mT={30} />}
+              contentContainerStyle={{ gap: 20 }}
+            />
+          </Container>
+        </ScrollView>
+      </SafeAreaView>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
