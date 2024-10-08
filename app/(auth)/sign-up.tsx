@@ -142,7 +142,12 @@ const SignUp = () => {
             Already Have an account?{" "}
           </Typography>
 
-          <TouchableOpacity activeOpacity={0.6} onPress={() => {}}>
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={() => {
+              //   router.navigate("index");
+            }}
+          >
             <Typography size={14} bold color={COLORS.secondary}>
               Login
             </Typography>
