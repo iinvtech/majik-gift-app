@@ -120,7 +120,9 @@ const SignIn = () => {
               Remember me
             </Typography>
           </Flex>
-          <TouchableOpacity activeOpacity={0.6} onPress={() => {}}>
+          <TouchableOpacity activeOpacity={0.6} onPress={() => {
+            router.navigate("/forget-password")
+          }}>
             <Typography size={12}>Forget password?</Typography>
           </TouchableOpacity>
         </View>

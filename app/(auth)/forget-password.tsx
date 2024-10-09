@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@/components";
 import { ForgetPasswordSvg, MailIcon } from "@/assets";
-import sizer from "@/constants/sizer";
+import { router } from "expo-router";
 
 const ForgetPassword = () => {
   return (
@@ -16,9 +16,9 @@ const ForgetPassword = () => {
       <Header backBtn />
       <ScrollView>
         <Container>
-          {/* <View style={styles.imageView}>
+          <View style={styles.imageView}>
             <ForgetPasswordSvg />
-          </View> */}
+          </View>
 
           <Typography size={22} mT={19} fontType="secondary" medium>
             Forgot Password?
@@ -36,7 +36,14 @@ const ForgetPassword = () => {
             mt={26}
           />
 
-          <Button label="Send Code" mT={39} mB={50} />
+          <Button
+            label="Send Code"
+            mT={39}
+            mB={50}
+            onPress={() => {
+              router.push("/verification");
+            }}
+          />
         </Container>
       </ScrollView>
     </>
@@ -47,6 +54,6 @@ export default ForgetPassword;
 
 const styles = StyleSheet.create({
   imageView: {
-    marginTop: sizer.moderateVerticalScale(22),
+    backgroundColor: " pink",
   },
 });

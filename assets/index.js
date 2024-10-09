@@ -15,6 +15,8 @@ import NoteIcon from "./images/note-icon.svg";
 import BackIcon from "./images/back-icon.svg";
 import ForgetPasswordSvg from "./images/forgot-password.svg";
 import LogoSvg from "./images/logo-svg.svg";
+import OtpVerify from "./images/otp-verify.svg";
+import ChangePassSvg from "./images/change-pass.svg";
 
 export {
   notificationIcon,
@@ -34,4 +36,6 @@ export {
   BackIcon,
   ForgetPasswordSvg,
   LogoSvg,
+  OtpVerify,
+  ChangePassSvg,
 };
