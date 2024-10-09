@@ -19,6 +19,7 @@ import { COLORS } from "@/constants/Colors";
 import {
   LocationIcon,
   logo,
+  LogoSvg,
   MailIcon,
   NoteIcon,
   Stars,
@@ -35,9 +36,8 @@ const SignUp = () => {
     <ScrollView>
       <Container>
         <View style={styles.imageView}>
-          <Image source={logo} />
+          <LogoSvg />
         </View>
-
         <Typography size={22} mT={19} fontType="secondary" medium>
           Create New Account
         </Typography>
@@ -135,7 +135,14 @@ const SignUp = () => {
           </Flex>
         </Flex>
 
-        <Button label="Sign Up" mT={44} Icon={<Stars />} />
+        <Button
+          label="Sign Up"
+          mT={44}
+          Icon={<Stars />}
+          onPress={() => {
+            router.push("/forget-password");
+          }}
+        />
 
         <Flex mT={32} mB={37} justifyContent="center">
           <Typography size={14} light>
@@ -145,7 +152,7 @@ const SignUp = () => {
           <TouchableOpacity
             activeOpacity={0.6}
             onPress={() => {
-              //   router.navigate("index");
+              router.navigate("..");
             }}
           >
             <Typography size={14} bold color={COLORS.secondary}>

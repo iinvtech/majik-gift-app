@@ -5,18 +5,29 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
+  TextInputProps,
+  ViewStyle,
+  TextStyle,
 } from "react-native";
 
-// import { sizer } from "../../../helpers";
-// import { COLORS } from "../../../globals";
-// import { EyeCloseSvg, ErrorTextSvg, EyeSvg } from "../../../assets";
-// import { Typography } from "../../index";
 import { Typography } from "@/components";
 import { COLORS } from "../constants/Colors";
 import sizer from "../constants/sizer";
-import { EyeSvg, EyeCloseSvg } from "@/assets";
+import { EyeSvg, EyeCloseSvg, ErrorTextSvg } from "@/assets";
 
-const PasswordField = React.forwardRef(
+interface PasswordFieldProps extends TextInputProps {
+  containerSt?: ViewStyle;
+  inputStyle?: TextStyle;
+  label?: string;
+  error?: string;
+  placeholder?: string;
+  handleChange?: (e: string) => void;
+  mt?: number;
+  mb?: number;
+  color?: string;
+}
+
+const PasswordField = React.forwardRef<TextInput, PasswordFieldProps>(
   (
     {
       containerSt = {},
@@ -24,7 +35,7 @@ const PasswordField = React.forwardRef(
       label = "",
       error = "",
       placeholder = "",
-      handleChange = (e) => {},
+      handleChange = () => {},
       mt = 0,
       mb = 18,
       color = "#000",
@@ -32,9 +43,10 @@ const PasswordField = React.forwardRef(
     },
     ref
   ) => {
-    const [value, setValue] = React.useState();
-    const [secureTextEntry, setSecureTextEntry] = React.useState(true);
-    const errorText = (err) => (
+    const [value, setValue] = React.useState<string | undefined>("");
+    const [secureTextEntry, setSecureTextEntry] = React.useState<boolean>(true);
+
+    const errorText = (err: string) => (
       <View style={styles.errorView}>
         <ErrorTextSvg />
         <Text
@@ -106,13 +118,13 @@ const PasswordField = React.forwardRef(
               <EyeCloseSvg
                 width={sizer.fontScale(16)}
                 height={sizer.fontScale(16)}
-                fill={error ? COLORS.danger : COLORS.dark}
+                fill={error ? COLORS.danger : COLORS.black}
               />
             ) : (
               <EyeSvg
                 width={sizer.fontScale(16)}
                 height={sizer.fontScale(16)}
-                stroke={error ? COLORS.danger : COLORS.dark}
+                // stroke={error ? COLORS.danger : COLORS.black}
               />
             )}
           </TouchableOpacity>
@@ -130,7 +142,6 @@ const styles = StyleSheet.create({
     minHeight: sizer.moderateVerticalScale(56),
     flexDirection: "row",
     alignItems: "center",
-
     borderRadius: sizer.fontScale(4),
     borderWidth: sizer.fontScale(1),
   },

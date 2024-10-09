@@ -1,10 +1,48 @@
 import * as React from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  ViewStyle,
+  TextStyle,
+} from "react-native";
 
 import { Typography } from "@/components";
 import sizer from "../constants/sizer";
 import { COLORS } from "../constants/Colors";
-const InputField = React.forwardRef(
+import { ErrorTextSvg } from "@/assets";
+
+interface InputFieldProps {
+  containerSt?: ViewStyle;
+  inputStyle?: TextStyle;
+  inputCont?: ViewStyle;
+  label?: string;
+  error?: string;
+  placeholder?: string;
+  handleChange?: (e: string) => void;
+  handlePress?: () => void;
+  mb?: number;
+  mt?: number;
+  light?: boolean;
+  numPad?: boolean;
+  editable?: boolean;
+  color?: string;
+  labelColor?: string;
+  leftIcon?: React.ReactNode;
+  RightIcon?: React.ComponentType<{
+    width: number;
+    height: number;
+    fill: string;
+  }>;
+  important?: boolean;
+  leftErrorMsg?: boolean;
+  contextMenuHidden?: boolean;
+  multiline?: boolean;
+  numberOfLines?: number;
+}
+
+const InputField = React.forwardRef<TextInput, InputFieldProps>(
   (
     {
       containerSt = {},
@@ -13,8 +51,8 @@ const InputField = React.forwardRef(
       label = "",
       error = "",
       placeholder = "",
-      handleChange = (e) => {},
-      handlePress = (e) => {},
+      handleChange = () => {},
+      handlePress = () => {},
       mb = 18,
       mt = 10,
       light = false,
@@ -22,8 +60,8 @@ const InputField = React.forwardRef(
       editable = true,
       color = "#000",
       labelColor = COLORS.blackV1,
-      leftIcon = "",
-      RightIcon = "",
+      leftIcon = null,
+      RightIcon = null,
       important = false,
       leftErrorMsg = false,
       contextMenuHidden = false,
@@ -32,10 +70,9 @@ const InputField = React.forwardRef(
     },
     ref
   ) => {
-    const [value, setValue] = React.useState();
+    const [value, setValue] = React.useState<string>("");
 
-    // Error Message Component
-    const ErrorMsg = ({ error }) => (
+    const ErrorMsg: React.FC<{ error: string }> = ({ error }) => (
       <View
         style={[
           styles.errorView,
@@ -47,7 +84,6 @@ const InputField = React.forwardRef(
           style={{
             color: COLORS.danger,
             fontSize: sizer.fontScale(10),
-            // ...Fonts.regular(),
             fontFamily: "Lato",
             marginLeft: sizer.moderateScale(4),
           }}
@@ -59,7 +95,10 @@ const InputField = React.forwardRef(
 
     return (
       <View
-        onStartShouldSetResponder={handlePress}
+        onStartShouldSetResponder={() => {
+          handlePress();
+          return true;
+        }}
         style={{
           marginTop: sizer.moderateVerticalScale(mt),
           marginBottom: sizer.moderateVerticalScale(mb),
@@ -90,10 +129,7 @@ const InputField = React.forwardRef(
             inputCont,
           ]}
         >
-          {/* Left Icon */}
           {!!leftIcon && <View>{leftIcon}</View>}
-
-          {/* Text Input Field */}
 
           <TextInput
             keyboardType={numPad ? "numeric" : "default"}
@@ -126,21 +162,17 @@ const InputField = React.forwardRef(
             {...props}
           />
 
-          {/* Right Icon */}
           {!!RightIcon && (
             <View style={styles.rightIcon}>
-              {
-                <RightIcon
-                  width={sizer.fontScale(24)}
-                  height={sizer.fontScale(24)}
-                  fill={error ? COLORS.danger : COLORS.black}
-                />
-              }
+              <RightIcon
+                width={sizer.fontScale(24)}
+                height={sizer.fontScale(24)}
+                fill={error ? COLORS.danger : COLORS.black}
+              />
             </View>
           )}
         </View>
-        {/* Error Message */}
-        {Boolean(error !== "") && <ErrorMsg error={error} />}
+        {Boolean(error) && <ErrorMsg error={error} />}
       </View>
     );
   }

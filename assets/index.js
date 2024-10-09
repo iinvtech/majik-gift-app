@@ -12,6 +12,9 @@ import UserIcon from "./images/user-icon.svg";
 import MailIcon from "./images/mail-icon.svg";
 import LocationIcon from "./images/location-icon.svg";
 import NoteIcon from "./images/note-icon.svg";
+import BackIcon from "./images/back-icon.svg";
+import ForgetPasswordSvg from "./images/forgot-password.svg";
+import LogoSvg from "./images/logo-svg.svg";
 
 export {
   notificationIcon,
@@ -28,4 +31,7 @@ export {
   MailIcon,
   LocationIcon,
   NoteIcon,
+  BackIcon,
+  ForgetPasswordSvg,
+  LogoSvg,
 };
