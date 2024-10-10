@@ -17,7 +17,7 @@ const SearchField = ({ mT = 26 }) => {
       <TouchableOpacity
         activeOpacity={0.6}
         onPress={() => {
-          router.push("/user_routes/search");
+          router.push("/user_routes/order-details");
         }}
         style={styles.imageView}
       >

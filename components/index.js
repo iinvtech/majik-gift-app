@@ -11,6 +11,7 @@ import InputField from "./InputField";
 import PasswordField from "./PasswordField";
 import Button from "./Button";
 import HistoryItem from "./HistoryItem";
+import OrderDetail from "./OrderDetail";
 
 export {
   Header,
@@ -26,4 +27,5 @@ export {
   PasswordField,
   Button,
   HistoryItem,
+  OrderDetail,
 };

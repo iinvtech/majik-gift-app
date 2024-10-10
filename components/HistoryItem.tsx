@@ -1,7 +1,7 @@
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { CrossIcon } from "@/assets";
-import sizer from "@/constants/sizer";
 import { paddingHorizontal } from "@/constants/Colors";
+import sizer from "@/constants/sizer";
 
 import { Flex, Typography } from "./index";
 interface HistoryItemProps {

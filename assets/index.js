@@ -22,6 +22,9 @@ import DoubledProfileOutlined from "./images/double-profile-outlined.svg";
 import ProfileOutlined from "./images/profile-outlined.svg";
 import CrossIcon from "./images/cross-icon.svg";
 import SearchHistoryEmpty from "./images/search-history-empty.svg";
+import PendingIcon from "./images/pending-icon.svg";
+import DeliveredIcon from "./images/delivered-icon.svg";
+import CancelIcon from "./images/cancel-icon.svg";
 
 export {
   notificationIcon,
@@ -48,4 +51,7 @@ export {
   ProfileOutlined,
   CrossIcon,
   SearchHistoryEmpty,
+  PendingIcon,
+  DeliveredIcon,
+  CancelIcon,
 };
