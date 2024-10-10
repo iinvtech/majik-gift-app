@@ -10,16 +10,17 @@ import {
 import sizer from "@/constants/sizer";
 import { router } from "expo-router";
 
-const SearchField = () => {
+const SearchField = ({ mT = 26 }) => {
   return (
-    <View style={styles.main}>
+    <View style={[styles.main, { marginTop: sizer.moderateVerticalScale(mT) }]}>
+      <TextInput style={styles.inputStyles} placeholder="Search" />
       <TouchableOpacity
-        style={styles.inputStyles}
+        activeOpacity={0.6}
         onPress={() => {
           router.push("/user_routes/search");
         }}
-      />
-      <TouchableOpacity activeOpacity={0.6} style={styles.imageView}>
+        style={styles.imageView}
+      >
         <Image source={require("../assets/images/search.png")} />
       </TouchableOpacity>
     </View>
@@ -31,7 +32,6 @@ export default SearchField;
 const styles = StyleSheet.create({
   main: {
     height: sizer.moderateVerticalScale(46),
-    marginTop: sizer.moderateVerticalScale(26),
     flexDirection: "row",
     justifyContent: "space-between",
   },

@@ -10,6 +10,7 @@ import ScrollableCards from "./ScrollableCards";
 import InputField from "./InputField";
 import PasswordField from "./PasswordField";
 import Button from "./Button";
+import HistoryItem from "./HistoryItem";
 
 export {
   Header,
@@ -24,4 +25,5 @@ export {
   InputField,
   PasswordField,
   Button,
+  HistoryItem,
 };

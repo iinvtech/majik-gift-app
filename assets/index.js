@@ -20,6 +20,8 @@ import ChangePassSvg from "./images/change-pass.svg";
 import WishlistOutlined from "./images/wishlist-outlined.svg";
 import DoubledProfileOutlined from "./images/double-profile-outlined.svg";
 import ProfileOutlined from "./images/profile-outlined.svg";
+import CrossIcon from "./images/cross-icon.svg";
+import SearchHistoryEmpty from "./images/search-history-empty.svg";
 
 export {
   notificationIcon,
@@ -44,4 +46,6 @@ export {
   WishlistOutlined,
   DoubledProfileOutlined,
   ProfileOutlined,
+  CrossIcon,
+  SearchHistoryEmpty,
 };
