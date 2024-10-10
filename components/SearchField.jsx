@@ -9,19 +9,20 @@ import {
 
 import sizer from "@/constants/sizer";
 import { router } from "expo-router";
+import { SearchIcon } from "@/assets";
 
-const SearchField = ({ mT = 26 }) => {
+const SearchField = ({ mT = 26, Icon = SearchIcon }) => {
   return (
     <View style={[styles.main, { marginTop: sizer.moderateVerticalScale(mT) }]}>
       <TextInput style={styles.inputStyles} placeholder="Search" />
       <TouchableOpacity
         activeOpacity={0.6}
         onPress={() => {
-          router.push("/user_routes/order-details");
+          router.push("/user_routes/events");
         }}
         style={styles.imageView}
       >
-        <Image source={require("../assets/images/search.png")} />
+        <Icon />
       </TouchableOpacity>
     </View>
   );

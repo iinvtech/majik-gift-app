@@ -25,6 +25,9 @@ import SearchHistoryEmpty from "./images/search-history-empty.svg";
 import PendingIcon from "./images/pending-icon.svg";
 import DeliveredIcon from "./images/delivered-icon.svg";
 import CancelIcon from "./images/cancel-icon.svg";
+import FilterIcon from "./images/filter-icon.svg";
+import SearchIcon from "./images/search-icon.svg";
+import HeartIcon from "./images/heart-icon.svg";
 
 export {
   notificationIcon,
@@ -54,4 +57,7 @@ export {
   PendingIcon,
   DeliveredIcon,
   CancelIcon,
+  FilterIcon,
+  SearchIcon,
+  HeartIcon,
 };
