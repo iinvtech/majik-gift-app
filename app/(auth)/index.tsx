@@ -63,7 +63,7 @@ const SignIn = () => {
   };
 
   const handleSubmit = () => {
-    if (validate()) return;
+    // if (validate()) return;
     router.replace("/(tabs)");
   };
 
@@ -89,7 +89,7 @@ const SignIn = () => {
           error={formErr.email}
           value={email}
           handleChange={(e) => handleFormData(e, "email")}
-          onSubmitEditing={() => passwordRef.current.focus()}
+          onSubmitEditing={() => passwordRef?.current?.focus()}
         />
 
         <PasswordField
@@ -97,7 +97,9 @@ const SignIn = () => {
           placeholder="******"
           mt={22}
           handleChange={(e) => handleFormData(e, "password")}
+          ref={passwordRef}
           error={formErr.password}
+          onSubmitEditing={handleSubmit}
         />
 
         <View style={styles.forgotPass}>
@@ -120,9 +122,12 @@ const SignIn = () => {
               Remember me
             </Typography>
           </Flex>
-          <TouchableOpacity activeOpacity={0.6} onPress={() => {
-            router.navigate("/forget-password")
-          }}>
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={() => {
+              router.navigate("/forget-password");
+            }}
+          >
             <Typography size={12}>Forget password?</Typography>
           </TouchableOpacity>
         </View>
