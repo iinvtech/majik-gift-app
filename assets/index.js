@@ -17,6 +17,9 @@ import ForgetPasswordSvg from "./images/forgot-password.svg";
 import LogoSvg from "./images/logo-svg.svg";
 import OtpVerify from "./images/otp-verify.svg";
 import ChangePassSvg from "./images/change-pass.svg";
+import WishlistOutlined from "./images/wishlist-outlined.svg";
+import DoubledProfileOutlined from "./images/double-profile-outlined.svg";
+import ProfileOutlined from "./images/profile-outlined.svg";
 
 export {
   notificationIcon,
@@ -38,4 +41,7 @@ export {
   LogoSvg,
   OtpVerify,
   ChangePassSvg,
+  WishlistOutlined,
+  DoubledProfileOutlined,
+  ProfileOutlined,
 };

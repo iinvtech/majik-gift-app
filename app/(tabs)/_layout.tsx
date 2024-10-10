@@ -6,7 +6,13 @@ import { StatusBar } from "expo-status-bar";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { COLORS, Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import { HomeFocusedTab, HomeOutlinedTab } from "@/assets";
+import {
+  DoubledProfileOutlined,
+  HomeFocusedTab,
+  HomeOutlinedTab,
+  ProfileOutlined,
+  WishlistOutlined,
+} from "@/assets";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -34,28 +40,20 @@ export default function TabLayout() {
             }}
           />
           <Tabs.Screen
-            name="search"
+            name="wishlist"
             options={{
-              title: "Search",
-              tabBarIcon: ({ color, focused }) => (
-                <TabBarIcon
-                  name={focused ? "code-slash" : "code-slash-outline"}
-                  color={color}
-                />
-              ),
+              title: "Wishlist",
+              tabBarIcon: ({ color, focused }) =>
+                focused ? null : <WishlistOutlined />,
             }}
           />
 
           <Tabs.Screen
-            name="wishlist"
+            name="profile2"
             options={{
-              title: "wishlist",
-              tabBarIcon: ({ color, focused }) => (
-                <TabBarIcon
-                  name={focused ? "code-slash" : "code-slash-outline"}
-                  color={color}
-                />
-              ),
+              title: "profile2",
+              tabBarIcon: ({ color, focused }) =>
+                focused ? null : <DoubledProfileOutlined />,
             }}
           />
 
@@ -63,12 +61,8 @@ export default function TabLayout() {
             name="profile"
             options={{
               title: "Profile",
-              tabBarIcon: ({ color, focused }) => (
-                <TabBarIcon
-                  name={focused ? "code-slash" : "code-slash-outline"}
-                  color={color}
-                />
-              ),
+              tabBarIcon: ({ color, focused }) =>
+                focused ? null : <ProfileOutlined />,
             }}
           />
         </Tabs>

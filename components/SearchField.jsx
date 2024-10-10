@@ -8,11 +8,17 @@ import {
 } from "react-native";
 
 import sizer from "@/constants/sizer";
+import { router } from "expo-router";
 
 const SearchField = () => {
   return (
     <View style={styles.main}>
-      <TextInput style={styles.inputStyles} placeholder="Search" />
+      <TouchableOpacity
+        style={styles.inputStyles}
+        onPress={() => {
+          router.push("/user_routes/search");
+        }}
+      />
       <TouchableOpacity activeOpacity={0.6} style={styles.imageView}>
         <Image source={require("../assets/images/search.png")} />
       </TouchableOpacity>

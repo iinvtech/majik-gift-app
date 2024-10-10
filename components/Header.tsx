@@ -60,5 +60,6 @@ const styles = StyleSheet.create({
     elevation: 8,
     backgroundColor: "#fff",
     paddingHorizontal: paddingHorizontal,
+    marginHorizontal: -paddingHorizontal,
   },
 });
