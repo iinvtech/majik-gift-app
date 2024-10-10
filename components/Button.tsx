@@ -14,7 +14,7 @@ const Button = ({
   textColor = COLORS.black,
   height = 50,
   width = 0,
-  radius = 8,
+  radius = 0,
   textStyles = {},
   btnStyles = {},
   disabled = false,
@@ -41,7 +41,7 @@ const Button = ({
     >
       <Flex gap={11}>
         {Icon && Icon}
-        <Typography medium style={{ color: textColor, ...textStyles }}>
+        <Typography style={{ color: textColor, ...textStyles }}>
           {label}
         </Typography>
       </Flex>

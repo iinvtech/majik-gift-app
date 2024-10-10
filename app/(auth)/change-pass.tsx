@@ -14,9 +14,9 @@ import { router } from "expo-router";
 const ChangePassword = () => {
   return (
     <>
-      <Header backBtn />
       <ScrollView>
         <Container>
+          <Header backBtn />
           <ChangePassSvg />
 
           <Typography size={22} fontType="secondary" medium>

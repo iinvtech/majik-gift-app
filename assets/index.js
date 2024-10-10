@@ -28,6 +28,8 @@ import CancelIcon from "./images/cancel-icon.svg";
 import FilterIcon from "./images/filter-icon.svg";
 import SearchIcon from "./images/search-icon.svg";
 import HeartIcon from "./images/heart-icon.svg";
+import Star from "./images/star.svg";
+import ReviewStars from "./images/review-stars.svg";
 
 export {
   notificationIcon,
@@ -60,4 +62,6 @@ export {
   FilterIcon,
   SearchIcon,
   HeartIcon,
+  Star,
+  ReviewStars,
 };

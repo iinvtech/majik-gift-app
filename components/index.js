@@ -13,6 +13,9 @@ import Button from "./Button";
 import HistoryItem from "./HistoryItem";
 import OrderDetail from "./OrderDetail";
 import BackButton from "./BackButton";
+import LightWorker from "./LightWorker";
+import EventReview from "./EventReview";
+import EventDetailFooter from "./EventDetailFooter";
 
 export {
   Header,
@@ -30,4 +33,7 @@ export {
   HistoryItem,
   OrderDetail,
   BackButton,
+  LightWorker,
+  EventReview,
+  EventDetailFooter,
 };

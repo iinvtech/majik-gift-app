@@ -10,7 +10,7 @@ import sizer from "@/constants/sizer";
 const Card = ({ mT = 0, description = false }) => {
   return (
     <TouchableOpacity
-      activeOpacity={baseOpacity}
+      activeOpacity={0.8}
       onPress={() => {
         router.push("/user_routes/event-detail");
       }}

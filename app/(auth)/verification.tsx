@@ -10,9 +10,9 @@ import { router } from "expo-router";
 const Verification = () => {
   return (
     <>
-      <Header backBtn />
       <ScrollView>
         <Container>
+          <Header backBtn />
           <View style={styles.imageView}>
             <OtpVerify />
           </View>

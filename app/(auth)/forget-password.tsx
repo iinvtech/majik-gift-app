@@ -13,9 +13,9 @@ import { router } from "expo-router";
 const ForgetPassword = () => {
   return (
     <>
-      <Header backBtn />
       <ScrollView>
         <Container>
+          <Header backBtn />
           <View style={styles.imageView}>
             <ForgetPasswordSvg />
           </View>
