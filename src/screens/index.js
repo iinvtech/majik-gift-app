@@ -6,6 +6,7 @@ import ForgetPassword from './forget-password';
 import Verification from './otp-verification';
 import ChangePassword from './change-password';
 import Lightworker from './lightworker';
+import Products from './products';
 
 export {
   Home,
@@ -16,4 +17,5 @@ export {
   Verification,
   ChangePassword,
   Lightworker,
+  Products,
 };

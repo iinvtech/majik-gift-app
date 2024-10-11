@@ -3,11 +3,18 @@ import {
   HomeOutlinedTab,
   LightworkerFocus,
   LightworkerOutlined,
+  ProductsFocus,
+  ProductsOutlinedTab,
   ProfileFocusTab,
   ProfileOutlined,
 } from '../assets';
 
-import {HomeStack, LightworkerStack, ProfileStack} from './tab-stack';
+import {
+  HomeStack,
+  LightworkerStack,
+  ProductsStack,
+  ProfileStack,
+} from './tab-stack';
 
 const tabData = [
   {
@@ -17,7 +24,15 @@ const tabData = [
     ActiveTabIcon: HomeFocusedTab,
     InActiveTabIcon: HomeOutlinedTab,
   },
-  
+
+  {
+    screenName: 'ProductsScreen',
+    label: 'products',
+    stack: ProductsStack,
+    ActiveTabIcon: ProductsOutlinedTab,
+    InActiveTabIcon: ProductsFocus,
+  },
+
   {
     screenName: 'LightworkerScreen',
     label: 'Lightworkers',

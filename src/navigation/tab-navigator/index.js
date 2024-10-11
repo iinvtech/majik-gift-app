@@ -44,7 +44,11 @@ export default function TabNavigator() {
             ),
             tabBarIcon: ({focused}) => (
               <View style={{marginTop: sizer.moderateVerticalScale(11)}}>
-                {focused ? <data.ActiveTabIcon /> : <data.InActiveTabIcon />}
+                {focused ? (
+                  <data.ActiveTabIcon width={27} height={27} />
+                ) : (
+                  <data.InActiveTabIcon width={27} height={27} />
+                )}
               </View>
             ),
           }}

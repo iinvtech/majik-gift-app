@@ -33,6 +33,8 @@ import ReviewStars from './images/review-stars.svg';
 import ProfileFocusTab from './images/profile-focus.svg';
 import LightworkerOutlined from './images/lightworker-outlined.svg';
 import LightworkerFocus from './images/lightworker-focus.svg';
+import ProductsOutlinedTab from './images/product-outlined.svg';
+import ProductsFocus from './images/product-focus.svg';
 
 export {
   notificationIcon,
@@ -70,4 +72,6 @@ export {
   ProfileFocusTab,
   LightworkerOutlined,
   LightworkerFocus,
+  ProductsOutlinedTab,
+  ProductsFocus,
 };
