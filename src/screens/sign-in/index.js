@@ -14,6 +14,8 @@ import {COLORS} from '../../../globals';
 import {sizer} from '../../helpers';
 import {validateEmail, validatePassword} from '../../helpers/validator';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
+import {login} from '../../store/reducer';
 
 const SignIn = () => {
   const [formData, setFormData] = useState({
@@ -24,6 +26,8 @@ const SignIn = () => {
   const [isSelected, setSelected] = useState(false);
   const passwordRef = useRef();
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+
   const {email, password} = formData;
 
   const handleFormData = (value, name, onlyNums) => {
@@ -55,7 +59,7 @@ const SignIn = () => {
 
   const handleSubmit = () => {
     // if (validate()) return;
-    // navigation.navigate('SignUp');
+    dispatch(login());
   };
 
   return (

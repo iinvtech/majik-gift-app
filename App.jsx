@@ -1,11 +1,7 @@
-import * as React from 'react';
-import {NavigationContainer, useNavigation} from '@react-navigation/native';
-import {createDrawerNavigator} from '@react-navigation/drawer';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Text, View, Button} from 'react-native';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import DrawerNavigator from './src/navigation/drawer-stack';
+import {Provider} from 'react-redux';
+
 import RootNavigation from './src/navigation/root-navigation';
+import store from './src/store';
 
 // function HomeScreen({navigation}) {
 //   return (
@@ -64,5 +60,9 @@ import RootNavigation from './src/navigation/root-navigation';
 
 // App Component
 export default function App() {
-  return <RootNavigation />;
+  return (
+    <Provider store={store}>
+      <RootNavigation />
+    </Provider>
+  );
 }
