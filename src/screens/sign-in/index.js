@@ -112,7 +112,11 @@ const SignIn = () => {
               Remember me
             </Typography>
           </Flex>
-          <TouchableOpacity activeOpacity={0.6} onPress={() => {}}>
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={() => {
+              navigation.navigate('ForgetPassword');
+            }}>
             <Typography size={12}>Forget password?</Typography>
           </TouchableOpacity>
         </View>
@@ -124,7 +128,11 @@ const SignIn = () => {
             Don’t have an account?{' '}
           </Typography>
 
-          <TouchableOpacity activeOpacity={0.6} onPress={() => {}}>
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={() => {
+              navigation.navigate('SignUp');
+            }}>
             <Typography size={14} color={COLORS.secondary}>
               Sign up
             </Typography>
