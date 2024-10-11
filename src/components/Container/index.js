@@ -1,15 +1,18 @@
-import React from 'react';
 import {StyleSheet, View} from 'react-native';
 
-const Container = ({children}) => {
-  return <View style={styles.main}>{children}</View>;
+import {sizer} from '../../helpers';
+import {COLORS} from '../../../globals';
+
+const Container = ({children, style}) => {
+  return <View style={[styles.main, style]}>{children}</View>;
 };
 
 export default Container;
 
 const styles = StyleSheet.create({
   main: {
+    paddingHorizontal: sizer.moderateScale(25),
+    backgroundColor: COLORS.white,
     flex: 1,
-    backgroundColor: 'pink',
   },
 });
