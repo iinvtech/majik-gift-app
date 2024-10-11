@@ -35,6 +35,7 @@ import LightworkerOutlined from './images/lightworker-outlined.svg';
 import LightworkerFocus from './images/lightworker-focus.svg';
 import ProductsOutlinedTab from './images/product-outlined.svg';
 import ProductsFocus from './images/product-focus.svg';
+import HorizontalEllipsis from './images/horizontal-ellipsis.svg';
 
 export {
   notificationIcon,
@@ -74,4 +75,5 @@ export {
   LightworkerFocus,
   ProductsOutlinedTab,
   ProductsFocus,
+  HorizontalEllipsis,
 };

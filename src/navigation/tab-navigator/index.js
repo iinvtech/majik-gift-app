@@ -32,16 +32,32 @@ export default function TabNavigator() {
           name={data?.screenName}
           component={data?.stack}
           options={{
-            tabBarLabel: ({focused}) => (
-              <Typography
-                size={10}
-                color={focused ? COLORS.secondary : COLORS.grey}
-                medium
-                textAlign="center"
-                mB={-5}>
-                {data?.label}
-              </Typography>
-            ),
+            tabBarLabel: ({focused}) =>
+              focused && (
+                <>
+                  {focused && (
+                    <View
+                      style={{
+                        width: sizer.moderateScale(5),
+                        height: sizer.moderateVerticalScale(2),
+                        backgroundColor: COLORS.secondary,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        borderRadius: 2,
+                        alignSelf: 'center',
+                      }}
+                    />
+                  )}
+                  <Typography
+                    size={10}
+                    color={focused ? COLORS.secondary : COLORS.grey}
+                    medium
+                    textAlign="center"
+                    mB={-5}>
+                    {data?.label}
+                  </Typography>
+                </>
+              ),
             tabBarIcon: ({focused}) => (
               <View style={{marginTop: sizer.moderateVerticalScale(11)}}>
                 {focused ? (

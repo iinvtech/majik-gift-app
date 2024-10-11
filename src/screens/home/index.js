@@ -1,11 +1,13 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
+import {Container, Header} from '../../components';
 
 const Home = () => {
   return (
-    <View>
-      <Text>Home</Text>
-    </View>
+    <ScrollView>
+      <Container>
+        <Header />
+      </Container>
+    </ScrollView>
   );
 };
 

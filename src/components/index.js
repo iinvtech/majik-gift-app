@@ -5,6 +5,7 @@ import Button from './Button';
 import InputField from './InputField';
 import PasswordField from './PasswordField';
 import BackButton from './BackButton';
+import Header from './Header';
 
 export {
   Container,
@@ -14,4 +15,5 @@ export {
   InputField,
   PasswordField,
   BackButton,
+  Header,
 };

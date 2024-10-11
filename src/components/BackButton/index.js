@@ -6,10 +6,10 @@ import {BackIcon} from '../../assets';
 import {sizer} from '../../helpers';
 import {baseOpacity, paddingHorizontal} from '../../../globals';
 
-const BackButton = ({title, Icon}) => {
+const BackButton = ({title, Icon, mH = true}) => {
   const navigation = useNavigation();
   return (
-    <View style={styles.main}>
+    <View style={[styles.main, mH && {marginHorizontal: -paddingHorizontal}]}>
       <Flex
         alignItems="center"
         justifyContent="space-between"
@@ -39,6 +39,5 @@ const styles = StyleSheet.create({
     elevation: 8,
     backgroundColor: '#fff',
     paddingHorizontal: paddingHorizontal,
-    marginHorizontal: -paddingHorizontal,
   },
 });
