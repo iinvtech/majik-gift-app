@@ -3,6 +3,7 @@ import {Text, TouchableOpacity, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {tabData} from '../data';
+import sizer from '../../helpers/sizer';
 
 // import { Typography } from '../../components';
 // import { sizer } from '../../helpers';
@@ -47,10 +48,9 @@ export default function TabNavigator({showNewsFeed}) {
               //   </Typography>
             ),
             tabBarIcon: ({focused}) => (
-              <></>
-              //   <View style={{marginTop: sizer.moderateVerticalScale(11)}}>
-              //     {focused ? <data.ActiveTabIcon /> : <data.InActiveTabIcon />}
-              //   </View>
+              <View style={{marginTop: sizer.moderateVerticalScale(11)}}>
+                {focused ? <data.ActiveTabIcon /> : <data.InActiveTabIcon />}
+              </View>
             ),
             // tabBarButton: props =>
             //   !showNewsFeed ? null : (

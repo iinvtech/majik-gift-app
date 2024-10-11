@@ -1,3 +1,4 @@
+import {HomeFocusedTab, HomeOutlinedTab, ProfileOutlined} from '../assets';
 import {HomeStack, ProfileStack} from './tab-stack';
 
 const tabData = [
@@ -5,16 +6,16 @@ const tabData = [
     screenName: 'HomeScreen',
     label: 'Dock',
     stack: HomeStack,
-    // ActiveTabIcon: ActiveTabDock,
-    // InActiveTabIcon: InActiveTabDock,
+    ActiveTabIcon: HomeFocusedTab,
+    InActiveTabIcon: HomeOutlinedTab,
   },
 
   {
     screenName: 'FeedScreen',
     label: 'Feed',
     stack: ProfileStack,
-    // ActiveTabIcon: ActiveTabFeed,
-    // InActiveTabIcon: InActiveTabFeed,
+    ActiveTabIcon: ProfileOutlined,
+    InActiveTabIcon: ProfileOutlined,
   },
 ];
 
