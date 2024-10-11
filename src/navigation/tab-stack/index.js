@@ -1,6 +1,6 @@
 import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 
-import {Home, Profile} from '../../screens';
+import {Home, Lightworker, Profile} from '../../screens';
 
 const Stack = createStackNavigator();
 
@@ -15,6 +15,21 @@ const HomeStack = () => {
         ...TransitionPresets.SlideFromRightIOS,
       }}>
       <Stack.Screen name="Home" component={Home} />
+    </Stack.Navigator>
+  );
+};
+
+const LightworkerStack = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+        initialRouteName: 'Lightworker',
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
+        ...TransitionPresets.SlideFromRightIOS,
+      }}>
+      <Stack.Screen name="Lightworker" component={Lightworker} />
     </Stack.Navigator>
   );
 };
@@ -34,4 +49,4 @@ const ProfileStack = () => {
   );
 };
 
-export {HomeStack, ProfileStack};
+export {HomeStack, ProfileStack, LightworkerStack};

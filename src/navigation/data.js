@@ -1,20 +1,36 @@
-import {HomeFocusedTab, HomeOutlinedTab, ProfileOutlined} from '../assets';
-import {HomeStack, ProfileStack} from './tab-stack';
+import {
+  HomeFocusedTab,
+  HomeOutlinedTab,
+  LightworkerFocus,
+  LightworkerOutlined,
+  ProfileFocusTab,
+  ProfileOutlined,
+} from '../assets';
+
+import {HomeStack, LightworkerStack, ProfileStack} from './tab-stack';
 
 const tabData = [
   {
     screenName: 'HomeScreen',
-    label: 'Dock',
+    label: 'Home',
     stack: HomeStack,
     ActiveTabIcon: HomeFocusedTab,
     InActiveTabIcon: HomeOutlinedTab,
   },
+  
+  {
+    screenName: 'LightworkerScreen',
+    label: 'Lightworkers',
+    stack: LightworkerStack,
+    ActiveTabIcon: LightworkerFocus,
+    InActiveTabIcon: LightworkerOutlined,
+  },
 
   {
-    screenName: 'FeedScreen',
-    label: 'Feed',
+    screenName: 'ProfileScreen',
+    label: 'Profile',
     stack: ProfileStack,
-    ActiveTabIcon: ProfileOutlined,
+    ActiveTabIcon: ProfileFocusTab,
     InActiveTabIcon: ProfileOutlined,
   },
 ];

@@ -34,12 +34,11 @@ export default function TabNavigator() {
           options={{
             tabBarLabel: ({focused}) => (
               <Typography
-                size={12}
-                color={focused ? COLORS.primary : COLORS.grey}
+                size={10}
+                color={focused ? COLORS.secondary : COLORS.grey}
                 medium
                 textAlign="center"
-                mB={-5}
-                fontType="secondary">
+                mB={-5}>
                 {data?.label}
               </Typography>
             ),

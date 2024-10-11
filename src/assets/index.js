@@ -30,6 +30,9 @@ import SearchIcon from './images/search-icon.svg';
 import HeartIcon from './images/heart-icon.svg';
 import Star from './images/star.svg';
 import ReviewStars from './images/review-stars.svg';
+import ProfileFocusTab from './images/profile-focus.svg';
+import LightworkerOutlined from './images/lightworker-outlined.svg';
+import LightworkerFocus from './images/lightworker-focus.svg';
 
 export {
   notificationIcon,
@@ -64,4 +67,7 @@ export {
   HeartIcon,
   Star,
   ReviewStars,
+  ProfileFocusTab,
+  LightworkerOutlined,
+  LightworkerFocus,
 };
