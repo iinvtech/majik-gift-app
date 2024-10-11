@@ -55,7 +55,7 @@ const SignIn = () => {
 
   const handleSubmit = () => {
     // if (validate()) return;
-    navigation.navigate('SignUp');
+    // navigation.navigate('SignUp');
   };
 
   return (

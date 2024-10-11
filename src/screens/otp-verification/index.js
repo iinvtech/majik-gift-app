@@ -1,4 +1,5 @@
 import {ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import {TextInput} from 'react-native-paper';
 
 import {
@@ -13,6 +14,7 @@ import {baseOpacity, COLORS} from '../../../globals';
 import {sizer} from '../../helpers';
 
 const Verification = () => {
+  const navigation = useNavigation();
   return (
     <>
       <ScrollView>
@@ -60,7 +62,14 @@ const Verification = () => {
             </TouchableOpacity>
           </Flex>
 
-          <Button label="Continue" mT={39} mB={50} onPress={() => {}} />
+          <Button
+            label="Continue"
+            mT={39}
+            mB={50}
+            onPress={() => {
+              navigation.navigate('ChangePassword');
+            }}
+          />
         </Container>
       </ScrollView>
     </>
