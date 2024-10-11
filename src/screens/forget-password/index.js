@@ -1,4 +1,5 @@
 import {ScrollView, StyleSheet, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 import {
   BackButton,
@@ -10,6 +11,7 @@ import {
 import {ForgetPasswordSvg, MailIcon} from '../../assets';
 
 const ForgetPassword = () => {
+  const navigation = useNavigation();
   return (
     <>
       <ScrollView>
@@ -35,7 +37,14 @@ const ForgetPassword = () => {
             mt={26}
           />
 
-          <Button label="Send Code" mT={39} mB={50} onPress={() => {}} />
+          <Button
+            label="Send Code"
+            mT={39}
+            mB={50}
+            onPress={() => {
+              navigation.navigate('OtpVerification');
+            }}
+          />
         </Container>
       </ScrollView>
     </>

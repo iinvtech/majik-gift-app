@@ -1,6 +1,6 @@
 import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 
-import {ForgetPassword, SignIn, Signup} from '../../screens';
+import {ForgetPassword, SignIn, Signup, Verification} from '../../screens';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +17,7 @@ const AuthStack = () => {
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="SignUp" component={Signup} />
       <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
+      <Stack.Screen name="OtpVerification" component={Verification} />
     </Stack.Navigator>
   );
 };

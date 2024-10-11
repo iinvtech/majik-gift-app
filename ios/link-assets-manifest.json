@@ -1,0 +1,97 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Lato-Black.ttf",
+      "sha1": "a001eb827743636e04f8efa7d4aeedf0541c46ac"
+    },
+    {
+      "path": "src/assets/fonts/Lato-BlackItalic.ttf",
+      "sha1": "b490ec02c69bb74f5b4f487c59e984891c8da71c"
+    },
+    {
+      "path": "src/assets/fonts/Lato-Bold.ttf",
+      "sha1": "542498221d97bee5bdbccf86ee8890bf8e8005c9"
+    },
+    {
+      "path": "src/assets/fonts/Lato-BoldItalic.ttf",
+      "sha1": "6bf491e78e16d3b9c8a55752e1bd658e15ed7f19"
+    },
+    {
+      "path": "src/assets/fonts/Lato-Italic.ttf",
+      "sha1": "190187b720ec2f2ff2e4281237e301000e09673f"
+    },
+    {
+      "path": "src/assets/fonts/Lato-Light.ttf",
+      "sha1": "ad0d178564445a535b15d417f5b18019923d3bab"
+    },
+    {
+      "path": "src/assets/fonts/Lato-LightItalic.ttf",
+      "sha1": "34388d9a3b64380c9f08d424d0adaa88a0d1650a"
+    },
+    {
+      "path": "src/assets/fonts/Lato-Regular.ttf",
+      "sha1": "e923c72eda5e50a87e18ff5c71e9ef4b3b6455a3"
+    },
+    {
+      "path": "src/assets/fonts/Lato-Thin.ttf",
+      "sha1": "07290446bee3f81ce501a3c3dbfde6097c70ca15"
+    },
+    {
+      "path": "src/assets/fonts/Lato-ThinItalic.ttf",
+      "sha1": "ff4a1a9fe2dcc41d993f4c5067a3baa1c456ff97"
+    },
+    {
+      "path": "src/assets/fonts/LibreBodoni-Bold.ttf",
+      "sha1": "3f580f261ab791002a74228d8399237aa0f6f581"
+    },
+    {
+      "path": "src/assets/fonts/LibreBodoni-BoldItalic.ttf",
+      "sha1": "e08d4bef0e47a05732b55e77617eae98610384d8"
+    },
+    {
+      "path": "src/assets/fonts/LibreBodoni-Italic-VariableFont_wght.ttf",
+      "sha1": "ad93ad767d22dc870ec2400c5baece96c278125e"
+    },
+    {
+      "path": "src/assets/fonts/LibreBodoni-Italic.ttf",
+      "sha1": "55592286457278287ca0b44e66c7feaaec6338f1"
+    },
+    {
+      "path": "src/assets/fonts/LibreBodoni-Medium.ttf",
+      "sha1": "5c026cd97c22151e5710adb0b94a5486fec9222b"
+    },
+    {
+      "path": "src/assets/fonts/LibreBodoni-MediumItalic.ttf",
+      "sha1": "4aa0fbaad37467365463815984c7373432060a6f"
+    },
+    {
+      "path": "src/assets/fonts/LibreBodoni-Regular.ttf",
+      "sha1": "a06c989a5f4850a1ae61ae8fcd6ed55ada09eab1"
+    },
+    {
+      "path": "src/assets/fonts/LibreBodoni-SemiBold.ttf",
+      "sha1": "362bd48b86db1abf39265dead2aa8589ecd0d3d9"
+    },
+    {
+      "path": "src/assets/fonts/LibreBodoni-SemiBoldItalic.ttf",
+      "sha1": "1d4f7fbcbfc3b5a3d6c3aeac8bffd478a3ad620a"
+    },
+    {
+      "path": "src/assets/fonts/LibreBodoni-VariableFont_wght.ttf",
+      "sha1": "c09896018cece36caf2a6586b8e8404d6a9f39d4"
+    },
+    {
+      "path": "src/assets/fonts/OFL.txt",
+      "sha1": "400e752b77a3fd996ae663a0b0ec28d366d50b33"
+    },
+    {
+      "path": "src/assets/fonts/README.txt",
+      "sha1": "7949e850752ae837b504bdd8de9ac51fcb30f0a4"
+    },
+    {
+      "path": "src/assets/fonts/SpaceMono-Regular.ttf",
+      "sha1": "fae3a5a43b50e0408fd61e14383d94a023d332b0"
+    }
+  ]
+}

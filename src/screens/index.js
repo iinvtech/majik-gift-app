@@ -3,5 +3,6 @@ import Profile from './profile';
 import SignIn from './sign-in';
 import Signup from './sign-up';
 import ForgetPassword from './forget-password';
+import Verification from './otp-verification';
 
-export {Home, Profile, SignIn, Signup, ForgetPassword};
+export {Home, Profile, SignIn, Signup, ForgetPassword, Verification};
