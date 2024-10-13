@@ -12,7 +12,7 @@ const RootNavigation = () => {
   return (
     <>
       <StatusBar backgroundColor={COLORS.primary} />
-      <SafeAreaProvider style={{flex: 1, backgroundColor: COLORS.white}}>
+      <SafeAreaProvider style={{flex: 1,height: "100%", backgroundColor: COLORS.white}}>
         <NavigationContainer>
           {isLogged ? <DrawerNavigator /> : <AuthStack />}
         </NavigationContainer>

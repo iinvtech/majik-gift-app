@@ -1,9 +1,10 @@
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {Profile} from '../../screens';
 
+import {OrderSummary} from '../../screens';
+import {sizer} from '../../helpers';
 import TabNavigator from '../tab-navigator';
 import CustomDrawerContent from '../../customContent';
-import { sizer } from '../../helpers';
+
 const Drawer = createDrawerNavigator();
 
 function DrawerNavigator() {
@@ -18,7 +19,7 @@ function DrawerNavigator() {
         },
       }}>
       <Drawer.Screen name="HomeTabs" component={TabNavigator} />
-      <Drawer.Screen name="Profile" component={Profile} />
+      <Drawer.Screen name="OrderSummary" component={OrderSummary} />
     </Drawer.Navigator>
   );
 }

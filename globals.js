@@ -18,6 +18,7 @@ export const COLORS = {
   border: '#F3F3F3',
   danger: '#B3261E',
   greyBg: '#CBCBCB',
+  borderV1: "#EBEBEB",
 };
 
 export const baseOpacity = 0.6;

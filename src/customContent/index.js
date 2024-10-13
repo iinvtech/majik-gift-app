@@ -23,12 +23,7 @@ function CustomDrawerContent(props) {
     <View style={{flex: 1}}>
       <BackButton mH={false} />
 
-      <TouchableOpacity
-        activeOpacity={baseOpacity}
-        style={styles.drawerItem}
-        onPress={() => {
-          navigation.navigate('Profile');
-        }}>
+      <TouchableOpacity activeOpacity={baseOpacity} style={styles.drawerItem}>
         <Flex gap={18} alignItems="center" style={{flex: 1}}>
           <DrawerItemMsg />
           <Typography>Inbox</Typography>
@@ -56,7 +51,12 @@ function CustomDrawerContent(props) {
         </Flex>
       </TouchableOpacity>
 
-      <TouchableOpacity activeOpacity={baseOpacity} style={styles.drawerItem}>
+      <TouchableOpacity
+        activeOpacity={baseOpacity}
+        style={styles.drawerItem}
+        onPress={() => {
+          navigation.navigate('OrderSummary');
+        }}>
         <Flex gap={18} alignItems="center" style={{flex: 1}}>
           <DrawerItemOrderDetail />
           <Typography>Order Details</Typography>

@@ -9,6 +9,7 @@ import Header from './Header';
 import SearchField from './SearchField';
 import HorizontalFlatlist from './HorizontalFlatlist';
 import Catagories from './CatagoryItem';
+import MainCard from './MainCard';
 
 export {
   Container,
@@ -22,4 +23,5 @@ export {
   SearchField,
   Catagories,
   HorizontalFlatlist,
+  MainCard,
 };

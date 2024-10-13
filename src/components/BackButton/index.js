@@ -22,7 +22,7 @@ const BackButton = ({title, Icon, mH = true}) => {
             }}>
             <BackIcon />
           </TouchableOpacity>
-          {title && <Typography>{title}</Typography>}
+          {title && <Typography letterSpacing={0.1}>{title}</Typography>}
         </Flex>
 
         {Icon && <Icon />}

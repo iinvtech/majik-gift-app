@@ -7,6 +7,7 @@ import Verification from './otp-verification';
 import ChangePassword from './change-password';
 import Lightworker from './lightworker';
 import Products from './products';
+import OrderSummary from './order-summary';
 
 export {
   Home,
@@ -18,4 +19,5 @@ export {
   ChangePassword,
   Lightworker,
   Products,
+  OrderSummary,
 };
