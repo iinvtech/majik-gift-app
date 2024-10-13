@@ -26,7 +26,7 @@ const Lightwoker = () => {
 
         <Flex justifyContent="space-between" mT={24} style={{flexWrap: 'wrap'}}>
           {cardData.map((card, i) => (
-            <MainCard key={i} item={card} />
+            <MainCard key={i} item={card} navigationRoute="LightworkerDetail" />
           ))}
         </Flex>
       </Container>

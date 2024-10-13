@@ -3,6 +3,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import {
   EventDetail,
   Events,
+  LightworkerDetail,
   OrderDetail,
   OrderSummary,
   Wishlist,
@@ -31,6 +32,7 @@ function DrawerNavigator() {
       <Drawer.Screen name="OrderDetail" component={OrderDetail} />
       <Drawer.Screen name="Events" component={Events} />
       <Drawer.Screen name="EventDetail" component={EventDetail} />
+      <Drawer.Screen name="LightworkerDetail" component={LightworkerDetail} />
     </Drawer.Navigator>
   );
 }

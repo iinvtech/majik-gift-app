@@ -12,6 +12,7 @@ import Wishlist from './wishlist';
 import OrderDetail from './order-detail';
 import Events from './events';
 import EventDetail from './event-detail';
+import LightworkerDetail from './Lightworker-detail';
 
 export {
   Home,
@@ -28,4 +29,5 @@ export {
   OrderDetail,
   Events,
   EventDetail,
+  LightworkerDetail,
 };

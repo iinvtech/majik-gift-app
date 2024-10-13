@@ -7,13 +7,13 @@ import {HeartIcon} from '../../assets';
 import {baseOpacity, COLORS} from '../../../globals';
 import {sizer} from '../../helpers';
 
-const MainCard = ({mT = 0, item}) => {
+const MainCard = ({mT = 0, item, navigationRoute = 'EventDetail'}) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
       activeOpacity={baseOpacity}
       onPress={() => {
-        navigation.navigate('EventDetail');
+        navigation.navigate(navigationRoute);
       }}
       style={[styles.main, {marginTop: sizer.moderateVerticalScale(mT)}]}>
       <Image

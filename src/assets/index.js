@@ -45,6 +45,10 @@ import DrawerItemOrderDetail from './images/drawer-item-order-detail.svg';
 import DrawerItemLogout from './images/drawer-item-logout.svg';
 import BlackStarSvg from './images/black-star.svg';
 import OrderDetailHeaderSvg from './images/order-detail-header-icon.svg';
+import VideoCallIcon from './images/video-call-icon.svg';
+import ZoomMeetingIcon from './images/zoom-meeting-icon.svg';
+import MessageIcon from './images/message-icon.svg';
+
 export {
   notificationIcon,
   NotificationIcon,
@@ -93,4 +97,7 @@ export {
   DrawerItemLogout,
   BlackStarSvg,
   OrderDetailHeaderSvg,
+  VideoCallIcon,
+  ZoomMeetingIcon,
+  MessageIcon,
 };
