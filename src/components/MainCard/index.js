@@ -6,7 +6,7 @@ import {HeartIcon} from '../../assets';
 import {baseOpacity, COLORS} from '../../../globals';
 import {sizer} from '../../helpers';
 
-const MainCard = ({mT = 0, description = false}) => {
+const MainCard = ({mT = 0, item}) => {
   return (
     <TouchableOpacity
       activeOpacity={baseOpacity}
@@ -17,9 +17,11 @@ const MainCard = ({mT = 0, description = false}) => {
         style={styles.imageStyle}
       />
 
-      <View style={styles.discountBadge}>
-        <Typography size={10}>20% Off</Typography>
-      </View>
+      {item?.isOnSale && (
+        <View style={styles.discountBadge}>
+          <Typography size={10}>20% Off</Typography>
+        </View>
+      )}
 
       <View style={styles.heartIconContainer}>
         <HeartIcon />
@@ -27,16 +29,16 @@ const MainCard = ({mT = 0, description = false}) => {
 
       <View style={styles.contentView}>
         <Flex justifyContent="space-between">
-          <Typography size={14}>Antique Bowl</Typography>
+          <Typography size={14}>{item?.name || '---'}</Typography>
           <Flex gap={2}>
             <Image source={require('../../assets/images/star.png')} />
-            <Typography size={10}>4.9</Typography>
+            <Typography size={10}>{item?.rating}</Typography>
           </Flex>
         </Flex>
 
-        {description && (
+        {item?.category && (
           <Typography size={10} light mT={8}>
-            Famous Lightworkers
+            {item?.category}
           </Typography>
         )}
 
@@ -45,11 +47,13 @@ const MainCard = ({mT = 0, description = false}) => {
           alignItems="center"
           style={styles.priceSection}>
           <Typography size={14} bold>
-            $330.00
+            ${item?.price}.00
           </Typography>
-          <Typography size={10} color="#8B8B8B">
-            $500.00
-          </Typography>
+          {item?.isOnSale && (
+            <Typography size={10} color="#8B8B8B">
+              ${item?.originalPrice}.00
+            </Typography>
+          )}
         </Flex>
       </View>
     </TouchableOpacity>
@@ -63,7 +67,7 @@ const styles = StyleSheet.create({
     width: sizer.moderateVerticalScale(163),
     backgroundColor: '#fff',
     elevation: 4,
-    marginBottom: 10,
+    marginBottom: sizer.moderateVerticalScale(10),
   },
   imageStyle: {
     objectFit: 'contain',

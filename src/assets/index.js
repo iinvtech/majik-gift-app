@@ -43,7 +43,7 @@ import DrawerItemWishlist from './images/drawer-item-wishlist.svg';
 import DrawerItemSubscription from './images/drawer-item-subscription.svg';
 import DrawerItemOrderDetail from './images/drawer-item-order-detail.svg';
 import DrawerItemLogout from './images/drawer-item-logout.svg';
-
+import BlackStarSvg from './images/black-star.svg';
 export {
   notificationIcon,
   NotificationIcon,
@@ -90,4 +90,5 @@ export {
   DrawerItemWishlist,
   DrawerItemOrderDetail,
   DrawerItemLogout,
+  BlackStarSvg,
 };

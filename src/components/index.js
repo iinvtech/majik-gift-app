@@ -10,6 +10,7 @@ import SearchField from './SearchField';
 import HorizontalFlatlist from './HorizontalFlatlist';
 import Catagories from './CatagoryItem';
 import MainCard from './MainCard';
+import ScrollableCard from './ScrollableCard';
 
 export {
   Container,
@@ -24,4 +25,5 @@ export {
   Catagories,
   HorizontalFlatlist,
   MainCard,
+  ScrollableCard,
 };

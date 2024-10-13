@@ -17,6 +17,8 @@ const Button = ({
   textStyles = {},
   btnStyles = {},
   disabled = false,
+  textSize = 16,
+  gap=11,
   Icon = <></>,
 }) => {
   return (
@@ -37,9 +39,9 @@ const Button = ({
         disabled && {backgroundColor: COLORS.greyV3},
       ]}
       activeOpacity={baseOpacity}>
-      <Flex gap={11}>
+      <Flex alignItems='center' gap={gap}>
         {Icon && Icon}
-        <Typography style={{color: textColor, ...textStyles}}>
+        <Typography style={{color: textColor, ...textStyles}} size={textSize}>
           {label}
         </Typography>
       </Flex>

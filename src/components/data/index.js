@@ -1,0 +1,40 @@
+const cardData = [
+  {
+    id: 1,
+    name: 'Antique Bowl',
+    category: 'Singing Bowl',
+    price: 330.0,
+    originalPrice: 550.0,
+    rating: 4.9,
+    image: 'antique-bowl.png',
+    isOnSale: true,
+  },
+  {
+    id: 2,
+    name: 'Deep Aqua',
+    category: 'Mary Dress DB-01',
+    price: 330.0,
+    rating: 4.9,
+    image: 'deep-aqua.png',
+    isOnSale: false,
+  },
+  {
+    id: 3,
+    name: 'Antique Bowl',
+    category: 'Singing Bowl',
+    price: 330.0,
+    rating: 4.9,
+    image: 'antique-bowl.png',
+    isOnSale: false,
+  },
+  {
+    id: 4,
+    name: 'Deep Aqua',
+    category: 'Mary Dress DB-01',
+    price: 330.0,
+    rating: 4.9,
+    image: 'deep-aqua.png',
+    isOnSale: false,
+  },
+];
+export {cardData};

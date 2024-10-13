@@ -1,11 +1,34 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
+
+import {
+  BackButton,
+  Container,
+  Flex,
+  HorizontalFlatlist,
+  MainCard,
+  ScrollableCard,
+  SearchField,
+} from '../../components';
+
+import {FilterIcon, NotificationIcon} from '../../assets';
+import {cardData} from '../../components/data';
 
 const Products = () => {
   return (
-    <View>
-      <Text>Products</Text>
-    </View>
+    <ScrollView>
+      <Container>
+        <BackButton title="Products" Icon={NotificationIcon} />
+        <SearchField Icon={FilterIcon} />
+
+        <ScrollableCard />
+        
+        <Flex justifyContent="space-between" mT={24} style={{flexWrap: 'wrap'}}>
+          {cardData.map((card, i) => (
+            <MainCard key={i} item={card} />
+          ))}
+        </Flex>
+      </Container>
+    </ScrollView>
   );
 };
 
