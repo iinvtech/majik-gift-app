@@ -9,6 +9,7 @@ import Lightworker from './lightworker';
 import Products from './products';
 import OrderSummary from './order-summary';
 import Wishlist from './wishlist';
+import OrderDetail from './order-detail';
 
 export {
   Home,
@@ -22,4 +23,5 @@ export {
   Products,
   OrderSummary,
   Wishlist,
+  OrderDetail,
 };

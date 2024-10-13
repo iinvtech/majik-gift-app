@@ -60,7 +60,7 @@ function CustomDrawerContent(props) {
         activeOpacity={baseOpacity}
         style={styles.drawerItem}
         onPress={() => {
-          navigation.navigate('OrderSummary');
+          navigation.navigate('OrderDetail');
         }}>
         <Flex gap={18} alignItems="center" style={{flex: 1}}>
           <DrawerItemOrderDetail />

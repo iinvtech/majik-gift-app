@@ -11,6 +11,7 @@ import HorizontalFlatlist from './HorizontalFlatlist';
 import Catagories from './CatagoryItem';
 import MainCard from './MainCard';
 import ScrollableCard from './ScrollableCard';
+import OrderDetailCard from './OrderDetailCard';
 
 export {
   Container,
@@ -26,4 +27,5 @@ export {
   HorizontalFlatlist,
   MainCard,
   ScrollableCard,
+  OrderDetailCard,
 };

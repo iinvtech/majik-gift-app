@@ -44,6 +44,7 @@ import DrawerItemSubscription from './images/drawer-item-subscription.svg';
 import DrawerItemOrderDetail from './images/drawer-item-order-detail.svg';
 import DrawerItemLogout from './images/drawer-item-logout.svg';
 import BlackStarSvg from './images/black-star.svg';
+import OrderDetailHeaderSvg from './images/order-detail-header-icon.svg';
 export {
   notificationIcon,
   NotificationIcon,
@@ -91,4 +92,5 @@ export {
   DrawerItemOrderDetail,
   DrawerItemLogout,
   BlackStarSvg,
+  OrderDetailHeaderSvg,
 };
