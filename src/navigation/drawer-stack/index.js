@@ -6,6 +6,7 @@ import {
   LightworkerDetail,
   OrderDetail,
   OrderSummary,
+  Search,
   Wishlist,
 } from '../../screens';
 import {sizer} from '../../helpers';
@@ -33,6 +34,7 @@ function DrawerNavigator() {
       <Drawer.Screen name="Events" component={Events} />
       <Drawer.Screen name="EventDetail" component={EventDetail} />
       <Drawer.Screen name="LightworkerDetail" component={LightworkerDetail} />
+      <Drawer.Screen name="Search" component={Search} />
     </Drawer.Navigator>
   );
 }

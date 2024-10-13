@@ -1,14 +1,22 @@
 import React from 'react';
-import {StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 import {SearchIcon} from '../../assets';
 import {sizer} from '../../helpers';
-
+import {baseOpacity} from '../../../globals';
 
 const SearchField = ({mT = 26, Icon = SearchIcon}) => {
+  const navigation = useNavigation();
   return (
     <View style={[styles.main, {marginTop: sizer.moderateVerticalScale(mT)}]}>
-      <TextInput style={styles.inputStyles} placeholder="Search" />
+      <TouchableOpacity
+        activeOpacity={baseOpacity}
+        onPress={() => {
+          navigation.navigate('Search');
+        }}
+        style={styles.inputStyles}
+      />
       <TouchableOpacity
         activeOpacity={0.6}
         onPress={() => {}}

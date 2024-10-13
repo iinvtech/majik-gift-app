@@ -13,6 +13,7 @@ import OrderDetail from './order-detail';
 import Events from './events';
 import EventDetail from './event-detail';
 import LightworkerDetail from './Lightworker-detail';
+import Search from './search';
 
 export {
   Home,
@@ -30,4 +31,5 @@ export {
   Events,
   EventDetail,
   LightworkerDetail,
+  Search,
 };
