@@ -1,4 +1,4 @@
-import {ScrollView, StyleSheet} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 
 import {
   BackButton,
@@ -12,6 +12,7 @@ import {
 
 import {FilterIcon, NotificationIcon} from '../../assets';
 import {cardData} from '../../components/data';
+import { paddingHorizontal } from '../../../globals';
 
 const Products = () => {
   return (
@@ -20,8 +21,10 @@ const Products = () => {
         <BackButton title="Products" Icon={NotificationIcon} />
         <SearchField Icon={FilterIcon} />
 
-        <ScrollableCard />
-        
+        <View style={{marginHorizontal: -paddingHorizontal}}>
+          <ScrollableCard />
+        </View>
+
         <Flex justifyContent="space-between" mT={24} style={{flexWrap: 'wrap'}}>
           {cardData.map((card, i) => (
             <MainCard key={i} item={card} />

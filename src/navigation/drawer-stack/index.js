@@ -13,6 +13,7 @@ function DrawerNavigator() {
       drawerContent={props => <CustomDrawerContent {...props} />}
       screenOptions={{
         headerShown: false,
+        swipeEnabled: false,
         drawerStyle: {
           backgroundColor: '#fff',
           width: sizer.moderateScale(250),
