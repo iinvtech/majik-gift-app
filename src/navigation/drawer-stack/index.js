@@ -1,6 +1,12 @@
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
-import {Events, OrderDetail, OrderSummary, Wishlist} from '../../screens';
+import {
+  EventDetail,
+  Events,
+  OrderDetail,
+  OrderSummary,
+  Wishlist,
+} from '../../screens';
 import {sizer} from '../../helpers';
 import TabNavigator from '../tab-navigator';
 import CustomDrawerContent from '../../customContent';
@@ -24,6 +30,7 @@ function DrawerNavigator() {
       <Drawer.Screen name="Wishlist" component={Wishlist} />
       <Drawer.Screen name="OrderDetail" component={OrderDetail} />
       <Drawer.Screen name="Events" component={Events} />
+      <Drawer.Screen name="EventDetail" component={EventDetail} />
     </Drawer.Navigator>
   );
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 import {Typography, Flex} from '../index';
 import {HeartIcon} from '../../assets';
@@ -7,10 +8,13 @@ import {baseOpacity, COLORS} from '../../../globals';
 import {sizer} from '../../helpers';
 
 const MainCard = ({mT = 0, item}) => {
+  const navigation = useNavigation();
   return (
     <TouchableOpacity
       activeOpacity={baseOpacity}
-      onPress={() => {}}
+      onPress={() => {
+        navigation.navigate('EventDetail');
+      }}
       style={[styles.main, {marginTop: sizer.moderateVerticalScale(mT)}]}>
       <Image
         source={require('../../assets/images/card.png')}

@@ -12,6 +12,8 @@ import Catagories from './CatagoryItem';
 import MainCard from './MainCard';
 import ScrollableCard from './ScrollableCard';
 import OrderDetailCard from './OrderDetailCard';
+import EventDetailFooter from './EventDetailFooter';
+import EventReview from './EventReview';
 
 export {
   Container,
@@ -28,4 +30,6 @@ export {
   MainCard,
   ScrollableCard,
   OrderDetailCard,
+  EventDetailFooter,
+  EventReview,
 };

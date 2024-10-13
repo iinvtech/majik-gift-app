@@ -11,6 +11,7 @@ import OrderSummary from './order-summary';
 import Wishlist from './wishlist';
 import OrderDetail from './order-detail';
 import Events from './events';
+import EventDetail from './event-detail';
 
 export {
   Home,
@@ -26,4 +27,5 @@ export {
   Wishlist,
   OrderDetail,
   Events,
+  EventDetail,
 };
