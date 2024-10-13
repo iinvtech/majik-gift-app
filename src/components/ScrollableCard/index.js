@@ -7,7 +7,7 @@ import {COLORS, paddingHorizontal} from '../../../globals';
 import {sizer} from '../../helpers';
 import {PRODUCT_SUGGESTIONS} from '../data';
 
-const ScrollableCard = () => {
+const ScrollableCard = ({data = PRODUCT_SUGGESTIONS, home}) => {
   const {width} = Dimensions.get('window');
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -19,7 +19,14 @@ const ScrollableCard = () => {
 
   const renderItem = ({item}) => {
     return (
-      <View style={[styles.main, {width: width - 60}]}>
+      <View
+        style={[
+          styles.main,
+          {
+            width: width - 60,
+            backgroundColor: home ? COLORS.secondary : COLORS.primary,
+          },
+        ]}>
         <View
           style={{
             position: 'absolute',
@@ -47,13 +54,18 @@ const ScrollableCard = () => {
           <BlackStarSvg width={9} height={9} />
         </View>
 
-        <Flex>
+        <Flex justifyContent="space-between">
           <View>
-            <Typography mT={6} size={24} bold fontType="secondary">
+            <Typography
+              mT={6}
+              size={24}
+              color={home ? COLORS.white : COLORS.black}
+              bold
+              fontType="secondary">
               {item.title}
             </Typography>
 
-            <Typography mT={6} light>
+            <Typography mT={6} light color={home ? COLORS.white : COLORS.black}>
               {item.category}
             </Typography>
 
@@ -65,7 +77,7 @@ const ScrollableCard = () => {
               mT={21}
               textSize={14}
               gap={3}
-              bgColor={COLORS.secondary}
+              bgColor={home ? COLORS.primary : COLORS.secondary}
             />
           </View>
 
@@ -73,7 +85,12 @@ const ScrollableCard = () => {
             source={{
               uri: item.image,
             }}
-            style={{width: 100, height: 110}}
+            style={{
+              width: sizer.moderateScale(100),
+              height: sizer.moderateVerticalScale(110),
+            }}
+            // width={100}
+            // height={110}
           />
         </Flex>
       </View>
@@ -83,7 +100,7 @@ const ScrollableCard = () => {
   return (
     <>
       <FlatList
-        data={PRODUCT_SUGGESTIONS}
+        data={data}
         renderItem={renderItem}
         keyExtractor={item => item.id}
         horizontal
@@ -94,7 +111,7 @@ const ScrollableCard = () => {
       />
 
       <Flex mT={9} justifyContent="center" gap={4}>
-        {PRODUCT_SUGGESTIONS.map((_, index) => (
+        {data.map((_, index) => (
           <View
             key={index}
             style={{
@@ -116,9 +133,8 @@ export default ScrollableCard;
 const styles = StyleSheet.create({
   main: {
     marginTop: sizer.moderateVerticalScale(24),
-    height: sizer.moderateVerticalScale(151),
     borderRadius: 19,
-    padding: 20,
+    padding: sizer.moderateScale(16),
     backgroundColor: COLORS.primary,
     marginHorizontal: paddingHorizontal,
   },

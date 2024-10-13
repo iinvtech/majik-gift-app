@@ -1,13 +1,16 @@
-import {ScrollView, StyleSheet} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import {
   Catagories,
   Container,
   Header,
   HorizontalFlatlist,
   MainCard,
+  ScrollableCard,
   SearchField,
   Typography,
 } from '../../components';
+import {paddingHorizontal} from '../../../globals';
+import {cardData, HOME_SUGGESTIONS} from '../../components/data';
 
 const Home = () => {
   return (
@@ -15,6 +18,10 @@ const Home = () => {
       <Container>
         <Header />
         <SearchField />
+
+        <View style={{marginHorizontal: -paddingHorizontal}}>
+          <ScrollableCard data={HOME_SUGGESTIONS} home />
+        </View>
 
         <Typography fontType="secondary" mT={24} size={18} bold>
           Catagories
@@ -31,8 +38,8 @@ const Home = () => {
         </Typography>
 
         <HorizontalFlatlist
-          data={[1, 2, 3]}
-          renderItem={({item}) => <MainCard mT={30} />}
+          data={cardData}
+          renderItem={({item}) => <MainCard item={item} mT={30} />}
           contentContainerStyle={{gap: 20}}
         />
 
@@ -41,8 +48,8 @@ const Home = () => {
         </Typography>
 
         <HorizontalFlatlist
-          data={[1, 2, 3]}
-          renderItem={({item}) => <MainCard mT={30} />}
+          data={cardData}
+          renderItem={({item}) => <MainCard item={item} mT={30} />}
           contentContainerStyle={{gap: 20}}
         />
 
@@ -51,8 +58,8 @@ const Home = () => {
         </Typography>
 
         <HorizontalFlatlist
-          data={[1, 2, 3]}
-          renderItem={({item}) => <MainCard mT={30} />}
+          data={cardData}
+          renderItem={({item}) => <MainCard item={item} mT={30} />}
           contentContainerStyle={{gap: 20}}
         />
       </Container>
