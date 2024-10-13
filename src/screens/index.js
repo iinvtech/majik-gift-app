@@ -10,6 +10,7 @@ import Products from './products';
 import OrderSummary from './order-summary';
 import Wishlist from './wishlist';
 import OrderDetail from './order-detail';
+import Events from './events';
 
 export {
   Home,
@@ -24,4 +25,5 @@ export {
   OrderSummary,
   Wishlist,
   OrderDetail,
+  Events,
 };

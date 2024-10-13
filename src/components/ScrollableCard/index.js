@@ -88,9 +88,8 @@ const ScrollableCard = ({data = PRODUCT_SUGGESTIONS, home}) => {
             style={{
               width: sizer.moderateScale(100),
               height: sizer.moderateVerticalScale(110),
+              objectFit: 'fill',
             }}
-            // width={100}
-            // height={110}
           />
         </Flex>
       </View>

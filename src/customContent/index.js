@@ -30,7 +30,12 @@ function CustomDrawerContent(props) {
         </Flex>
       </TouchableOpacity>
 
-      <TouchableOpacity activeOpacity={baseOpacity} style={styles.drawerItem}>
+      <TouchableOpacity
+        activeOpacity={baseOpacity}
+        style={styles.drawerItem}
+        onPress={() => {
+          navigation.navigate('Events');
+        }}>
         <Flex gap={18} alignItems="center" style={{flex: 1}}>
           <DrawerItemEvents />
           <Typography>Events</Typography>
