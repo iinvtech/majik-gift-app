@@ -36,6 +36,13 @@ import LightworkerFocus from './images/lightworker-focus.svg';
 import ProductsOutlinedTab from './images/product-outlined.svg';
 import ProductsFocus from './images/product-focus.svg';
 import HorizontalEllipsis from './images/horizontal-ellipsis.svg';
+import CatagorySvg from './images/catagory.svg';
+import DrawerItemMsg from './images/drawer-item-msg.svg';
+import DrawerItemEvents from './images/drawer-item-events.svg';
+import DrawerItemWishlist from './images/drawer-item-wishlist.svg';
+import DrawerItemSubscription from './images/drawer-item-subscription.svg';
+import DrawerItemOrderDetail from './images/drawer-item-order-detail.svg';
+import DrawerItemLogout from './images/drawer-item-logout.svg';
 
 export {
   notificationIcon,
@@ -76,4 +83,11 @@ export {
   ProductsOutlinedTab,
   ProductsFocus,
   HorizontalEllipsis,
+  CatagorySvg,
+  DrawerItemMsg,
+  DrawerItemEvents,
+  DrawerItemSubscription,
+  DrawerItemWishlist,
+  DrawerItemOrderDetail,
+  DrawerItemLogout,
 };

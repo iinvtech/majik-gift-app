@@ -3,6 +3,7 @@ import {Profile} from '../../screens';
 
 import TabNavigator from '../tab-navigator';
 import CustomDrawerContent from '../../customContent';
+import { sizer } from '../../helpers';
 const Drawer = createDrawerNavigator();
 
 function DrawerNavigator() {
@@ -13,7 +14,7 @@ function DrawerNavigator() {
         headerShown: false,
         drawerStyle: {
           backgroundColor: '#fff',
-          width: 250,
+          width: sizer.moderateScale(250),
         },
       }}>
       <Drawer.Screen name="HomeTabs" component={TabNavigator} />

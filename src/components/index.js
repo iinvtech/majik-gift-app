@@ -6,6 +6,9 @@ import InputField from './InputField';
 import PasswordField from './PasswordField';
 import BackButton from './BackButton';
 import Header from './Header';
+import SearchField from './SearchField';
+import HorizontalFlatlist from './HorizontalFlatlist';
+import Catagories from './CatagoryItem';
 
 export {
   Container,
@@ -16,4 +19,7 @@ export {
   PasswordField,
   BackButton,
   Header,
+  SearchField,
+  Catagories,
+  HorizontalFlatlist,
 };

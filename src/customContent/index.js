@@ -1,9 +1,18 @@
-import React from 'react';
-import {View, StyleSheet} from 'react-native';
-import {Drawer as PaperDrawer} from 'react-native-paper';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {useNavigation} from '@react-navigation/native';
-import {BackButton} from '../components';
+
+import {BackButton, Flex, Typography} from '../components';
+import {
+  DrawerItemEvents,
+  DrawerItemLogout,
+  DrawerItemMsg,
+  DrawerItemOrderDetail,
+  DrawerItemSubscription,
+  DrawerItemWishlist,
+} from '../assets';
+import {baseOpacity} from '../../globals';
+import {sizer} from '../helpers';
 
 const Drawer = createDrawerNavigator();
 
@@ -14,38 +23,52 @@ function CustomDrawerContent(props) {
     <View style={{flex: 1}}>
       <BackButton mH={false} />
 
-      <PaperDrawer.Section>
-        <PaperDrawer.Item
-          label="Inbox"
-          icon="inbox"
-          onPress={() => navigation.navigate('Inbox')}
-        />
-        <PaperDrawer.Item
-          label="Events"
-          icon="calendar"
-          onPress={() => navigation.navigate('Events')}
-        />
-        <PaperDrawer.Item
-          label="Wishlist"
-          icon="heart-outline"
-          onPress={() => navigation.navigate('Wishlist')}
-        />
-        <PaperDrawer.Item
-          label="Subscriptions"
-          icon="subscription"
-          onPress={() => navigation.navigate('Subscriptions')}
-        />
-        <PaperDrawer.Item
-          label="Order Details"
-          icon="cart-outline"
-          onPress={() => navigation.navigate('OrderDetails')}
-        />
-        <PaperDrawer.Item
-          label="Logout"
-          icon="logout"
-          onPress={() => console.log('Logging out...')}
-        />
-      </PaperDrawer.Section>
+      <TouchableOpacity
+        activeOpacity={baseOpacity}
+        style={styles.drawerItem}
+        onPress={() => {
+          navigation.navigate('Profile');
+        }}>
+        <Flex gap={18} alignItems="center" style={{flex: 1}}>
+          <DrawerItemMsg />
+          <Typography>Inbox</Typography>
+        </Flex>
+      </TouchableOpacity>
+
+      <TouchableOpacity activeOpacity={baseOpacity} style={styles.drawerItem}>
+        <Flex gap={18} alignItems="center" style={{flex: 1}}>
+          <DrawerItemEvents />
+          <Typography>Events</Typography>
+        </Flex>
+      </TouchableOpacity>
+
+      <TouchableOpacity activeOpacity={baseOpacity} style={styles.drawerItem}>
+        <Flex gap={18} alignItems="center" style={{flex: 1}}>
+          <DrawerItemWishlist />
+          <Typography>Wishlist</Typography>
+        </Flex>
+      </TouchableOpacity>
+
+      <TouchableOpacity activeOpacity={baseOpacity} style={styles.drawerItem}>
+        <Flex gap={18} alignItems="center" style={{flex: 1}}>
+          <DrawerItemSubscription />
+          <Typography>Subscriptions</Typography>
+        </Flex>
+      </TouchableOpacity>
+
+      <TouchableOpacity activeOpacity={baseOpacity} style={styles.drawerItem}>
+        <Flex gap={18} alignItems="center" style={{flex: 1}}>
+          <DrawerItemOrderDetail />
+          <Typography>Order Details</Typography>
+        </Flex>
+      </TouchableOpacity>
+
+      <TouchableOpacity activeOpacity={baseOpacity} style={styles.drawerItem}>
+        <Flex gap={18} alignItems="center" style={{flex: 1}}>
+          <DrawerItemLogout />
+          <Typography>Logout</Typography>
+        </Flex>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -58,6 +81,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#f4f4f4',
+  },
+  drawerItem: {
+    height: sizer.moderateVerticalScale(61),
+    borderBottomWidth: sizer.moderateScale(0.5),
+    borderBottomColor: '#EBEBEB',
+    paddingHorizontal: sizer.moderateScale(25),
   },
   userInfo: {
     marginLeft: 12,
