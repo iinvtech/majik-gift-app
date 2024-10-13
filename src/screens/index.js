@@ -8,6 +8,7 @@ import ChangePassword from './change-password';
 import Lightworker from './lightworker';
 import Products from './products';
 import OrderSummary from './order-summary';
+import Wishlist from './wishlist';
 
 export {
   Home,
@@ -20,4 +21,5 @@ export {
   Lightworker,
   Products,
   OrderSummary,
+  Wishlist,
 };
