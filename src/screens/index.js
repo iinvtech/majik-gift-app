@@ -16,6 +16,8 @@ import LightworkerDetail from './Lightworker-detail';
 import Search from './search';
 import MessageInbox from './message-inbox';
 import ChatScreen from './chat-screen';
+import EditProfile from './edit-profile';
+import ChangePasswordFromProfile from './change-password-from-profile';
 
 export {
   Home,
@@ -36,4 +38,6 @@ export {
   Search,
   MessageInbox,
   ChatScreen,
+  EditProfile,
+  ChangePasswordFromProfile,
 };

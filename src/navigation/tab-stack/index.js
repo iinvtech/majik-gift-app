@@ -1,6 +1,13 @@
 import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 
-import {Home, Lightworker, Products, Profile} from '../../screens';
+import {
+  ChangePasswordFromProfile,
+  EditProfile,
+  Home,
+  Lightworker,
+  Products,
+  Profile,
+} from '../../screens';
 
 const Stack = createStackNavigator();
 
@@ -60,6 +67,11 @@ const ProfileStack = () => {
         ...TransitionPresets.SlideFromRightIOS,
       }}>
       <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="EditProfile" component={EditProfile} />
+      <Stack.Screen
+        name="ChangePasswordFromProfile"
+        component={ChangePasswordFromProfile}
+      />
     </Stack.Navigator>
   );
 };

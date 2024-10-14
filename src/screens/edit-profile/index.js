@@ -1,24 +1,20 @@
-import {Image, StyleSheet, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 
 import {
   BackButton,
   Button,
   Container,
   Flex,
+  InputField,
   OutlinedButton,
   Typography,
 } from '../../components';
 import {sizer} from '../../helpers';
-import {
-  CameraIcon,
-  LocationIconProfile,
-  MailIconProfile,
-  PhoneIconProfile,
-} from '../../assets';
-import {COLORS} from '../../../globals';
+import {CameraIcon} from '../../assets';
+import {baseOpacity, COLORS} from '../../../globals';
+import {useNavigation} from '@react-navigation/native';
 
-const Profile = () => {
+const EditProfile = () => {
   const navigation = useNavigation();
   return (
     <Container>
@@ -37,49 +33,45 @@ const Profile = () => {
         </View>
       </View>
 
-      <Typography size={20} medium textAlign="center" mT={34}>
-        Johnson Michele
-      </Typography>
+      <InputField label="First Name" placeholder="First Name" mt={31} mb={0} />
+      <InputField label="Last Name" placeholder="Last Name" mt={16} mb={0} />
+      <InputField
+        label="Email Address"
+        placeholder="Email Address"
+        mt={16}
+        mb={0}
+      />
+      <InputField label="Address" placeholder="Address" mt={16} mb={0} />
 
-      <Flex gap={10} alignItems="center" mT={15} justifyContent="center">
-        <MailIconProfile />
-        <Typography size={14} light>
-          johnsonmichele@xyz.com
+      <TouchableOpacity
+        activeOpacity={baseOpacity}
+        onPress={() => {
+          navigation.navigate('ChangePasswordFromProfile');
+        }}>
+        <Typography
+          mT={10}
+          color={COLORS.secondary}
+          bold
+          size={14}
+          letterSpacing={0.5}>
+          Change Password
         </Typography>
-      </Flex>
+      </TouchableOpacity>
 
-      <Flex gap={10} alignItems="center" mT={15} justifyContent="center">
-        <LocationIconProfile />
-        <Typography size={14} light>
-          ABC Street, 123 City
-        </Typography>
-      </Flex>
-
-      <Flex gap={10} alignItems="center" mT={15} justifyContent="center">
-        <PhoneIconProfile />
-        <Typography size={14} light>
-          456 - 565 - 656 - 456
-        </Typography>
-      </Flex>
-
-      <View style={styles.buttonContainer}>
+      <Flex style={styles.buttonContainer} gap={6}>
+        <OutlinedButton label="Cancel" width={133} height={42} />
         <Button
-          label="Edit Profile"
+          label="Save changes"
           width={133}
           height={42}
-          mT={15}
           bgColor={COLORS.secondary}
-          onPress={() => {
-            navigation.navigate('EditProfile');
-          }}
         />
-        <OutlinedButton label="Cancel" width={133} height={42} mT={23} />
-      </View>
+      </Flex>
     </Container>
   );
 };
 
-export default Profile;
+export default EditProfile;
 
 const styles = StyleSheet.create({
   profileImage: {
@@ -101,6 +93,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonContainer: {
-    alignSelf: 'center',
+    alignSelf: 'flex-end',
+    marginTop: sizer.moderateVerticalScale(50),
   },
 });
