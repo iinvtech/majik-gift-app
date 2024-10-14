@@ -54,6 +54,10 @@ import TickSecondary from './images/tick-secondary.svg';
 import CreditCardSvg from './images/credit-card.svg';
 import SendIcon from './images/send-icon.svg';
 import MessageTickSvg from './images/message-tick.svg';
+import MailIconProfile from './images/mail-icon-profile.svg';
+import LocationIconProfile from './images/location-icon-profile.svg';
+import PhoneIconProfile from './images/phone-icon-profile.svg';
+import CameraIcon from './images/camera-icon.svg';
 
 export {
   notificationIcon,
@@ -112,4 +116,8 @@ export {
   CreditCardSvg,
   SendIcon,
   MessageTickSvg,
+  MailIconProfile,
+  PhoneIconProfile,
+  LocationIconProfile,
+  CameraIcon,
 };
