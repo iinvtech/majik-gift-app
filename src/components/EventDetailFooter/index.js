@@ -1,19 +1,37 @@
 import {StyleSheet, View} from 'react-native';
 
-import {Typography, Button} from '../index';
-import { COLORS, paddingHorizontal } from '../../../globals';
-import { sizer } from '../../helpers';
-import { Stars } from '../../assets';
+import {Typography, Button, OutlinedButton} from '../index';
+import {COLORS, paddingHorizontal} from '../../../globals';
+import {sizer} from '../../helpers';
+import {Stars} from '../../assets';
 
-
-
-const EventDetailFooter = () => {
+const EventDetailFooter = ({
+  leftText = '$300.00',
+  btnText = 'Buy Ticket',
+  onPress = () => {},
+  leftBtn = false,
+}) => {
   return (
     <View style={styles.main}>
-      <Typography size={20} bold fontType="secondary">
-        $300.00
-      </Typography>
-      <Button label="Buy Ticket" Icon={<Stars />} width={133} height={42} />
+      {leftBtn ? (
+        <OutlinedButton
+          label={'Cancel'}
+          width={133}
+          height={42}
+          onPress={onPress}
+        />
+      ) : (
+        <Typography size={20} bold fontType="secondary">
+          {leftText}
+        </Typography>
+      )}
+      <Button
+        label={btnText}
+        Icon={<Stars />}
+        width={133}
+        height={42}
+        onPress={onPress}
+      />
     </View>
   );
 };

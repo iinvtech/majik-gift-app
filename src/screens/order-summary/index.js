@@ -57,7 +57,7 @@ const OrderSummary = () => {
         <TextInput style={styles.textInput} placeholder="Enter Town/City" />
         <TextInput style={styles.textInput} placeholder="Enter Post Code" />
 
-        <Flex alignItems="center" mT={10} justifyContent="space-between">
+        <Flex alignItems="center" mT={19} justifyContent="space-between">
           <Typography size={14}>Have a coupon Code?</Typography>
           <Typography size={10} color="#79747E">
             (Optional)
@@ -136,7 +136,7 @@ const OrderSummary = () => {
           <Typography size={14}>$5.00</Typography>
         </Flex>
 
-        <Flex mT={22} justifyContent="space-between">
+        <Flex mT={22} justifyContent="space-between" mB={21}>
           <Typography size={14}>Grand Total</Typography>
           <Typography size={14} bold>
             $60.00
@@ -144,7 +144,7 @@ const OrderSummary = () => {
         </Flex>
       </ScrollView>
 
-      <EventDetailFooter />
+      <EventDetailFooter leftBtn btnText="Confirm" />
     </Container>
   );
 };

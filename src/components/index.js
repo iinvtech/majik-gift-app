@@ -16,6 +16,7 @@ import EventDetailFooter from './EventDetailFooter';
 import EventReview from './EventReview';
 import DropdownComponent from './Dropdowm';
 import PaymentMethodButtons from './PaymentMethodButtons';
+import OutlinedButton from './OutlinedButton';
 
 export {
   Container,
@@ -36,4 +37,5 @@ export {
   EventReview,
   DropdownComponent,
   PaymentMethodButtons,
+  OutlinedButton,
 };
