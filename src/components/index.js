@@ -17,6 +17,7 @@ import EventReview from './EventReview';
 import DropdownComponent from './Dropdowm';
 import PaymentMethodButtons from './PaymentMethodButtons';
 import OutlinedButton from './OutlinedButton';
+import HistoryItem from './HistoryItem';
 
 export {
   Container,
@@ -38,4 +39,5 @@ export {
   DropdownComponent,
   PaymentMethodButtons,
   OutlinedButton,
+  HistoryItem,
 };

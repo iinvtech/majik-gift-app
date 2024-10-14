@@ -1,19 +1,61 @@
 import React, {useState} from 'react';
-import {StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
+import {
+  FlatList,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
-import {SearchIcon} from '../../assets';
+import {NotificationIcon, SearchHistoryEmpty, SearchIcon} from '../../assets';
 import {sizer} from '../../helpers';
-import {BackButton, Container, Typography} from '../../components';
+import {
+  BackButton,
+  Container,
+  Flex,
+  HistoryItem,
+  MainCard,
+  Typography,
+} from '../../components';
+import {paddingHorizontal} from '../../../globals';
+import {cardData} from '../../components/data';
 
 const Search = ({mT = 26}) => {
   const [isFocused, setIsFocused] = useState(true);
   const [searchText, setSearchText] = useState('');
 
-  console.log(searchText === '');
+  const historyData = [
+    {
+      id: 1,
+      name: 'Benjamin Graham',
+    },
+    {
+      id: 2,
+      name: 'Warren Buffet',
+    },
+    {
+      id: 3,
+      name: 'Charlie Munger',
+    },
+    {
+      id: 4,
+      name: 'Peter Lynch',
+    },
+    {
+      id: 5,
+      name: 'John Templeton',
+    },
+  ];
+
+  const [data, setData] = useState(historyData);
+  const onDelete = id => {
+    const newArr = data.filter(obj => obj.id !== id);
+    setData(newArr);
+  };
 
   return (
     <Container>
-      <BackButton />
+      <BackButton title="Search" Icon={NotificationIcon} />
       <View style={[styles.main, {marginTop: sizer.moderateVerticalScale(mT)}]}>
         <TextInput
           style={styles.inputStyles}
@@ -32,13 +74,33 @@ const Search = ({mT = 26}) => {
       </View>
 
       {isFocused && searchText === '' ? (
-        <View style={styles.componentOne}>
-          <Typography>HEelo 1 </Typography>
-        </View>
+        <FlatList
+          data={data}
+          renderItem={({item}) => (
+            <HistoryItem item={item} onDelete={onDelete} />
+          )}
+          keyExtractor={(item, index) => index.toString()}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            flex: 1,
+          }}
+          style={{
+            marginTop: sizer.moderateVerticalScale(24),
+            marginHorizontal: sizer.moderateVerticalScale(-paddingHorizontal),
+          }}
+          ListEmptyComponent={
+            <View
+              style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+              <SearchHistoryEmpty />
+            </View>
+          }
+        />
       ) : searchText !== '' ? (
-        <View style={styles.componentTwo}>
-          <Typography>HEelo 2 </Typography>
-        </View>
+        <Flex justifyContent="space-between" mT={24} style={{flexWrap: 'wrap'}}>
+          {cardData.map((card, i) => (
+            <MainCard key={i} item={card} />
+          ))}
+        </Flex>
       ) : null}
     </Container>
   );
