@@ -1,5 +1,7 @@
 import React, {useRef, useState} from 'react';
 import {ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
 
 import {
   Container,
@@ -13,8 +15,6 @@ import {LogoSvg, Stars, TickSvg} from '../../assets';
 import {COLORS} from '../../../globals';
 import {sizer} from '../../helpers';
 import {validateEmail, validatePassword} from '../../helpers/validator';
-import {useNavigation} from '@react-navigation/native';
-import {useDispatch} from 'react-redux';
 import {login} from '../../store/reducer';
 
 const SignIn = () => {
@@ -63,8 +63,8 @@ const SignIn = () => {
   };
 
   return (
-    <ScrollView>
-      <Container>
+    <Container>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.imageView}>
           <LogoSvg />
         </View>
@@ -142,8 +142,8 @@ const SignIn = () => {
             </Typography>
           </TouchableOpacity>
         </Flex>
-      </Container>
-    </ScrollView>
+      </ScrollView>
+    </Container>
   );
 };
 

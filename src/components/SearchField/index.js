@@ -5,6 +5,7 @@ import {useNavigation} from '@react-navigation/native';
 import {SearchIcon} from '../../assets';
 import {sizer} from '../../helpers';
 import {baseOpacity} from '../../../globals';
+import {Typography} from '../index';
 
 const SearchField = ({mT = 26, Icon = SearchIcon}) => {
   const navigation = useNavigation();
@@ -15,8 +16,11 @@ const SearchField = ({mT = 26, Icon = SearchIcon}) => {
         onPress={() => {
           navigation.navigate('Search');
         }}
-        style={styles.inputStyles}
-      />
+        style={styles.inputStyles}>
+        <Typography size={14} light>
+          Search
+        </Typography>
+      </TouchableOpacity>
       <TouchableOpacity
         activeOpacity={0.6}
         onPress={() => {}}
@@ -40,6 +44,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     overflow: 'hidden',
     paddingHorizontal: sizer.moderateScale(25),
+    justifyContent: 'center',
     width: '84%',
   },
   imageView: {

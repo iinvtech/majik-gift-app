@@ -1,50 +1,194 @@
-import React from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {BackButton, Container, Flex, Typography} from '../../components';
+import React, {useState} from 'react';
+import {
+  ScrollView,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+
+import {
+  BackButton,
+  Button,
+  Container,
+  DropdownComponent,
+  EventDetailFooter,
+  Flex,
+  PaymentMethodButtons,
+  Typography,
+} from '../../components';
 import {NotificationIcon} from '../../assets';
-import {sizer} from '../../helpers';
+import {Lato, sizer} from '../../helpers';
 import {COLORS} from '../../../globals';
 
 const OrderSummary = () => {
+  const [isSelected, setSelected] = useState(false);
   return (
-    <ScrollView>
-      <Container>
-        <BackButton title="Order Summary" Icon={NotificationIcon} />
-
+    <Container>
+      <BackButton title="Order Summary" Icon={NotificationIcon} />
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Flex
           justifyContent="space-between"
           alignItems="center"
-          style={{
-            height: sizer.moderateVerticalScale(42),
-            borderBottomColor: COLORS.borderV1,
-            borderBottomWidth: sizer.moderateScale(1),
-          }}>
-          <Typography size={14} light>
+          style={styles.productRow}>
+          <Typography size={14} medium>
             Product Name
           </Typography>
-          <Typography size={14}>Product Name</Typography>
+          <Typography size={14}>Antique Bowl</Typography>
         </Flex>
 
         <Flex
           justifyContent="space-between"
           alignItems="center"
-          style={{
-            height: sizer.moderateVerticalScale(42),
-            borderBottomColor: COLORS.borderV1,
-            borderBottomWidth: sizer.moderateScale(1),
-          }}>
-          <Typography size={14} light>
-            Product Name
+          style={styles.quantityRow}>
+          <Typography size={14} medium>
+            Quantity
           </Typography>
-          <Typography size={14}>Product Name</Typography>
+          <Typography size={14}>2</Typography>
         </Flex>
 
-        <Typography size={14} mT={19} light>Shipping Adress</Typography>
-      </Container>
-    </ScrollView>
+        <Typography size={14} mT={19}>
+          Shipping Address
+        </Typography>
+
+        <DropdownComponent placeholder="Select Country/Region" />
+        <DropdownComponent placeholder="Select State" />
+
+        <TextInput style={styles.textInput} placeholder="Enter Town/City" />
+        <TextInput style={styles.textInput} placeholder="Enter Post Code" />
+
+        <Flex alignItems="center" mT={10} justifyContent="space-between">
+          <Typography size={14}>Have a coupon Code?</Typography>
+          <Typography size={10} color="#79747E">
+            (Optional)
+          </Typography>
+        </Flex>
+
+        <Flex mT={16}>
+          <TextInput
+            style={[
+              styles.textInput,
+              {width: '69%', marginTop: sizer.moderateVerticalScale(0)},
+            ]}
+            placeholder="Enter Town/City"
+          />
+          <Button
+            bgColor={COLORS.secondary}
+            label="Apply"
+            height={40}
+            width={109}
+          />
+        </Flex>
+
+        <Typography mT={19} size={14}>
+          Payment Method
+        </Typography>
+
+        <PaymentMethodButtons />
+
+        <Flex gap={10} mT={30} alignItems="center">
+          <TouchableOpacity
+            activeOpacity={0.6}
+            style={styles.tickCheckbox}
+            onPress={() => setSelected(!isSelected)}>
+            <View style={styles.box}>
+              {isSelected ? (
+                <TickSvg
+                  width={sizer.fontScale(8)}
+                  height={sizer.fontScale(7)}
+                />
+              ) : null}
+            </View>
+          </TouchableOpacity>
+          <Flex justifyContent="center">
+            <Typography size={14} light color={'#212121'}>
+              By clicking this, you are agreeing to our{' '}
+            </Typography>
+
+            <TouchableOpacity activeOpacity={0.6} onPress={() => {}}>
+              <Typography size={14} bold color={COLORS.secondary}>
+                terms and conditions.
+              </Typography>
+            </TouchableOpacity>
+          </Flex>
+        </Flex>
+
+        <View
+          style={{
+            borderBottomWidth: 1,
+            borderStyle: 'dashed',
+            borderBottomColor: '#A6A6A6',
+            marginTop: sizer.moderateVerticalScale(72),
+          }}
+        />
+
+        <Flex mT={21} justifyContent="space-between">
+          <Typography size={14} light>
+            Sub Total
+          </Typography>
+          <Typography size={14}>$55.00</Typography>
+        </Flex>
+
+        <Flex mT={22} justifyContent="space-between">
+          <Typography size={14} light>
+            Shipping
+          </Typography>
+          <Typography size={14}>$5.00</Typography>
+        </Flex>
+
+        <Flex mT={22} justifyContent="space-between">
+          <Typography size={14}>Grand Total</Typography>
+          <Typography size={14} bold>
+            $60.00
+          </Typography>
+        </Flex>
+      </ScrollView>
+
+      <EventDetailFooter />
+    </Container>
   );
 };
 
 export default OrderSummary;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  productRow: {
+    height: sizer.moderateVerticalScale(42),
+    borderBottomColor: COLORS.borderV1,
+    marginTop: sizer.moderateVerticalScale(24),
+    marginBottom: sizer.moderateVerticalScale(8),
+    borderBottomWidth: sizer.moderateScale(1),
+  },
+  quantityRow: {
+    height: sizer.moderateVerticalScale(42),
+    borderBottomColor: COLORS.borderV1,
+    borderBottomWidth: sizer.moderateScale(1),
+    marginBottom: sizer.moderateVerticalScale(8),
+  },
+  textInput: {
+    height: sizer.moderateVerticalScale(40),
+    borderColor: COLORS.greyV5,
+    borderWidth: sizer.moderateScale(0.5),
+    paddingHorizontal: sizer.moderateScale(12),
+    marginTop: sizer.moderateVerticalScale(16),
+    fontSize: sizer.fontScale(12),
+    ...Lato.regular(),
+  },
+  forgotPass: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  tickCheckbox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  box: {
+    width: sizer.moderateVerticalScale(15),
+    height: sizer.moderateVerticalScale(15),
+    borderWidth: sizer.moderateScale(1),
+    borderRadius: 2,
+    borderColor: COLORS.greyV3,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});

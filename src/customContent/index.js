@@ -54,7 +54,12 @@ function CustomDrawerContent(props) {
         </Flex>
       </TouchableOpacity>
 
-      <TouchableOpacity activeOpacity={baseOpacity} style={styles.drawerItem}>
+      <TouchableOpacity
+        activeOpacity={baseOpacity}
+        style={styles.drawerItem}
+        onPress={() => {
+          navigation.navigate('OrderSummary');
+        }}>
         <Flex gap={18} alignItems="center" style={{flex: 1}}>
           <DrawerItemSubscription />
           <Typography>Subscriptions</Typography>

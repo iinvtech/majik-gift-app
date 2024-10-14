@@ -48,6 +48,10 @@ import OrderDetailHeaderSvg from './images/order-detail-header-icon.svg';
 import VideoCallIcon from './images/video-call-icon.svg';
 import ZoomMeetingIcon from './images/zoom-meeting-icon.svg';
 import MessageIcon from './images/message-icon.svg';
+import DownArrowSvg from './images/down-arrow.svg';
+import PaypalSvg from './images/paypal-svg.svg';
+import TickSecondary from './images/tick-secondary.svg';
+import CreditCardSvg from './images/credit-card.svg';
 
 export {
   notificationIcon,
@@ -100,4 +104,8 @@ export {
   VideoCallIcon,
   ZoomMeetingIcon,
   MessageIcon,
+  DownArrowSvg,
+  PaypalSvg,
+  TickSecondary,
+  CreditCardSvg,
 };

@@ -14,6 +14,8 @@ import ScrollableCard from './ScrollableCard';
 import OrderDetailCard from './OrderDetailCard';
 import EventDetailFooter from './EventDetailFooter';
 import EventReview from './EventReview';
+import DropdownComponent from './Dropdowm';
+import PaymentMethodButtons from './PaymentMethodButtons';
 
 export {
   Container,
@@ -32,4 +34,6 @@ export {
   OrderDetailCard,
   EventDetailFooter,
   EventReview,
+  DropdownComponent,
+  PaymentMethodButtons,
 };
