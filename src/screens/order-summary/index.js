@@ -100,17 +100,35 @@ const OrderSummary = () => {
               ) : null}
             </View>
           </TouchableOpacity>
-          <Flex justifyContent="center" >
+          <Flex justifyContent="center">
             <Typography size={14} light color={'#212121'}>
               By clicking this, you are agreeing to our{' '}
             </Typography>
 
             <TouchableOpacity activeOpacity={0.6} onPress={() => {}}>
               <Typography size={14} bold color={COLORS.secondary}>
-                terms and conditions.
+                terms and
               </Typography>
             </TouchableOpacity>
           </Flex>
+        </Flex>
+        <Flex mT={5} style={{marginLeft: sizer.moderateScale(23)}}>
+          <TouchableOpacity activeOpacity={0.6} onPress={() => {}}>
+            <Typography size={14} bold color={COLORS.secondary}>
+              Conditions{' '}
+            </Typography>
+          </TouchableOpacity>
+          <TouchableOpacity activeOpacity={0.6} onPress={() => {}}>
+            <Typography size={14} light color={'#212121'}>
+              and{' '}
+            </Typography>
+          </TouchableOpacity>
+
+          <TouchableOpacity activeOpacity={0.6} onPress={() => {}}>
+            <Typography size={14} bold color={COLORS.secondary}>
+              Privacy Policy
+            </Typography>
+          </TouchableOpacity>
         </Flex>
 
         <View
@@ -118,7 +136,7 @@ const OrderSummary = () => {
             borderBottomWidth: 1,
             borderStyle: 'dashed',
             borderBottomColor: '#A6A6A6',
-            marginTop: sizer.moderateVerticalScale(72),
+            marginTop: sizer.moderateVerticalScale(50),
           }}
         />
 
