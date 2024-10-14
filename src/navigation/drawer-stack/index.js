@@ -1,6 +1,7 @@
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
 import {
+  ChatScreen,
   EventDetail,
   Events,
   LightworkerDetail,
@@ -37,6 +38,7 @@ function DrawerNavigator() {
       <Drawer.Screen name="LightworkerDetail" component={LightworkerDetail} />
       <Drawer.Screen name="Search" component={Search} />
       <Drawer.Screen name="MessageInbox" component={MessageInbox} />
+      <Drawer.Screen name="ChatScreen" component={ChatScreen} />
     </Drawer.Navigator>
   );
 }

@@ -15,6 +15,7 @@ import EventDetail from './event-detail';
 import LightworkerDetail from './Lightworker-detail';
 import Search from './search';
 import MessageInbox from './message-inbox';
+import ChatScreen from './chat-screen';
 
 export {
   Home,
@@ -34,4 +35,5 @@ export {
   LightworkerDetail,
   Search,
   MessageInbox,
+  ChatScreen,
 };

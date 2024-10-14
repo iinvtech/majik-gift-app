@@ -19,6 +19,8 @@ import PaymentMethodButtons from './PaymentMethodButtons';
 import OutlinedButton from './OutlinedButton';
 import HistoryItem from './HistoryItem';
 import MessageInboxItem from './MessageInboxItem';
+import MessageItem from './MessageItem';
+import MessageField from './Fields/MessageField';
 
 export {
   Container,
@@ -42,4 +44,6 @@ export {
   OutlinedButton,
   HistoryItem,
   MessageInboxItem,
+  MessageItem,
+  MessageField,
 };

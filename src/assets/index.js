@@ -52,6 +52,8 @@ import DownArrowSvg from './images/down-arrow.svg';
 import PaypalSvg from './images/paypal-svg.svg';
 import TickSecondary from './images/tick-secondary.svg';
 import CreditCardSvg from './images/credit-card.svg';
+import SendIcon from './images/send-icon.svg';
+import MessageTickSvg from './images/message-tick.svg';
 
 export {
   notificationIcon,
@@ -108,4 +110,6 @@ export {
   PaypalSvg,
   TickSecondary,
   CreditCardSvg,
+  SendIcon,
+  MessageTickSvg,
 };

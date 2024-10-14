@@ -110,4 +110,75 @@ const EVENTS_SUGGESTIONS = [
   },
 ];
 
-export {cardData, PRODUCT_SUGGESTIONS, HOME_SUGGESTIONS, EVENTS_SUGGESTIONS};
+const chatData = [
+  {
+    senderId: 1,
+    content: 'Hello! How are you?',
+    createdAt: '2024-10-14T10:15:00Z',
+    status: 'read',
+  },
+  {
+    senderId: 2,
+    content: "I'm good, thanks! What about you?",
+    createdAt: '2024-10-14T10:16:00Z',
+    status: 'delivered',
+  },
+  {
+    senderId: 1,
+    content: "I'm doing great! Excited about the project.",
+    createdAt: '2024-10-14T10:17:00Z',
+    status: 'read',
+  },
+];
+
+const dummyMessages = [
+  {
+    id: '1',
+    sender: {
+      id: 'user1',
+      email: 'john.doe@example.com',
+    },
+    message: 'Hey! How are you doing today?',
+    status: 'read',
+    createdAt: '2024-10-12T10:30:00Z',
+  },
+  {
+    id: '2',
+    sender: {
+      id: 'user2',
+      email: 'jane.smith@example.com',
+    },
+    message: 'I’m doing great, thanks! What about you?',
+    status: 'delivered',
+    createdAt: '2024-10-12T10:35:00Z',
+  },
+  {
+    id: '3',
+    sender: {
+      id: 'user1',
+      email: 'john.doe@example.com',
+    },
+    message: 'All good here! Let’s catch up later.',
+    status: 'read',
+    createdAt: '2024-10-12T10:40:00Z',
+  },
+  {
+    id: '4',
+    sender: {
+      id: 'user2',
+      email: 'jane.smith@example.com',
+    },
+    message: 'Sure, see you soon!',
+    status: 'delivered',
+    createdAt: '2024-10-12T10:45:00Z',
+  },
+];
+
+export {
+  cardData,
+  PRODUCT_SUGGESTIONS,
+  HOME_SUGGESTIONS,
+  EVENTS_SUGGESTIONS,
+  chatData,
+  dummyMessages,
+};

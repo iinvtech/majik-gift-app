@@ -9,7 +9,12 @@ const MessageInboxItem = ({item}) => {
   const navigation = useNavigation();
 
   return (
-    <TouchableOpacity style={styles.main} activeOpacity={baseOpacity}>
+    <TouchableOpacity
+      style={styles.main}
+      activeOpacity={baseOpacity}
+      onPress={() => {
+        navigation.navigate('ChatScreen');
+      }}>
       <Flex
         alignItems="center"
         style={{flex: 1}}
