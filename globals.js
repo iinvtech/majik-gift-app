@@ -1,4 +1,4 @@
-import sizer from "./src/helpers/sizer";
+import sizer from './src/helpers/sizer';
 
 export const COLORS = {
   primary: '#D3AFC9',
@@ -18,7 +18,8 @@ export const COLORS = {
   border: '#F3F3F3',
   danger: '#B3261E',
   greyBg: '#CBCBCB',
-  borderV1: "#EBEBEB",
+  borderV1: '#EBEBEB',
+  greyV6: '#A6A6A6',
 };
 
 export const baseOpacity = 0.6;

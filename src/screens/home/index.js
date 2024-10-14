@@ -8,6 +8,7 @@ import {
   ScrollableCard,
   SearchField,
   Typography,
+  ViewAll,
 } from '../../components';
 import {paddingHorizontal} from '../../../globals';
 import {cardData, HOME_SUGGESTIONS} from '../../components/data';
@@ -23,9 +24,7 @@ const Home = () => {
           <ScrollableCard data={HOME_SUGGESTIONS} home />
         </View>
 
-        <Typography fontType="secondary" mT={24} size={18} bold>
-          Catagories
-        </Typography>
+        <ViewAll label="Categories" />
 
         <HorizontalFlatlist
           data={[1, 2, 3, 4, 5, 6]}
@@ -33,9 +32,7 @@ const Home = () => {
           contentContainerStyle={{gap: 20}}
         />
 
-        <Typography fontType="secondary" mT={24} size={18}>
-          Most Popular 🔥
-        </Typography>
+        <ViewAll label=" Most Popular 🔥" />
 
         <HorizontalFlatlist
           data={cardData}
@@ -43,9 +40,7 @@ const Home = () => {
           contentContainerStyle={{gap: 20}}
         />
 
-        <Typography fontType="secondary" mT={24} size={18}>
-          Lightworkers
-        </Typography>
+        <ViewAll label="Lightworkers" />
 
         <HorizontalFlatlist
           data={cardData}
@@ -53,9 +48,7 @@ const Home = () => {
           contentContainerStyle={{gap: 20}}
         />
 
-        <Typography fontType="secondary" mT={24} size={18}>
-          Upcoming Events
-        </Typography>
+        <ViewAll label="Upcoming Events" />
 
         <HorizontalFlatlist
           data={cardData}
