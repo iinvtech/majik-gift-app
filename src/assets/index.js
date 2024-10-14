@@ -58,6 +58,7 @@ import MailIconProfile from './images/mail-icon-profile.svg';
 import LocationIconProfile from './images/location-icon-profile.svg';
 import PhoneIconProfile from './images/phone-icon-profile.svg';
 import CameraIcon from './images/camera-icon.svg';
+import PhoneIcon from './images/phone-icon.svg';
 
 export {
   notificationIcon,
@@ -120,4 +121,5 @@ export {
   PhoneIconProfile,
   LocationIconProfile,
   CameraIcon,
+  PhoneIcon,
 };

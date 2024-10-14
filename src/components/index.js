@@ -21,6 +21,7 @@ import HistoryItem from './HistoryItem';
 import MessageInboxItem from './MessageInboxItem';
 import MessageItem from './MessageItem';
 import MessageField from './Fields/MessageField';
+import PhoneNumberField from './Fields/PhoneNumberField';
 
 export {
   Container,
@@ -46,4 +47,5 @@ export {
   MessageInboxItem,
   MessageItem,
   MessageField,
+  PhoneNumberField,
 };
