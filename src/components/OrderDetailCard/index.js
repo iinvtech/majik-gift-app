@@ -66,9 +66,8 @@ const OrderDetailCard = ({item}) => {
         <View
           style={{
             flex: 0.3,
-            backgroundColor: "pink"
           }}>
-          <item.Icon width={"100%"} height={"100%"} />
+          <item.Icon width={'100%'} height={'100%'} />
         </View>
       </View>
 

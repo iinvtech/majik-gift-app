@@ -87,9 +87,6 @@ const ScrollableCard = ({data = PRODUCT_SUGGESTIONS, home}) => {
             }}
             style={{
               width: sizer.moderateScale(100),
-              // backgroundColor: 'pink',
-              // flex: 1,
-              // height: sizer.moderateVerticalScale(110),
               height: '100%',
               objectFit: 'fill',
             }}

@@ -13,12 +13,14 @@ import {
 } from '../assets';
 import {baseOpacity} from '../../globals';
 import {sizer} from '../helpers';
+import {useDispatch} from 'react-redux';
+import {logout} from '../store/reducer';
 
 const Drawer = createDrawerNavigator();
 
 function CustomDrawerContent(props) {
   const navigation = useNavigation();
-
+  const dispatch = useDispatch();
   return (
     <View style={{flex: 1}}>
       <BackButton mH={false} />
@@ -63,7 +65,7 @@ function CustomDrawerContent(props) {
         activeOpacity={baseOpacity}
         style={styles.drawerItem}
         onPress={() => {
-          navigation.navigate('OrderSummary');
+          navigation.navigate('Subscription');
         }}>
         <Flex gap={18} alignItems="center" style={{flex: 1}}>
           <DrawerItemSubscription />
@@ -83,7 +85,12 @@ function CustomDrawerContent(props) {
         </Flex>
       </TouchableOpacity>
 
-      <TouchableOpacity activeOpacity={baseOpacity} style={styles.drawerItem}>
+      <TouchableOpacity
+        activeOpacity={baseOpacity}
+        style={styles.drawerItem}
+        onPress={() => {
+          dispatch(logout());
+        }}>
         <Flex gap={18} alignItems="center" style={{flex: 1}}>
           <DrawerItemLogout />
           <Typography>Logout</Typography>

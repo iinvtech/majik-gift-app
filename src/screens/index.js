@@ -18,6 +18,7 @@ import MessageInbox from './message-inbox';
 import ChatScreen from './chat-screen';
 import EditProfile from './edit-profile';
 import ChangePasswordFromProfile from './change-password-from-profile';
+import Subscription from './subscription';
 
 export {
   Home,
@@ -40,4 +41,5 @@ export {
   ChatScreen,
   EditProfile,
   ChangePasswordFromProfile,
+  Subscription,
 };

@@ -4,7 +4,6 @@ import {
   BackButton,
   Container,
   Flex,
-  HorizontalFlatlist,
   MainCard,
   ScrollableCard,
   SearchField,
@@ -22,7 +21,7 @@ const Events = () => {
         <SearchField Icon={FilterIcon} />
 
         <View style={{marginHorizontal: -paddingHorizontal}}>
-          <ScrollableCard data={EVENTS_SUGGESTIONS}/>
+          <ScrollableCard data={EVENTS_SUGGESTIONS} />
         </View>
 
         <Flex justifyContent="space-between" mT={24} style={{flexWrap: 'wrap'}}>

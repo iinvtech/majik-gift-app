@@ -13,18 +13,21 @@ import {cardData} from '../../components/data';
 
 const Wishlist = () => {
   return (
-    <ScrollView>
-      <Container>
-        <BackButton title="Wishlist" Icon={NotificationIcon} />
+    <Container>
+      <BackButton title="Wishlist" Icon={NotificationIcon} />
+      <ScrollView>
         <SearchField Icon={FilterIcon} />
 
-        <Flex justifyContent="space-between" mT={24} style={{flexWrap: 'wrap'}}>
+        <Flex
+          justifyContent="space-between"
+          mT={24}
+          style={{flexWrap: 'wrap', marginHorizontal: 2}}>
           {cardData.map((card, i) => (
             <MainCard key={i} item={card} />
           ))}
         </Flex>
-      </Container>
-    </ScrollView>
+      </ScrollView>
+    </Container>
   );
 };
 

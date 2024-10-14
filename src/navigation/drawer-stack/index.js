@@ -9,6 +9,7 @@ import {
   OrderDetail,
   OrderSummary,
   Search,
+  Subscription,
   Wishlist,
 } from '../../screens';
 import {sizer} from '../../helpers';
@@ -39,6 +40,7 @@ function DrawerNavigator() {
       <Drawer.Screen name="Search" component={Search} />
       <Drawer.Screen name="MessageInbox" component={MessageInbox} />
       <Drawer.Screen name="ChatScreen" component={ChatScreen} />
+      <Drawer.Screen name="Subscription" component={Subscription} />
     </Drawer.Navigator>
   );
 }

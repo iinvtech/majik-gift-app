@@ -14,8 +14,12 @@ export const myReducer = createSlice({
         state.user = payload;
       }
     },
+
+    logout: state => {
+      state.isLogged = false;
+    },
   },
 });
 
-export const {login} = myReducer.actions;
+export const {login, logout} = myReducer.actions;
 export default myReducer.reducer;
