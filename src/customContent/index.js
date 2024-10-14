@@ -23,7 +23,12 @@ function CustomDrawerContent(props) {
     <View style={{flex: 1}}>
       <BackButton mH={false} />
 
-      <TouchableOpacity activeOpacity={baseOpacity} style={styles.drawerItem}>
+      <TouchableOpacity
+        activeOpacity={baseOpacity}
+        style={styles.drawerItem}
+        onPress={() => {
+          navigation.navigate('MessageInbox');
+        }}>
         <Flex gap={18} alignItems="center" style={{flex: 1}}>
           <DrawerItemMsg />
           <Typography>Inbox</Typography>

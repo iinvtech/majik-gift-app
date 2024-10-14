@@ -18,6 +18,7 @@ import DropdownComponent from './Dropdowm';
 import PaymentMethodButtons from './PaymentMethodButtons';
 import OutlinedButton from './OutlinedButton';
 import HistoryItem from './HistoryItem';
+import MessageInboxItem from './MessageInboxItem';
 
 export {
   Container,
@@ -40,4 +41,5 @@ export {
   PaymentMethodButtons,
   OutlinedButton,
   HistoryItem,
+  MessageInboxItem,
 };

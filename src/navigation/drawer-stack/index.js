@@ -4,6 +4,7 @@ import {
   EventDetail,
   Events,
   LightworkerDetail,
+  MessageInbox,
   OrderDetail,
   OrderSummary,
   Search,
@@ -35,6 +36,7 @@ function DrawerNavigator() {
       <Drawer.Screen name="EventDetail" component={EventDetail} />
       <Drawer.Screen name="LightworkerDetail" component={LightworkerDetail} />
       <Drawer.Screen name="Search" component={Search} />
+      <Drawer.Screen name="MessageInbox" component={MessageInbox} />
     </Drawer.Navigator>
   );
 }
