@@ -16,6 +16,7 @@ const BackButton = ({title, Icon, mH = true}) => {
         style={{flex: 1}}>
         <Flex gap={8}>
           <TouchableOpacity
+            hitSlop={{bottom: 5, right: 5, left: 5, top: 5}}
             activeOpacity={baseOpacity}
             onPress={() => {
               navigation.goBack();

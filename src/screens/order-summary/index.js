@@ -100,7 +100,7 @@ const OrderSummary = () => {
               ) : null}
             </View>
           </TouchableOpacity>
-          <Flex justifyContent="center">
+          <Flex justifyContent="center" >
             <Typography size={14} light color={'#212121'}>
               By clicking this, you are agreeing to our{' '}
             </Typography>

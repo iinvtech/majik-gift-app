@@ -12,13 +12,13 @@ import {
 
 import {FilterIcon, NotificationIcon} from '../../assets';
 import {cardData} from '../../components/data';
-import { paddingHorizontal } from '../../../globals';
+import {paddingHorizontal} from '../../../globals';
 
 const Products = () => {
   return (
-    <ScrollView>
-      <Container>
-        <BackButton title="Products" Icon={NotificationIcon} />
+    <Container>
+      <BackButton title="Products" Icon={NotificationIcon} />
+      <ScrollView showsVerticalScrollIndicator={false}>
         <SearchField Icon={FilterIcon} />
 
         <View style={{marginHorizontal: -paddingHorizontal}}>
@@ -30,8 +30,8 @@ const Products = () => {
             <MainCard key={i} item={card} />
           ))}
         </Flex>
-      </Container>
-    </ScrollView>
+      </ScrollView>
+    </Container>
   );
 };
 

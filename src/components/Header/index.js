@@ -34,6 +34,7 @@ const Header = () => {
         <Flex alignItems="center" gap={11}>
           <NotificationIcon width={24} height={24} />
           <TouchableOpacity
+            hitSlop={{bottom: 5, right: 5, left: 5, top: 5}}
             activeOpacity={baseOpacity}
             onPress={() => {
               navigation.openDrawer();

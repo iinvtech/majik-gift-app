@@ -64,7 +64,6 @@ const EditProfile = () => {
           label="Save changes"
           width={133}
           height={42}
-          bgColor={COLORS.secondary}
         />
       </Flex>
     </Container>

@@ -15,9 +15,9 @@ import {paddingHorizontal} from '../../../globals';
 
 const Lightwoker = () => {
   return (
-    <ScrollView>
-      <Container>
-        <BackButton title="Lightworkers" Icon={NotificationIcon} />
+    <Container>
+      <BackButton title="Lightworkers" Icon={NotificationIcon} />
+      <ScrollView showsVerticalScrollIndicator={false}>
         <SearchField Icon={FilterIcon} />
 
         <View style={{marginHorizontal: -paddingHorizontal}}>
@@ -29,8 +29,8 @@ const Lightwoker = () => {
             <MainCard key={i} item={card} navigationRoute="LightworkerDetail" />
           ))}
         </Flex>
-      </Container>
-    </ScrollView>
+      </ScrollView>
+    </Container>
   );
 };
 

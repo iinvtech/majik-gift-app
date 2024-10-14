@@ -68,7 +68,6 @@ const Profile = () => {
           width={133}
           height={42}
           mT={15}
-          bgColor={COLORS.secondary}
           onPress={() => {
             navigation.navigate('EditProfile');
           }}

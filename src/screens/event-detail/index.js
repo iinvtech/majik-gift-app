@@ -12,6 +12,7 @@ import {
 import {sizer} from '../../helpers';
 import {COLORS, paddingHorizontal} from '../../../globals';
 import {NotificationIcon, Star} from '../../assets';
+import {useNavigation} from '@react-navigation/native';
 const hexToRGBA = (hex, opacity) => {
   const r = parseInt(hex.slice(1, 3), 16);
   const g = parseInt(hex.slice(3, 5), 16);
@@ -21,6 +22,7 @@ const hexToRGBA = (hex, opacity) => {
 };
 
 const EventDetail = () => {
+  const navigation = useNavigation();
   return (
     <Container>
       <BackButton Icon={NotificationIcon} />
@@ -125,7 +127,7 @@ const EventDetail = () => {
         <View style={{paddingHorizontal: paddingHorizontal}}>
           <Flex mT={28} alignItems="center" justifyContent="space-between">
             <Typography size={24} fontType="secondary">
-              Event Namess
+              Event Names
             </Typography>
 
             <Flex gap={5} alignItems="center">
@@ -217,7 +219,12 @@ const EventDetail = () => {
         </View>
       </ScrollView>
 
-      <EventDetailFooter />
+      <EventDetailFooter
+        btnText="Order"
+        onPress={() => {
+          navigation.navigate('OrderSummary');
+        }}
+      />
     </Container>
   );
 };
