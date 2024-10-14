@@ -55,10 +55,10 @@ const ScrollableCard = ({data = PRODUCT_SUGGESTIONS, home}) => {
         </View>
 
         <Flex justifyContent="space-between">
-          <View>
+          <View style={{width: '65%'}}>
             <Typography
               mT={6}
-              size={24}
+              size={22}
               color={home ? COLORS.white : COLORS.black}
               bold
               fontType="secondary">
@@ -71,7 +71,7 @@ const ScrollableCard = ({data = PRODUCT_SUGGESTIONS, home}) => {
 
             <Button
               label="Buy Now"
-              height={24}
+              height={25}
               width={100}
               Icon={<Stars width={11} height={11} />}
               mT={21}
@@ -87,7 +87,10 @@ const ScrollableCard = ({data = PRODUCT_SUGGESTIONS, home}) => {
             }}
             style={{
               width: sizer.moderateScale(100),
-              height: sizer.moderateVerticalScale(110),
+              // backgroundColor: 'pink',
+              // flex: 1,
+              // height: sizer.moderateVerticalScale(110),
+              height: '100%',
               objectFit: 'fill',
             }}
           />

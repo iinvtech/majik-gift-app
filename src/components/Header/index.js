@@ -23,6 +23,7 @@ const Header = () => {
             justifyContent: 'center',
             flex: 1,
             marginLeft: sizer.moderateScale(12),
+            gap: 2,
           }}>
           <Typography size={12} fontType="secondary" letterSpacing={1} bold>
             Welcome 👋🏼{' '}
