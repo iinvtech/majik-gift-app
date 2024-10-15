@@ -1,5 +1,11 @@
 import React, {useRef, useState} from 'react';
-import {ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {
+  KeyboardAvoidingView,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 import {
   Button,
@@ -18,6 +24,7 @@ import {
   NoteIcon,
   PhoneIcon,
   Stars,
+  TickSvg,
   UserIcon,
 } from '../../assets';
 import {COLORS} from '../../../globals';
@@ -47,7 +54,10 @@ const SignUp = () => {
   const addressRef = useRef();
   const noteRef = useRef();
   const dispatch = useDispatch();
-  const [isSelected, setSelected] = useState(false);
+
+  // Separate states for each checkbox
+  const [isMarketingSelected, setMarketingSelected] = useState(false);
+  const [isTermsSelected, setTermsSelected] = useState(false);
 
   const {
     firstName,
@@ -95,189 +105,187 @@ const SignUp = () => {
   };
 
   return (
-    <ScrollView>
-      <Container>
-        <View style={styles.imageView}>
-          <LogoSvg />
-        </View>
-        <Typography size={22} mT={19} fontType="secondary" medium>
-          Create New Account
-        </Typography>
-
-        <Typography mT={12} light color={'#4C4C4C'} LineHeight={24}>
-          Claim Your Account: Register today for access to our platform.
-        </Typography>
-
-        <InputField
-          label="First Name"
-          placeholder="First Name"
-          mt={31}
-          RightIcon={() => {
-            return <UserIcon />;
-          }}
-          value={firstName}
-          handleChange={e => handleFormData(e, 'firstName')}
-          error={formErr.firstName}
-          onSubmitEditing={() => lastNameRef?.current?.focus()}
-        />
-
-        <InputField
-          label="Last Name"
-          placeholder="Last Name"
-          RightIcon={() => {
-            return <UserIcon />;
-          }}
-          ref={lastNameRef}
-          value={lastName}
-          handleChange={e => handleFormData(e, 'lastName')}
-          error={formErr.lastName}
-          onSubmitEditing={() => emailRef?.current?.focus()}
-        />
-
-        <InputField
-          label="Email Address"
-          placeholder="Email Address"
-          RightIcon={() => {
-            return <MailIcon />;
-          }}
-          value={email}
-          handleChange={e => handleFormData(e, 'email')}
-          ref={emailRef}
-          error={formErr.email}
-          onSubmitEditing={() => passwordRef?.current.focus()}
-        />
-
-        <PasswordField
-          mt={10}
-          label="Password"
-          placeholder="******"
-          value={password}
-          handleChange={e => handleFormData(e, 'password')}
-          ref={passwordRef}
-          error={formErr.password}
-          onSubmitEditing={() => confirmPasswordRef.current.focus()}
-        />
-
-        <PasswordField
-          mt={10}
-          label="Confirm Password"
-          placeholder="******"
-          value={confirmPassword}
-          handleChange={e => handleFormData(e, 'confirmPassword')}
-          ref={confirmPasswordRef}
-          error={formErr.confirmPassword}
-          onSubmitEditing={() => phoneRef.current.focus()}
-        />
-
-        <PhoneNumberField
-          label="Phone number"
-          placeholder="(000) 000-0000"
-          RightIcon={() => <PhoneIcon width={13} height={13} />}
-          value={phoneNumber}
-          ref={phoneRef}
-          handleChange={e =>
-            handleFormData(formatPhoneNumber(e), 'phoneNumber')
-          }
-          mt={10}
-          onSubmitEditing={() => addressRef.current.focus()}
-          numPad
-          error={formErr.phoneNumber}
-          maxLength={14}
-          countryCode={'+1'}
-        />
-
-        <InputField
-          label="Address"
-          placeholder="Add Address"
-          RightIcon={() => <LocationIcon />}
-          value={address}
-          handleChange={e => handleFormData(e, 'address')}
-          ref={addressRef}
-          error={formErr.address}
-          onSubmitEditing={() => noteRef?.current.focus()}
-        />
-
-        <InputField
-          label="Note"
-          placeholder="Add Note"
-          RightIcon={() => <NoteIcon />}
-          value={note}
-          handleChange={e => handleFormData(e, 'note')}
-          ref={noteRef}
-          error={formErr.note}
-          onSubmitEditing={handleSignup}
-        />
-
-        <Flex gap={10} mT={26} alignItems="center">
-          <TouchableOpacity
-            activeOpacity={0.6}
-            style={styles.tickCheckbox}
-            onPress={() => setSelected(!isSelected)}>
-            <View style={styles.box}>
-              {isSelected ? (
-                <TickSvg
-                  width={sizer.fontScale(8)}
-                  height={sizer.fontScale(7)}
-                />
-              ) : null}
-            </View>
-          </TouchableOpacity>
-          <Typography size={14} light color={'#212121'} letterSpacing={0.1}>
-            I would like to receive marketing e-mails.
+    <Container>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={{flex: 1}}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={styles.imageView}>
+            <LogoSvg />
+          </View>
+          <Typography size={22} mT={19} fontType="secondary" medium>
+            Create New Account
           </Typography>
-        </Flex>
 
-        <Flex gap={10} mT={16} alignItems="center">
-          <TouchableOpacity
-            activeOpacity={0.6}
-            style={styles.tickCheckbox}
-            onPress={() => setSelected(!isSelected)}>
-            <View style={styles.box}>
-              {isSelected ? (
-                <TickSvg
-                  width={sizer.fontScale(8)}
-                  height={sizer.fontScale(7)}
-                />
-              ) : null}
-            </View>
-          </TouchableOpacity>
-          <Flex justifyContent="center">
-            <Typography size={14} light color={'#212121'}>
-              I have read and agree to the{' '}
+          <Typography mT={12} light color={'#4C4C4C'} LineHeight={24}>
+            Claim Your Account: Register today for access to our platform.
+          </Typography>
+
+          <InputField
+            label="First Name"
+            placeholder="First Name"
+            mt={31}
+            RightIcon={() => <UserIcon />}
+            value={firstName}
+            handleChange={e => handleFormData(e, 'firstName')}
+            error={formErr.firstName}
+            onSubmitEditing={() => lastNameRef?.current?.focus()}
+          />
+
+          <InputField
+            label="Last Name"
+            placeholder="Last Name"
+            RightIcon={() => <UserIcon />}
+            ref={lastNameRef}
+            value={lastName}
+            handleChange={e => handleFormData(e, 'lastName')}
+            error={formErr.lastName}
+            onSubmitEditing={() => emailRef?.current?.focus()}
+          />
+
+          <InputField
+            label="Email Address"
+            placeholder="Email Address"
+            RightIcon={() => <MailIcon />}
+            value={email}
+            handleChange={e => handleFormData(e, 'email')}
+            ref={emailRef}
+            error={formErr.email}
+            onSubmitEditing={() => passwordRef?.current.focus()}
+          />
+
+          <PasswordField
+            mt={10}
+            label="Password"
+            placeholder="******"
+            value={password}
+            handleChange={e => handleFormData(e, 'password')}
+            ref={passwordRef}
+            error={formErr.password}
+            onSubmitEditing={() => confirmPasswordRef.current.focus()}
+          />
+
+          <PasswordField
+            mt={10}
+            label="Confirm Password"
+            placeholder="******"
+            value={confirmPassword}
+            handleChange={e => handleFormData(e, 'confirmPassword')}
+            ref={confirmPasswordRef}
+            error={formErr.confirmPassword}
+            onSubmitEditing={() => phoneRef.current.focus()}
+          />
+
+          <PhoneNumberField
+            label="Phone number"
+            placeholder="(000) 000-0000"
+            RightIcon={() => <PhoneIcon width={13} height={13} />}
+            value={phoneNumber}
+            ref={phoneRef}
+            handleChange={e =>
+              handleFormData(formatPhoneNumber(e), 'phoneNumber')
+            }
+            mt={10}
+            onSubmitEditing={() => addressRef.current.focus()}
+            numPad
+            error={formErr.phoneNumber}
+            maxLength={14}
+            countryCode={'+1'}
+          />
+
+          <InputField
+            label="Address"
+            placeholder="Add Address"
+            RightIcon={() => <LocationIcon />}
+            value={address}
+            handleChange={e => handleFormData(e, 'address')}
+            ref={addressRef}
+            error={formErr.address}
+            onSubmitEditing={() => noteRef?.current.focus()}
+          />
+
+          <InputField
+            label="Note"
+            placeholder="Add Note"
+            RightIcon={() => <NoteIcon />}
+            value={note}
+            handleChange={e => handleFormData(e, 'note')}
+            ref={noteRef}
+            error={formErr.note}
+            onSubmitEditing={handleSignup}
+          />
+
+          <Flex gap={10} mT={26} alignItems="center">
+            <TouchableOpacity
+              activeOpacity={0.6}
+              style={styles.tickCheckbox}
+              onPress={() => setMarketingSelected(!isMarketingSelected)}>
+              <View style={styles.box}>
+                {isMarketingSelected ? (
+                  <TickSvg
+                    width={sizer.fontScale(8)}
+                    height={sizer.fontScale(7)}
+                  />
+                ) : null}
+              </View>
+            </TouchableOpacity>
+            <Typography size={14} light color={'#212121'} letterSpacing={0.1}>
+              I would like to receive marketing e-mails.
+            </Typography>
+          </Flex>
+
+          <Flex gap={10} mT={16} alignItems="center">
+            <TouchableOpacity
+              activeOpacity={0.6}
+              style={styles.tickCheckbox}
+              onPress={() => setTermsSelected(!isTermsSelected)}>
+              <View style={styles.box}>
+                {isTermsSelected ? (
+                  <TickSvg
+                    width={sizer.fontScale(8)}
+                    height={sizer.fontScale(7)}
+                  />
+                ) : null}
+              </View>
+            </TouchableOpacity>
+            <Flex justifyContent="center">
+              <Typography size={14} light color={'#212121'}>
+                I have read and agree to the{' '}
+              </Typography>
+
+              <TouchableOpacity activeOpacity={0.6} onPress={() => {}}>
+                <Typography size={14} bold color={COLORS.secondary}>
+                  terms and conditions.
+                </Typography>
+              </TouchableOpacity>
+            </Flex>
+          </Flex>
+
+          <Button
+            label="Sign Up"
+            mT={44}
+            Icon={<Stars />}
+            onPress={handleSignup}
+          />
+
+          <Flex mT={32} mB={37} justifyContent="center">
+            <Typography size={14} light>
+              Already Have an account?{' '}
             </Typography>
 
-            <TouchableOpacity activeOpacity={0.6} onPress={() => {}}>
-              <Typography size={14} bold color={COLORS.secondary}>
-                terms and conditions.
+            <TouchableOpacity
+              activeOpacity={0.6}
+              onPress={() => {
+                navigation.navigate('SignIn');
+              }}>
+              <Typography size={14} color={COLORS.secondary}>
+                Login
               </Typography>
             </TouchableOpacity>
           </Flex>
-        </Flex>
-
-        <Button
-          label="Sign Up"
-          mT={44}
-          Icon={<Stars />}
-          onPress={handleSignup}
-        />
-
-        <Flex mT={32} mB={37} justifyContent="center">
-          <Typography size={14} light>
-            Already Have an account?{' '}
-          </Typography>
-
-          <TouchableOpacity
-            activeOpacity={0.6}
-            onPress={() => {
-              navigation.navigate('SignIn');
-            }}>
-            <Typography size={14} color={COLORS.secondary}>
-              Login
-            </Typography>
-          </TouchableOpacity>
-        </Flex>
-      </Container>
-    </ScrollView>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </Container>
   );
 };
 
@@ -288,10 +296,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: sizer.moderateVerticalScale(37),
-  },
-  forgotPass: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
   },
   tickCheckbox: {
     flexDirection: 'row',

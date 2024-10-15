@@ -91,7 +91,10 @@ const styles = StyleSheet.create({
   heartIconContainer: {
     backgroundColor: COLORS.white,
     position: 'absolute',
-    padding: sizer.moderateScale(5),
+    width: sizer.moderateScale(16),
+    height: sizer.moderateScale(16),
+    alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 100,
     alignSelf: 'flex-start',
     marginTop: sizer.moderateVerticalScale(2),
