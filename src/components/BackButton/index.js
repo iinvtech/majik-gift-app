@@ -26,7 +26,16 @@ const BackButton = ({title, Icon, mH = true}) => {
           {title && <Typography letterSpacing={0.1}>{title}</Typography>}
         </Flex>
 
-        {Icon && <Icon />}
+        {Icon && (
+          <TouchableOpacity
+            hitSlop={{bottom: 5, right: 5, left: 5, top: 5}}
+            activeOpacity={baseOpacity}
+            onPress={() => {
+              navigation.navigate('Notifications');
+            }}>
+            <Icon />
+          </TouchableOpacity>
+        )}
       </Flex>
     </View>
   );
