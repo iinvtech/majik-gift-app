@@ -1,9 +1,8 @@
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {FlatList, StyleSheet, View} from 'react-native';
 
 import {
   BackButton,
   Container,
-  Flex,
   MainCard,
   ScrollableCard,
   SearchField,
@@ -12,25 +11,35 @@ import {
 import {FilterIcon, NotificationIcon} from '../../assets';
 import {cardData, EVENTS_SUGGESTIONS} from '../../components/data';
 import {paddingHorizontal} from '../../../globals';
+import {sizer} from '../../helpers';
 
 const Events = () => {
   return (
-    <ScrollView>
-      <Container>
-        <BackButton title="Events" Icon={NotificationIcon} />
-        <SearchField Icon={FilterIcon} />
-
-        <View style={{marginHorizontal: -paddingHorizontal}}>
-          <ScrollableCard data={EVENTS_SUGGESTIONS} />
-        </View>
-
-        <Flex justifyContent="space-between" mT={24} style={{flexWrap: 'wrap'}}>
-          {cardData.map((card, i) => (
-            <MainCard key={i} item={card} />
-          ))}
-        </Flex>
-      </Container>
-    </ScrollView>
+    <Container>
+      <BackButton title="Events" Icon={NotificationIcon} />
+      <FlatList
+        data={cardData}
+        ListHeaderComponent={() => {
+          return (
+            <View style={{marginBottom: sizer.moderateVerticalScale(23)}}>
+              <SearchField Icon={FilterIcon} mT={0} />
+              <View style={{marginHorizontal: -paddingHorizontal}}>
+                <ScrollableCard data={EVENTS_SUGGESTIONS} />
+              </View>
+            </View>
+          );
+        }}
+        numColumns={2}
+        columnWrapperStyle={{justifyContent: 'space-between'}}
+        renderItem={({item}) => <MainCard key={item.id} item={item} />}
+        keyExtractor={(item, index) => index.toString()}
+        showsVerticalScrollIndicator={false}
+        style={{
+          marginTop: sizer.moderateVerticalScale(23),
+          paddingHorizontal: sizer.moderateScale(1),
+        }}
+      />
+    </Container>
   );
 };
 

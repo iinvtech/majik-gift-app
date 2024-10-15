@@ -56,9 +56,6 @@ const LightworkerDetail = () => {
     }));
   }, []);
 
-  console.log(formData?.time);
-  
-
   return (
     <Container>
       <BackButton Icon={NotificationIcon} />

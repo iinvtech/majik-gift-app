@@ -1,9 +1,8 @@
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {FlatList, StyleSheet, View} from 'react-native';
 
 import {
   BackButton,
   Container,
-  Flex,
   MainCard,
   ScrollableCard,
   SearchField,
@@ -12,24 +11,35 @@ import {
 import {FilterIcon, NotificationIcon} from '../../assets';
 import {cardData} from '../../components/data';
 import {paddingHorizontal} from '../../../globals';
+import {sizer} from '../../helpers';
 
 const Lightwoker = () => {
   return (
     <Container>
       <BackButton title="Lightworkers" Icon={NotificationIcon} />
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <SearchField Icon={FilterIcon} />
 
-        <View style={{marginHorizontal: -paddingHorizontal}}>
-          <ScrollableCard />
-        </View>
-
-        <Flex justifyContent="space-between" mT={24} style={{flexWrap: 'wrap'}}>
-          {cardData.map((card, i) => (
-            <MainCard key={i} item={card} navigationRoute="LightworkerDetail" />
-          ))}
-        </Flex>
-      </ScrollView>
+      <FlatList
+        data={cardData}
+        ListHeaderComponent={() => {
+          return (
+            <View style={{marginBottom: sizer.moderateVerticalScale(23)}}>
+              <SearchField Icon={FilterIcon} mT={0} />
+              <View style={{marginHorizontal: -paddingHorizontal}}>
+                <ScrollableCard />
+              </View>
+            </View>
+          );
+        }}
+        numColumns={2}
+        columnWrapperStyle={{justifyContent: 'space-between'}}
+        renderItem={({item}) => <MainCard key={item.id} item={item} />}
+        keyExtractor={(item, index) => index.toString()}
+        showsVerticalScrollIndicator={false}
+        style={{
+          marginTop: sizer.moderateVerticalScale(23),
+          paddingHorizontal: sizer.moderateScale(1),
+        }}
+      />
     </Container>
   );
 };
