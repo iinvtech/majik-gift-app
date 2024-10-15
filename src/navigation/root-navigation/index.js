@@ -1,6 +1,5 @@
-import {StatusBar} from 'react-native';
+import {SafeAreaView, StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import DrawerNavigator from '../drawer-stack';
 import {COLORS} from '../../../globals';
@@ -12,11 +11,12 @@ const RootNavigation = () => {
   return (
     <>
       <StatusBar backgroundColor={COLORS.primary} />
-      <SafeAreaProvider style={{flex: 1,height: "100%", backgroundColor: COLORS.white}}>
-        <NavigationContainer>
+      <NavigationContainer>
+        <SafeAreaView
+          style={{flex: 1, height: '100%', backgroundColor: COLORS.white}}>
           {isLogged ? <DrawerNavigator /> : <AuthStack />}
-        </NavigationContainer>
-      </SafeAreaProvider>
+        </SafeAreaView>
+      </NavigationContainer>
     </>
   );
 };
