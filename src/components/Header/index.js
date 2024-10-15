@@ -18,13 +18,7 @@ const Header = () => {
           }}
           size={42}
         />
-        <View
-          style={{
-            justifyContent: 'center',
-            flex: 1,
-            marginLeft: sizer.moderateScale(12),
-            gap: 2,
-          }}>
+        <View style={styles.welcomeMessage}>
           <Typography size={12} fontType="secondary" letterSpacing={1} bold>
             Welcome 👋🏼{' '}
           </Typography>
@@ -33,7 +27,7 @@ const Header = () => {
 
         <Flex alignItems="center" gap={11}>
           <TouchableOpacity
-            hitSlop={{bottom: 5, right: 5, left: 5, top: 5}}
+            hitSlop={styles.hitSlop}
             activeOpacity={baseOpacity}
             onPress={() => {
               navigation.navigate('Notifications');
@@ -42,7 +36,7 @@ const Header = () => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            hitSlop={{bottom: 5, right: 5, left: 5, top: 5}}
+            hitSlop={styles.hitSlop}
             activeOpacity={baseOpacity}
             onPress={() => {
               navigation.openDrawer();
@@ -71,5 +65,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingHorizontal: paddingHorizontal,
     marginHorizontal: -paddingHorizontal,
+  },
+  welcomeMessage: {
+    justifyContent: 'center',
+    flex: 1,
+    marginLeft: sizer.moderateScale(12),
+    gap: 2,
+  },
+  hitSlop: {
+    bottom: 5,
+    right: 5,
+    left: 5,
+    top: 5,
   },
 });

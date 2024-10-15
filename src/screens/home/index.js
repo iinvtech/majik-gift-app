@@ -15,9 +15,14 @@ import {cardData, HOME_SUGGESTIONS} from '../../components/data';
 
 const Home = () => {
   return (
-    <ScrollView>
-      <Container>
-        <Header />
+    <Container>
+      <Header />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={{
+          marginHorizontal: -paddingHorizontal,
+          paddingHorizontal: paddingHorizontal,
+        }}>
         <SearchField />
 
         <View style={{marginHorizontal: -paddingHorizontal}}>
@@ -55,8 +60,8 @@ const Home = () => {
           renderItem={({item}) => <MainCard item={item} mT={30} />}
           contentContainerStyle={{gap: 20}}
         />
-      </Container>
-    </ScrollView>
+      </ScrollView>
+    </Container>
   );
 };
 
