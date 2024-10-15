@@ -1,5 +1,5 @@
 import {useRef, useState} from 'react';
-import {StyleSheet} from 'react-native';
+import {KeyboardAvoidingView, ScrollView, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import {
@@ -68,55 +68,60 @@ const ChangePasswordFromProfile = () => {
   return (
     <Container>
       <BackButton title="Change Password" />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          style={{flex: 1}}>
+          <PasswordField
+            label="Old Password"
+            placeholder="**********"
+            mt={31}
+            mb={0}
+            value={oldPassword}
+            handleChange={e => handleFormData(e, 'oldPassword')}
+            onSubmitEditing={() => newPassRef.current.focus()}
+            error={formErr.oldPassword}
+          />
+          <PasswordField
+            label="New Password"
+            placeholder="**********"
+            mt={16}
+            mb={0}
+            ref={newPassRef}
+            value={newPassword}
+            handleChange={e => handleFormData(e, 'newPassword')}
+            onSubmitEditing={() => reEnterNewPassRef.current.focus()}
+            error={formErr.newPassword}
+          />
 
-      <PasswordField
-        label="Old Password"
-        placeholder="**********"
-        mt={31}
-        mb={0}
-        value={oldPassword}
-        handleChange={e => handleFormData(e, 'oldPassword')}
-        onSubmitEditing={() => newPassRef.current.focus()}
-        error={formErr.oldPassword}
-      />
-      <PasswordField
-        label="New Password"
-        placeholder="**********"
-        mt={16}
-        mb={0}
-        ref={newPassRef}
-        value={newPassword}
-        handleChange={e => handleFormData(e, 'newPassword')}
-        onSubmitEditing={() => reEnterNewPassRef.current.focus()}
-        error={formErr.newPassword}
-      />
+          <PasswordField
+            label="Re-Enter New Password"
+            placeholder="**********"
+            mt={16}
+            mb={0}
+            ref={reEnterNewPassRef}
+            value={reEnterNewPassword}
+            handleChange={e => handleFormData(e, 'reEnterNewPassword')}
+            onSubmitEditing={handleSave}
+            error={formErr.reEnterNewPassword}
+          />
 
-      <PasswordField
-        label="Re-Enter New Password"
-        placeholder="**********"
-        mt={16}
-        mb={0}
-        ref={reEnterNewPassRef}
-        value={reEnterNewPassword}
-        handleChange={e => handleFormData(e, 'reEnterNewPassword')}
-        onSubmitEditing={handleSave}
-        error={formErr.reEnterNewPassword}
-      />
-
-      <Flex style={styles.buttonContainer} gap={6}>
-        <OutlinedButton
-          label="Cancel"
-          width={133}
-          height={42}
-          onPress={handleSave}
-        />
-        <Button
-          label="Save changes"
-          width={133}
-          height={42}
-          onPress={handleSave}
-        />
-      </Flex>
+          <Flex style={styles.buttonContainer} gap={6}>
+            <OutlinedButton
+              label="Cancel"
+              width={133}
+              height={42}
+              onPress={handleSave}
+            />
+            <Button
+              label="Save changes"
+              width={133}
+              height={42}
+              onPress={handleSave}
+            />
+          </Flex>
+        </KeyboardAvoidingView>
+      </ScrollView>
     </Container>
   );
 };
