@@ -111,7 +111,9 @@ const ChangePasswordFromProfile = () => {
               label="Cancel"
               width={133}
               height={42}
-              onPress={handleSave}
+              onPress={() => {
+                navigation.goBack();
+              }}
             />
             <Button
               label="Save changes"
