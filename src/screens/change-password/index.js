@@ -1,5 +1,5 @@
 import {useRef, useState} from 'react';
-import {ScrollView} from 'react-native';
+import {KeyboardAvoidingView, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import {
@@ -40,40 +40,44 @@ const ChangePassword = () => {
   return (
     <Container>
       <BackButton />
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <ChangePassSvg />
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={{flex: 1}}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <ChangePassSvg />
 
-        <Typography size={22} fontType="secondary" medium>
-          Change Password!
-        </Typography>
+          <Typography size={22} fontType="secondary" medium>
+            Change Password!
+          </Typography>
 
-        <Typography mT={12} light color={'#4C4C4C'} LineHeight={24}>
-          Update your password for added security and peace of mind. Keep your
-          account safe with a new, strong password.
-        </Typography>
+          <Typography mT={12} light color={'#4C4C4C'} LineHeight={24}>
+            Update your password for added security and peace of mind. Keep your
+            account safe with a new, strong password.
+          </Typography>
 
-        <PasswordField
-          label="Password"
-          placeholder="******"
-          mt={22}
-          value={password}
-          handleChange={e => handleFormData(e, 'password')}
-          onSubmitEditing={() => confirmPasswordRef.current.focus()}
-          error={formErr.password}
-        />
+          <PasswordField
+            label="Password"
+            placeholder="******"
+            mt={22}
+            value={password}
+            handleChange={e => handleFormData(e, 'password')}
+            onSubmitEditing={() => confirmPasswordRef.current.focus()}
+            error={formErr.password}
+          />
 
-        <PasswordField
-          label="Confirm Password"
-          placeholder="******"
-          ref={confirmPasswordRef}
-          value={confirmPassword}
-          handleChange={e => handleFormData(e, 'confirmPassword')}
-          error={formErr.confirmPassword}
-          onSubmitEditing={handleSubmit}
-        />
+          <PasswordField
+            label="Confirm Password"
+            placeholder="******"
+            ref={confirmPasswordRef}
+            value={confirmPassword}
+            handleChange={e => handleFormData(e, 'confirmPassword')}
+            error={formErr.confirmPassword}
+            onSubmitEditing={handleSubmit}
+          />
 
-        <Button label="Submit" mT={39} mB={50} onPress={handleSubmit} />
-      </ScrollView>
+          <Button label="Submit" mT={39} mB={50} onPress={handleSubmit} />
+        </ScrollView>
+      </KeyboardAvoidingView>
     </Container>
   );
 };

@@ -1,4 +1,4 @@
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {KeyboardAvoidingView, ScrollView, StyleSheet, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import {
@@ -38,34 +38,38 @@ const ForgetPassword = () => {
 
   return (
     <Container>
-      <BackButton />
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.imageView}>
-          <ForgetPasswordSvg />
-        </View>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={{flex: 1}}>
+        <BackButton />
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={styles.imageView}>
+            <ForgetPasswordSvg />
+          </View>
 
-        <Typography size={22} mT={19} fontType="secondary" medium>
-          Forgot Password?
-        </Typography>
+          <Typography size={22} mT={19} fontType="secondary" medium>
+            Forgot Password?
+          </Typography>
 
-        <Typography mT={12} light color={'#4C4C4C'} LineHeight={24}>
-          Locked out of your account? Regain access hassle-free with a password
-          reset.
-        </Typography>
+          <Typography mT={12} light color={'#4C4C4C'} LineHeight={24}>
+            Locked out of your account? Regain access hassle-free with a
+            password reset.
+          </Typography>
 
-        <InputField
-          label="Email Address"
-          placeholder="Email Address"
-          RightIcon={() => <MailIcon />}
-          mt={26}
-          value={formData?.email}
-          handleChange={e => handleFormData(e, 'email')}
-          error={formErr.email}
-          onSubmitEditing={handleSubmit}
-        />
+          <InputField
+            label="Email Address"
+            placeholder="Email Address"
+            RightIcon={() => <MailIcon />}
+            mt={26}
+            value={formData?.email}
+            handleChange={e => handleFormData(e, 'email')}
+            error={formErr.email}
+            onSubmitEditing={handleSubmit}
+          />
 
-        <Button label="Send Code" mT={30} mB={50} onPress={handleSubmit} />
-      </ScrollView>
+          <Button label="Send Code" mT={30} mB={50} onPress={handleSubmit} />
+        </ScrollView>
+      </KeyboardAvoidingView>
     </Container>
   );
 };
