@@ -27,7 +27,7 @@ const tabData = [
 
   {
     screenName: 'ProductsScreen',
-    label: 'products',
+    label: 'Products',
     stack: ProductsStack,
     ActiveTabIcon: ProductsOutlinedTab,
     InActiveTabIcon: ProductsFocus,

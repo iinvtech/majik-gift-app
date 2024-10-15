@@ -15,7 +15,6 @@ import {
   Flex,
   HistoryItem,
   MainCard,
-  Typography,
 } from '../../components';
 import {paddingHorizontal} from '../../../globals';
 import {cardData} from '../../components/data';
@@ -61,7 +60,7 @@ const Search = ({mT = 26}) => {
           style={styles.inputStyles}
           placeholder="Search"
           onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
+          // onBlur={() => setIsFocused(false)}
           onChangeText={text => setSearchText(text)}
           value={searchText}
         />
