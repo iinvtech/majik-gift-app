@@ -32,7 +32,15 @@ const Header = () => {
         </View>
 
         <Flex alignItems="center" gap={11}>
-          <NotificationIcon width={24} height={24} />
+          <TouchableOpacity
+            hitSlop={{bottom: 5, right: 5, left: 5, top: 5}}
+            activeOpacity={baseOpacity}
+            onPress={() => {
+              navigation.navigate('Notifications');
+            }}>
+            <NotificationIcon width={24} height={24} />
+          </TouchableOpacity>
+
           <TouchableOpacity
             hitSlop={{bottom: 5, right: 5, left: 5, top: 5}}
             activeOpacity={baseOpacity}

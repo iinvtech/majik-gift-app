@@ -59,7 +59,8 @@ import LocationIconProfile from './images/location-icon-profile.svg';
 import PhoneIconProfile from './images/phone-icon-profile.svg';
 import CameraIcon from './images/camera-icon.svg';
 import PhoneIcon from './images/phone-icon.svg';
-
+import NotificationIconFilled from './images/notification-icon-filled.svg';
+import CircleTick from './images/circle-tick.svg';
 export {
   notificationIcon,
   NotificationIcon,
@@ -122,4 +123,6 @@ export {
   LocationIconProfile,
   CameraIcon,
   PhoneIcon,
+  NotificationIconFilled,
+  CircleTick,
 };

@@ -6,6 +6,7 @@ import {
   Events,
   LightworkerDetail,
   MessageInbox,
+  Notifications,
   OrderDetail,
   OrderSummary,
   Search,
@@ -41,6 +42,7 @@ function DrawerNavigator() {
       <Drawer.Screen name="MessageInbox" component={MessageInbox} />
       <Drawer.Screen name="ChatScreen" component={ChatScreen} />
       <Drawer.Screen name="Subscription" component={Subscription} />
+      <Drawer.Screen name="Notifications" component={Notifications} />
     </Drawer.Navigator>
   );
 }

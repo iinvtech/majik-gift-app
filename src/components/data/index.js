@@ -174,6 +174,37 @@ const dummyMessages = [
   },
 ];
 
+const notifications = [
+  {
+    id: 1,
+    message:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non.',
+    time: 'Today at 9:42 AM',
+    isRead: false,
+  },
+  {
+    id: 2,
+    message:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non.',
+    time: 'Today at 9:42 AM',
+    isRead: false,
+  },
+  {
+    id: 3,
+    message:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non.',
+    time: 'Today at 9:42 AM',
+    isRead: true,
+  },
+  {
+    id: 4,
+    message:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non.',
+    time: 'Today at 9:42 AM',
+    isRead: true,
+  },
+];
+
 export {
   cardData,
   PRODUCT_SUGGESTIONS,
@@ -181,4 +212,5 @@ export {
   EVENTS_SUGGESTIONS,
   chatData,
   dummyMessages,
+  notifications,
 };

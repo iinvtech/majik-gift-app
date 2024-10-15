@@ -19,6 +19,7 @@ import ChatScreen from './chat-screen';
 import EditProfile from './edit-profile';
 import ChangePasswordFromProfile from './change-password-from-profile';
 import Subscription from './subscription';
+import Notifications from './notifications';
 
 export {
   Home,
@@ -42,4 +43,5 @@ export {
   EditProfile,
   ChangePasswordFromProfile,
   Subscription,
+  Notifications,
 };
