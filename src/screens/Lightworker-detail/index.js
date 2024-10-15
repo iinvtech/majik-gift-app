@@ -1,14 +1,22 @@
-import {Image, ScrollView, StyleSheet, View} from 'react-native';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {
   BackButton,
   Container,
   EventDetailFooter,
   EventReview,
   Flex,
+  TimePickerComponent,
   Typography,
   ViewAll,
 } from '../../components';
 import {
+  DownArrowSvg,
   MessageIcon,
   NotificationIcon,
   Star,
@@ -17,10 +25,40 @@ import {
   VideoCallIcon,
   ZoomMeetingIcon,
 } from '../../assets';
-import {COLORS, paddingHorizontal} from '../../../globals';
+import {baseOpacity, COLORS, paddingHorizontal} from '../../../globals';
 import {sizer} from '../../helpers';
+import {DatePickerComponent} from '../../components';
+import {useCallback, useState} from 'react';
+import moment from 'moment';
 
 const LightworkerDetail = () => {
+  const [datePicker, setDatePicker] = useState(false);
+  const [timePicker, setTimePicker] = useState(false);
+  const [formData, setFormData] = useState({
+    date: moment().format('YYYY-MM-DD'),
+    time: '',
+  });
+
+  const handleDateChange = selectedDate => {
+    setDatePicker(false);
+    handleFormData(selectedDate, 'date');
+  };
+
+  const handleTimeChange = selectedTime => {
+    setTimePicker(false);
+    handleFormData(selectedTime, 'time');
+  };
+
+  const handleFormData = useCallback((e, name) => {
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      [name]: e,
+    }));
+  }, []);
+
+  console.log(formData?.time);
+  
+
   return (
     <Container>
       <BackButton Icon={NotificationIcon} />
@@ -137,11 +175,71 @@ const LightworkerDetail = () => {
 
           <Typography mT={16}>Date & Time</Typography>
 
+          <Flex mT={16} gap={16}>
+            <TouchableOpacity
+              activeOpacity={baseOpacity}
+              onPress={() => {
+                setDatePicker(true);
+              }}
+              style={{
+                flex: 0.5,
+                borderWidth: 1,
+                borderColor: '#EBEBEB',
+                height: sizer.moderateVerticalScale(34),
+                borderRadius: 20,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Flex alignItems="center" gap={10}>
+                <Typography size={12} color="#79747E">
+                  Select Date
+                </Typography>
+                <DownArrowSvg />
+              </Flex>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              activeOpacity={baseOpacity}
+              onPress={() => {
+                setTimePicker(true);
+              }}
+              style={{
+                flex: 0.5,
+                borderWidth: 1,
+                borderColor: '#EBEBEB',
+                height: sizer.moderateVerticalScale(34),
+                borderRadius: 20,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Flex alignItems="center" gap={10}>
+                <Typography size={12} color="#79747E">
+                  Select Time
+                </Typography>
+                <DownArrowSvg />
+              </Flex>
+            </TouchableOpacity>
+          </Flex>
+
           <ViewAll label="Reviews" />
 
           <EventReview />
           <EventReview />
         </View>
+
+        <DatePickerComponent
+          visible={datePicker}
+          setVisible={setDatePicker}
+          current={formData?.date}
+          onDateChange={handleDateChange}
+        />
+
+        <TimePickerComponent
+          visible={timePicker}
+          setVisible={setTimePicker}
+          current={formData?.time}
+          onDateChange={handleTimeChange}
+        />
       </ScrollView>
       <EventDetailFooter />
     </Container>
