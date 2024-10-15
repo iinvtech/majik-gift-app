@@ -11,18 +11,17 @@ import {
 } from '../../components';
 import {sizer} from '../../helpers';
 import {
-  CameraIcon,
   LocationIconProfile,
   MailIconProfile,
+  NotificationIcon,
   PhoneIconProfile,
 } from '../../assets';
-import {COLORS} from '../../../globals';
 
 const Profile = () => {
   const navigation = useNavigation();
   return (
     <Container>
-      <BackButton />
+      <BackButton title="Profile" Icon={NotificationIcon} />
 
       <View>
         <Image
@@ -31,10 +30,6 @@ const Profile = () => {
           }}
           style={styles.profileImage}
         />
-
-        <View style={styles.cameraIconWrapper}>
-          <CameraIcon />
-        </View>
       </View>
 
       <Typography size={20} medium textAlign="center" mT={34}>
@@ -88,17 +83,7 @@ const styles = StyleSheet.create({
     width: 142,
     height: 152,
   },
-  cameraIconWrapper: {
-    width: sizer.moderateScale(35),
-    height: sizer.moderateVerticalScale(35),
-    backgroundColor: COLORS.secondary,
-    borderRadius: 100,
-    position: 'absolute',
-    top: sizer.moderateVerticalScale(161),
-    left: sizer.moderateScale(180),
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+
   buttonContainer: {
     alignSelf: 'center',
   },
