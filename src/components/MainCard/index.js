@@ -71,6 +71,13 @@ const styles = StyleSheet.create({
     width: sizer.moderateVerticalScale(163),
     backgroundColor: '#fff',
     elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
     marginBottom: sizer.moderateVerticalScale(10),
   },
   imageStyle: {

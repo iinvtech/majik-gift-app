@@ -43,6 +43,13 @@ const styles = StyleSheet.create({
     height: sizer.moderateVerticalScale(70),
     backgroundColor: COLORS.white,
     elevation: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
     marginHorizontal: -paddingHorizontal,
     paddingHorizontal: paddingHorizontal,
     flexDirection: 'row',
