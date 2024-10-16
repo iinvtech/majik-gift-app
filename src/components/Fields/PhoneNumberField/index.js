@@ -68,6 +68,7 @@ const PhoneNumberField = React.forwardRef(
               editable={false}
               value={countryCode}
               style={[styles.countryCode, {color: color}]}
+              placeholderTextColor={COLORS.greyV1}
             />
           ) : (
             <View style={styles.countryCode} />
@@ -89,7 +90,7 @@ const PhoneNumberField = React.forwardRef(
                 ...inputStyle,
               },
             ]}
-            placeholderTextColor={COLORS.greyV11}
+            placeholderTextColor={COLORS.greyV1}
             {...props}
           />
 

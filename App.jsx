@@ -8,8 +8,8 @@ export default function App() {
   useEffect(() => {
     setTimeout(() => {
       SplashScreen.hide();
-    }, 5000);
-  });
+    }, 2000);
+  }, []);
   return (
     <Provider store={store}>
       <RootNavigation />

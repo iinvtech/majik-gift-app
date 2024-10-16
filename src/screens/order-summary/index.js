@@ -17,7 +17,7 @@ import {
   PaymentMethodButtons,
   Typography,
 } from '../../components';
-import {NotificationIcon} from '../../assets';
+import {NotificationIcon, TickSvg} from '../../assets';
 import {Lato, sizer} from '../../helpers';
 import {COLORS} from '../../../globals';
 
@@ -54,8 +54,16 @@ const OrderSummary = () => {
         <DropdownComponent placeholder="Select Country/Region" />
         <DropdownComponent placeholder="Select State" />
 
-        <TextInput style={styles.textInput} placeholder="Enter Town/City" />
-        <TextInput style={styles.textInput} placeholder="Enter Post Code" />
+        <TextInput
+          style={styles.textInput}
+          placeholder="Enter Town/City"
+          placeholderTextColor={COLORS.greyV1}
+        />
+        <TextInput
+          style={styles.textInput}
+          placeholder="Enter Post Code"
+          placeholderTextColor={COLORS.greyV1}
+        />
 
         <Flex alignItems="center" mT={19} justifyContent="space-between">
           <Typography size={14}>Have a coupon Code?</Typography>
@@ -71,6 +79,7 @@ const OrderSummary = () => {
               {width: '69%', marginTop: sizer.moderateVerticalScale(0)},
             ]}
             placeholder="Enter Town/City"
+            placeholderTextColor={COLORS.greyV1}
           />
           <Button
             bgColor={COLORS.secondary}
@@ -130,15 +139,23 @@ const OrderSummary = () => {
             </Typography>
           </TouchableOpacity>
         </Flex>
-
         <View
           style={{
-            borderBottomWidth: 1,
-            borderStyle: 'dashed',
-            borderBottomColor: '#A6A6A6',
-            marginTop: sizer.moderateVerticalScale(50),
-          }}
-        />
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginTop: sizer.moderateVerticalScale(30),
+          }}>
+          {[...Array(30)].map((_, index) => (
+            <View
+              key={index}
+              style={{
+                width: 5,
+                height: 1,
+                backgroundColor: '#A6A6A6',
+              }}
+            />
+          ))}
+        </View>
 
         <Flex mT={21} justifyContent="space-between">
           <Typography size={14} light>

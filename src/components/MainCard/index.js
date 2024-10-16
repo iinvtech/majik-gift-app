@@ -7,7 +7,13 @@ import {HeartIcon} from '../../assets';
 import {baseOpacity, COLORS} from '../../../globals';
 import {sizer} from '../../helpers';
 
-const MainCard = ({mT = 0, mB = 0, item, navigationRoute = 'EventDetail'}) => {
+const MainCard = ({
+  mT = 0,
+  mB = 0,
+  item,
+  navigationRoute = 'EventDetail',
+  width = false,
+}) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
@@ -18,6 +24,7 @@ const MainCard = ({mT = 0, mB = 0, item, navigationRoute = 'EventDetail'}) => {
       style={[
         styles.main,
         {
+          width: width ? 163 : '48%',
           marginTop: sizer.moderateVerticalScale(mT),
           marginBottom: sizer.moderateVerticalScale(24),
         },
@@ -74,7 +81,6 @@ export default MainCard;
 
 const styles = StyleSheet.create({
   main: {
-    width: sizer.moderateVerticalScale(163),
     backgroundColor: '#fff',
     elevation: 4,
     shadowColor: '#000',
