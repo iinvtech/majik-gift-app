@@ -137,7 +137,7 @@ const SignUp = () => {
         phone_number: phone_number.replace(/\D+/g, ''),
       };
       const {data} = await ApiManager('post', 'auth/sign-up', newData);
-      await AsyncStorage.setItem('access_token', data?.response?.accessToken);
+      await AsyncStorage.setItem('access_token', data?.response?.access_token);
       dispatch(login(data?.response));
     } catch (error) {
       if (error?.response?.status === 422) {

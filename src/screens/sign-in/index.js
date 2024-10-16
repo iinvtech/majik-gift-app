@@ -1,5 +1,11 @@
 import React, {useRef, useState} from 'react';
-import {KeyboardAvoidingView, ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {
+  KeyboardAvoidingView,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 
@@ -13,14 +19,15 @@ import {
 } from '../../components';
 import {LogoSvg, Stars, TickSvg} from '../../assets';
 import {COLORS} from '../../../globals';
-import {sizer} from '../../helpers';
+import {ApiManager, sizer} from '../../helpers';
 import {validateEmail, validatePassword} from '../../helpers/validator';
-import {login} from '../../store/reducer';
+import {login, openToast, toggleLoader} from '../../store/reducer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignIn = () => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: 'qurat@gmail.com',
+    password: '123123',
   });
   const [formErr, setFromErr] = useState({});
   const [isSelected, setSelected] = useState(false);
@@ -57,9 +64,26 @@ const SignIn = () => {
     return false;
   };
 
-  const handleSubmit = () => {
-    // if (validate()) return;
-    dispatch(login());
+  const handleSubmit = async () => {
+    if (validate()) return;
+    dispatch(toggleLoader(true));
+    try {
+      const {data} = await ApiManager('post', 'auth/sign-in', formData);
+      await AsyncStorage.setItem('access_token', data?.response?.access_token);
+      dispatch(login(data?.response));
+      console.log(data?.response?.access_token);
+    } catch (error) {
+      console.log('error', error);
+
+      if (error?.response?.status === 422) {
+        setFromErr(error?.response?.data?.details);
+        dispatch(openToast({message: error?.response?.data?.message}));
+      } else {
+        dispatch(openToast({message: error?.response?.data?.message}));
+      }
+    } finally {
+      dispatch(toggleLoader(false));
+    }
   };
 
   return (
@@ -94,6 +118,7 @@ const SignIn = () => {
             label="Password"
             placeholder="******"
             mt={22}
+            value={password}
             handleChange={e => handleFormData(e, 'password')}
             ref={passwordRef}
             error={formErr.password}

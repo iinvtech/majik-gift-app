@@ -14,8 +14,6 @@ const RootNavigation = () => {
   );
   const dispatch = useDispatch();
 
-  console.log(toast);
-  
 
   return (
     <>
