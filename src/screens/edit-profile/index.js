@@ -1,12 +1,14 @@
+import {useRef, useState} from 'react';
 import {
   Image,
   KeyboardAvoidingView,
   ScrollView,
   StyleSheet,
   TouchableOpacity,
-  View,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {launchImageLibrary} from 'react-native-image-picker';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {
   BackButton,
@@ -18,29 +20,39 @@ import {
   PhoneNumberField,
   Typography,
 } from '../../components';
-import {sizer} from '../../helpers';
+import {ApiManager, sizer} from '../../helpers';
 import {CameraIcon} from '../../assets';
 import {baseOpacity, COLORS, dummy_img} from '../../../globals';
-import {useRef, useState} from 'react';
-import {launchImageLibrary} from 'react-native-image-picker';
+
+import {
+  validateEmail,
+  validateEmptyField,
+  validateName,
+  validatePhone,
+} from '../../helpers/validator';
+import {login, openToast, toggleLoader} from '../../store/reducer';
 
 const EditProfile = () => {
+  const {user} = useSelector(state => state.storeReducer);
+
   const [formData, setFormData] = useState({
-    profileImage: dummy_img || null,
-    firstName: 'Johnson',
-    lastName: 'Michele',
-    email: 'JohnDoe@example.com',
-    phoneNumber: '456-456-4565',
-    address: 'Abc street, 123 city.',
+    profile_image: dummy_img || null,
+    first_name: user?.details?.first_name || '',
+    last_name: user?.details?.last_name || '',
+    email: user?.details?.email || '',
+    phone_number: user?.details?.phone_number || '',
+    address: user?.details?.address || '',
   });
+
   const [formErr, setFromErr] = useState({});
   const navigation = useNavigation();
   const lastNameRef = useRef();
   const emailRef = useRef();
   const phoneRef = useRef();
   const addressRef = useRef();
+  const dispatch = useDispatch();
 
-  const {firstName, lastName, email, phoneNumber, address} = formData;
+  const {first_name, last_name, email, phone_number, address} = formData;
 
   const handleFormData = (value, name, onlyNums) => {
     if (onlyNums && isNaN(value)) {
@@ -54,6 +66,21 @@ const EditProfile = () => {
       ...formErr,
       [name]: '',
     });
+  };
+
+  const validate = () => {
+    let obj = {};
+    obj.first_name = validateName(formData.first_name);
+    obj.last_name = validateName(formData.last_name);
+    obj.email = validateEmail(formData.email);
+    obj.phone_number = validatePhone(formData.phone_number);
+    obj.address = validateEmptyField(formData.address);
+
+    if (!Object.values(obj).every(value => value === '')) {
+      setFromErr(obj);
+      return true;
+    }
+    return false;
   };
 
   const formatPhoneNumber = text => {
@@ -82,12 +109,46 @@ const EditProfile = () => {
   const handleAddImage = () => {
     launchImageLibrary(options, res => {
       if (res.assets) {
-        setFormData({...formData, profileImage: res.assets[0].uri});
+        setFormData({...formData, profile_image: res.assets[0].uri});
       }
     });
   };
 
-  const handleSave = () => {};
+  const handleSave = async () => {
+    if (validate()) return;
+    dispatch(toggleLoader(true));
+    let _fd = new FormData();
+    _fd.append('first_name', formData?.first_name);
+    _fd.append('last_name', formData?.last_name);
+    _fd.append('email', formData?.email);
+    _fd.append('phone_number', formData?.phone_number);
+    _fd.append('address', formData?.address);
+    if (!!formData?.profile_image) {
+      _fd.append('profile_image', {
+        uri: formData?.profile_image,
+        type: 'image/jpeg',
+        name: 'myImage.jpg',
+      });
+    }
+
+    try {
+      let {data} = await ApiManager('put', `users`, _fd, {
+        'content-type': 'multipart/form-data',
+      });
+      dispatch(login(data?.data));
+      dispatch(openToast({type: 'success', message: data?.message}));
+      navigation.navigate('Profile');
+    } catch (error) {
+      if (error?.response?.status === 422) {
+        setFromErr(error?.response?.data?.details);
+        dispatch(openToast({message: error?.response?.data?.message}));
+      } else {
+        dispatch(openToast({message: error?.response?.data?.message}));
+      }
+    } finally {
+      dispatch(toggleLoader(false));
+    }
+  };
 
   return (
     <KeyboardAvoidingView
@@ -97,8 +158,8 @@ const EditProfile = () => {
         <BackButton title="Edit Profile" />
         <ScrollView showsVerticalScrollIndicator={false}>
           <Image
-            source={{uri: formData?.profileImage}}
-            style={styles.profileImage}
+            source={{uri: formData?.profile_image}}
+            style={styles.profile_image}
           />
 
           <TouchableOpacity
@@ -113,9 +174,9 @@ const EditProfile = () => {
             placeholder="First Name"
             mt={31}
             mb={0}
-            value={firstName}
-            handleChange={e => handleFormData(e, 'firstName')}
-            error={formErr.firstName}
+            value={first_name}
+            handleChange={e => handleFormData(e, 'first_name')}
+            error={formErr.first_name}
             onSubmitEditing={() => lastNameRef?.current?.focus()}
           />
           <InputField
@@ -124,9 +185,9 @@ const EditProfile = () => {
             mt={16}
             mb={0}
             ref={lastNameRef}
-            value={lastName}
-            handleChange={e => handleFormData(e, 'lastName')}
-            error={formErr.lastName}
+            value={last_name}
+            handleChange={e => handleFormData(e, 'last_name')}
+            error={formErr.last_name}
             onSubmitEditing={() => emailRef?.current?.focus()}
           />
           <InputField
@@ -144,16 +205,16 @@ const EditProfile = () => {
           <PhoneNumberField
             label="Phone number"
             placeholder="(000) 000-0000"
-            value={phoneNumber}
+            value={phone_number}
             ref={phoneRef}
             handleChange={e =>
-              handleFormData(formatPhoneNumber(e), 'phoneNumber')
+              handleFormData(formatPhoneNumber(e), 'phone_number')
             }
             mt={16}
             mb={0}
             onSubmitEditing={() => addressRef.current.focus()}
             numPad
-            error={formErr.phoneNumber}
+            error={formErr.phone_number}
             maxLength={14}
             countryCode={'+1'}
           />
@@ -197,9 +258,7 @@ const EditProfile = () => {
               label="Save changes"
               width={133}
               height={42}
-              onPress={() => {
-                navigation.goBack();
-              }}
+              onPress={handleSave}
             />
           </Flex>
         </ScrollView>
@@ -211,7 +270,7 @@ const EditProfile = () => {
 export default EditProfile;
 
 const styles = StyleSheet.create({
-  profileImage: {
+  profile_image: {
     borderRadius: 100,
     marginTop: sizer.moderateVerticalScale(54),
     alignSelf: 'center',
