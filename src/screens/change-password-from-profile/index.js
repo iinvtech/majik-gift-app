@@ -69,12 +69,9 @@ const ChangePasswordFromProfile = () => {
         password: formData.oldPassword,
         new_password: formData?.newPassword,
       });
-      console.log(data);
       dispatch(openToast({type: 'success', message: data?.message}));
       navigation.navigate('Profile');
     } catch (error) {
-      console.log(error?.response);
-      
       if (error?.response?.status === 422) {
         setFromErr(error?.response?.data?.details);
         dispatch(openToast({message: error?.response?.data?.message}));
