@@ -17,7 +17,7 @@ import {
   PaymentMethodButtons,
   Typography,
 } from '../../components';
-import {NotificationIcon} from '../../assets';
+import {NotificationIcon, TickSvg} from '../../assets';
 import {Lato, sizer} from '../../helpers';
 import {COLORS} from '../../../globals';
 
