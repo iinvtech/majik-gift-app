@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {
   FlatList,
   StyleSheet,
@@ -18,6 +18,8 @@ import {
 } from '../../components';
 import {COLORS, paddingHorizontal} from '../../../globals';
 import {cardData} from '../../components/data';
+import {debounce} from 'lodash';
+import {useSearch} from '../../hooks/useSearch';
 
 const Search = ({mT = 26}) => {
   const [isFocused, setIsFocused] = useState(true);
@@ -51,6 +53,19 @@ const Search = ({mT = 26}) => {
     const newArr = data.filter(obj => obj.id !== id);
     setData(newArr);
   };
+
+  const {searchedData, query, setQuery} = useSearch('products');
+
+  const debouncedSearch = useCallback(
+    debounce(text => {
+      setQuery(text), 1000;
+    }),
+    [],
+  );
+
+  useEffect(() => {
+    debouncedSearch(searchText);
+  }, [searchText, debouncedSearch]);
 
   return (
     <Container>
@@ -96,11 +111,24 @@ const Search = ({mT = 26}) => {
           }
         />
       ) : searchText !== '' ? (
-        <Flex justifyContent="space-between" mT={24} style={{flexWrap: 'wrap'}}>
-          {cardData.map((card, i) => (
-            <MainCard key={i} item={card} />
-          ))}
-        </Flex>
+        // <Flex justifyContent="space-between" mT={24} style={{flexWrap: 'wrap'}}>
+        //   {cardData.map((card, i) => (
+        //     <MainCard key={i} item={card} />
+        //   ))}
+        // </Flex>
+
+        <FlatList
+          data={searchedData}
+          // numColumns={2}
+          // columnWrapperStyle={{justifyContent: 'space-between'}}
+          renderItem={({item}) => <MainCard key={item.id} item={item} />}
+          keyExtractor={(item, index) => index.toString()}
+          showsVerticalScrollIndicator={false}
+          style={{
+            marginTop: sizer.moderateVerticalScale(23),
+            paddingHorizontal: sizer.moderateScale(1),
+          }}
+        />
       ) : null}
     </Container>
   );

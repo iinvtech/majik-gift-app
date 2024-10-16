@@ -9,6 +9,7 @@ import {
   Notifications,
   OrderDetail,
   OrderSummary,
+  ProductDetail,
   Search,
   Subscription,
   Wishlist,
@@ -43,6 +44,7 @@ function DrawerNavigator() {
       <Drawer.Screen name="ChatScreen" component={ChatScreen} />
       <Drawer.Screen name="Subscription" component={Subscription} />
       <Drawer.Screen name="Notifications" component={Notifications} />
+      <Drawer.Screen name="ProductDetail" component={ProductDetail} />
     </Drawer.Navigator>
   );
 }

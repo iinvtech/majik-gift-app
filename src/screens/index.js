@@ -20,6 +20,7 @@ import EditProfile from './edit-profile';
 import ChangePasswordFromProfile from './change-password-from-profile';
 import Subscription from './subscription';
 import Notifications from './notifications';
+import ProductDetail from './product-detail';
 
 export {
   Home,
@@ -44,4 +45,5 @@ export {
   ChangePasswordFromProfile,
   Subscription,
   Notifications,
+  ProductDetail,
 };
