@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {createSlice} from '@reduxjs/toolkit';
 
 export const myReducer = createSlice({
@@ -22,6 +23,8 @@ export const myReducer = createSlice({
     },
     logout: state => {
       state.isLogged = false;
+      AsyncStorage.removeItem('access_token');
+      state.user = null;
     },
     toggleLoader: (state, {payload}) => {
       state.showLoader = payload;
