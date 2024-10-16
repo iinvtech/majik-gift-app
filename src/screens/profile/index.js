@@ -1,15 +1,15 @@
 import {Image, StyleSheet, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
 
 import {
   BackButton,
   Button,
   Container,
   Flex,
-  OutlinedButton,
   Typography,
 } from '../../components';
-import {sizer} from '../../helpers';
+import {formatPhoneNumber, sizer} from '../../helpers';
 import {
   LocationIconProfile,
   MailIconProfile,
@@ -20,36 +20,41 @@ import {dummy_img} from '../../../globals';
 
 const Profile = () => {
   const navigation = useNavigation();
+  const {user} = useSelector(state => state.storeReducer);
+
   return (
     <Container>
       <BackButton title="Profile" Icon={NotificationIcon} />
 
       <View>
-        <Image source={{uri: dummy_img}} style={styles.profileImage} />
+        <Image
+          source={{uri: user?.details?.profile_image || dummy_img}}
+          style={styles.profileImage}
+        />
       </View>
 
       <Typography size={20} medium textAlign="center" mT={34}>
-        Johnson Michele
+        {user?.details?.first_name + ' ' + user?.details?.last_name || 'user'}
       </Typography>
 
       <Flex gap={10} alignItems="center" mT={15} justifyContent="center">
         <MailIconProfile />
         <Typography size={14} light>
-          johnsonmichele@xyz.com
+          {user?.details?.email || ''}
         </Typography>
       </Flex>
 
       <Flex gap={10} alignItems="center" mT={15} justifyContent="center">
         <LocationIconProfile />
         <Typography size={14} light>
-          ABC Street, 123 City
+          {user?.details?.address || ''}
         </Typography>
       </Flex>
 
       <Flex gap={10} alignItems="center" mT={15} justifyContent="center">
         <PhoneIconProfile />
         <Typography size={14} light>
-          456 - 565 - 656 - 456
+          {formatPhoneNumber(user?.details?.phone_number) || ''}
         </Typography>
       </Flex>
 
