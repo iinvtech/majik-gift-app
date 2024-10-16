@@ -1,4 +1,7 @@
 import sizer from './src/helpers/sizer';
+const baseUrl = 'https://3eb8-103-156-136-174.ngrok-free.app/api/v1/';
+// const baseUrl = 'http://192.168.15:3001/api/v1/';
+const baseApiUrl = baseUrl.substring(0, baseUrl.indexOf('/api/v1/') + 1);
 
 export const COLORS = {
   primary: '#D3AFC9',
@@ -28,3 +31,5 @@ export const dummy_img =
   'https://s3-alpha-sig.figma.com/img/1eb1/b334/e13d23c353c9d4b8ee1fc406955b01dc?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=NuKnLS4HjKst6rzgfjuwvsMUHN-ys0uqDbkw2z20M~~yGPwHcVAoxEMsRduhUR2YfOEReBzA9hq4Ez2yzqlSLgSc8ZlAFt0ZztJ-yJe4lt82qpyIP~029U--87AvlJ-kLM-DDZmOXNztVsvdDWeI0mXateUoNm-8fqxhH8zZ~HO0JGNoWGnHWqOqICx8LoTqWx5TLH6EN2pWAyA6PPKlDHAKvJ2zyciWd76FtK5MC0AIIDIL5NYMx4X2XiNlD7XdCuHqQWqHLNNOigPqZPhwccyTkRxGdTQNRHnl-i2KQTAR2ugzAfOd2y~bNtAczGjUqK9xlOQM5s3Tpg6El3oqSg__';
 
 export const paddingHorizontal = sizer.moderateScale(25);
+
+export {baseUrl, baseApiUrl};

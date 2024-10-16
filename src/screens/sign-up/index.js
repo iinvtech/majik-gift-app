@@ -28,21 +28,30 @@ import {
   UserIcon,
 } from '../../assets';
 import {COLORS} from '../../../globals';
-import {sizer} from '../../helpers';
+import {ApiManager, sizer} from '../../helpers';
 import {useNavigation} from '@react-navigation/native';
-import {login} from '../../store/reducer';
+import {login, openToast, toggleLoader} from '../../store/reducer';
 import {useDispatch} from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {
+  validateConfirmPassword,
+  validateEmail,
+  validateEmptyField,
+  validateName,
+  validatePassword,
+  validatePhone,
+} from '../../helpers/validator';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    phoneNumber: '',
-    address: '',
-    note: '',
+    first_name: 'ok',
+    last_name: 'khan',
+    email: 'ok@gmail.com',
+    password: '123123',
+    confirmPassword: '123123',
+    phone_number: '1231231231',
+    address: 'dwadwj',
+    note: 'dsdwe',
   });
   const [formErr, setFromErr] = useState({});
   const navigation = useNavigation();
@@ -55,17 +64,16 @@ const SignUp = () => {
   const noteRef = useRef();
   const dispatch = useDispatch();
 
-  // Separate states for each checkbox
   const [isMarketingSelected, setMarketingSelected] = useState(false);
   const [isTermsSelected, setTermsSelected] = useState(false);
 
   const {
-    firstName,
-    lastName,
+    first_name,
+    last_name,
     email,
     password,
     confirmPassword,
-    phoneNumber,
+    phone_number,
     address,
     note,
   } = formData;
@@ -100,8 +108,47 @@ const SignUp = () => {
     }
   };
 
-  const handleSignup = () => {
-    dispatch(login());
+  const validate = () => {
+    let obj = {};
+    obj.first_name = validateName(first_name, 'The field is required');
+    obj.last_name = validateName(last_name, 'The field is required');
+    obj.email = validateEmail(email);
+    obj.password = validatePassword(password);
+    obj.address = validateEmptyField(address);
+    obj.note = validateEmptyField(note);
+    obj.confirmPassword = validateConfirmPassword(password, confirmPassword);
+    obj.phone_number = validatePhone(phone_number);
+
+    if (!Object.values(obj).every(value => value === '')) {
+      setFromErr(obj);
+      return true;
+    }
+    return false;
+  };
+
+  const handleSignup = async () => {
+    if (validate()) return;
+    dispatch(toggleLoader(true));
+
+    try {
+      const {confirmPassword, ...remaining} = formData;
+      const newData = {
+        ...remaining,
+        phone_number: phone_number.replace(/\D+/g, ''),
+      };
+      const {data} = await ApiManager('post', 'auth/sign-up', newData);
+      await AsyncStorage.setItem('access_token', data?.response?.accessToken);
+      dispatch(login(data?.response));
+    } catch (error) {
+      if (error?.response?.status === 422) {
+        setFromErr(error?.response?.data?.details);
+        dispatch(openToast({message: error?.response?.data?.message}));
+      } else {
+        dispatch(openToast({message: error?.response?.data?.message}));
+      }
+    } finally {
+      dispatch(toggleLoader(false));
+    }
   };
 
   return (
@@ -126,9 +173,9 @@ const SignUp = () => {
             placeholder="First Name"
             mt={31}
             RightIcon={() => <UserIcon />}
-            value={firstName}
-            handleChange={e => handleFormData(e, 'firstName')}
-            error={formErr.firstName}
+            value={first_name}
+            handleChange={e => handleFormData(e, 'first_name')}
+            error={formErr.first_name}
             onSubmitEditing={() => lastNameRef?.current?.focus()}
           />
 
@@ -137,9 +184,9 @@ const SignUp = () => {
             placeholder="Last Name"
             RightIcon={() => <UserIcon />}
             ref={lastNameRef}
-            value={lastName}
-            handleChange={e => handleFormData(e, 'lastName')}
-            error={formErr.lastName}
+            value={last_name}
+            handleChange={e => handleFormData(e, 'last_name')}
+            error={formErr.last_name}
             onSubmitEditing={() => emailRef?.current?.focus()}
           />
 
@@ -180,15 +227,15 @@ const SignUp = () => {
             label="Phone number"
             placeholder="(000) 000-0000"
             RightIcon={() => <PhoneIcon width={13} height={13} />}
-            value={phoneNumber}
+            value={phone_number}
             ref={phoneRef}
             handleChange={e =>
-              handleFormData(formatPhoneNumber(e), 'phoneNumber')
+              handleFormData(formatPhoneNumber(e), 'phone_number')
             }
             mt={10}
             onSubmitEditing={() => addressRef.current.focus()}
             numPad
-            error={formErr.phoneNumber}
+            error={formErr.phone_number}
             maxLength={14}
             countryCode={'+1'}
           />

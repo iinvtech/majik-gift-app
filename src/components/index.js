@@ -27,6 +27,8 @@ import NotificationItem from './NotificationItem';
 import ModalWrapper from './ModalWrapper';
 import DatePickerComponent from './DatePicker';
 import TimePickerComponent from './TimePicker';
+import Loader from './Loader';
+import CustomToast from './CustomToast';
 
 export {
   Container,
@@ -58,4 +60,6 @@ export {
   ModalWrapper,
   DatePickerComponent,
   TimePickerComponent,
+  Loader,
+  CustomToast,
 };
