@@ -1,6 +1,7 @@
 import {useRef, useState} from 'react';
 import {KeyboardAvoidingView, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
 
 import {
   BackButton,
@@ -10,17 +11,25 @@ import {
   Typography,
 } from '../../components';
 import {ChangePassSvg} from '../../assets';
+import {
+  validateConfirmPassword,
+  validatePassword,
+} from '../../helpers/validator';
+import {openToast, toggleLoader} from '../../store/reducer';
+import {ApiManager} from '../../helpers';
 
-const ChangePassword = () => {
+const ChangePassword = ({route}) => {
+  const {otpId} = route?.params;
   const [formData, setFormData] = useState({
-    password: null,
+    new_password: null,
     confirmPassword: '',
   });
   const [formErr, setFromErr] = useState({});
   const confirmPasswordRef = useRef();
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
-  const {password, confirmPassword} = formData;
+  const {new_password, confirmPassword} = formData;
 
   const handleFormData = (value, name) => {
     setFormData({
@@ -33,8 +42,41 @@ const ChangePassword = () => {
     });
   };
 
-  const handleSubmit = () => {
-    navigation.navigate('SignIn');
+  const validate = () => {
+    let obj = {};
+    obj.new_password = validatePassword(new_password);
+    obj.confirmPassword = validateConfirmPassword(
+      new_password,
+      confirmPassword,
+    );
+    if (!Object.values(obj).every(value => value === '')) {
+      setFromErr(obj);
+      return true;
+    }
+    return false;
+  };
+
+  const handleSubmit = async () => {
+    if (validate()) return;
+    dispatch(toggleLoader(true));
+    try {
+      let {data} = await ApiManager('post', 'auth/reset-password', {
+        otp_id: otpId,
+        new_password: new_password,
+      });
+
+      dispatch(openToast({type: 'success', message: data?.message}));
+      navigation.navigate('SignIn');
+    } catch (error) {
+      if (error?.response?.status === 422) {
+        setFromErr(error?.response?.data?.message);
+        dispatch(openToast({message: error?.response?.data?.message}));
+      } else {
+        dispatch(openToast({message: error?.response?.data?.message}));
+      }
+    } finally {
+      dispatch(toggleLoader(false));
+    }
   };
 
   return (
@@ -59,10 +101,10 @@ const ChangePassword = () => {
             label="Password"
             placeholder="******"
             mt={22}
-            value={password}
-            handleChange={e => handleFormData(e, 'password')}
+            value={new_password}
+            handleChange={e => handleFormData(e, 'new_password')}
             onSubmitEditing={() => confirmPasswordRef.current.focus()}
-            error={formErr.password}
+            error={formErr.new_password}
           />
 
           <PasswordField
