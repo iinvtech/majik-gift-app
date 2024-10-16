@@ -130,16 +130,23 @@ const OrderSummary = () => {
             </Typography>
           </TouchableOpacity>
         </Flex>
-
         <View
           style={{
-            // overflow: 'hidden',
-            borderBottomWidth: 1,
-            borderStyle: 'dashed',
-            borderBottomColor: '#A6A6A6',
-            marginTop: sizer.moderateVerticalScale(50),
-          }}
-        />
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginTop: sizer.moderateVerticalScale(30),
+          }}>
+          {[...Array(30)].map((_, index) => (
+            <View
+              key={index}
+              style={{
+                width: 5, 
+                height: 1,
+                backgroundColor: '#A6A6A6',
+              }}
+            />
+          ))}
+        </View>
 
         <Flex mT={21} justifyContent="space-between">
           <Typography size={14} light>

@@ -41,7 +41,7 @@ const Home = () => {
 
         <HorizontalFlatlist
           data={cardData}
-          renderItem={({item}) => <MainCard item={item} mT={30} />}
+          renderItem={({item}) => <MainCard item={item} mT={30} width />}
           contentContainerStyle={{gap: 20}}
         />
 
@@ -49,7 +49,7 @@ const Home = () => {
 
         <HorizontalFlatlist
           data={cardData}
-          renderItem={({item}) => <MainCard item={item} mT={30} />}
+          renderItem={({item}) => <MainCard item={item} mT={30} width />}
           contentContainerStyle={{gap: 20}}
         />
 
@@ -57,7 +57,7 @@ const Home = () => {
 
         <HorizontalFlatlist
           data={cardData}
-          renderItem={({item}) => <MainCard item={item} mT={30} />}
+          renderItem={({item}) => <MainCard item={item} mT={30} width />}
           contentContainerStyle={{gap: 20}}
         />
       </ScrollView>
