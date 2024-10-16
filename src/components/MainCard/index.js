@@ -4,12 +4,11 @@ import {useNavigation} from '@react-navigation/native';
 
 import {Typography, Flex} from '../index';
 import {HeartIcon} from '../../assets';
-import {baseOpacity, COLORS} from '../../../globals';
+import {baseOpacity, COLORS, placeholder_img} from '../../../globals';
 import {sizer} from '../../helpers';
 
 const MainCard = ({
   mT = 0,
-  mB = 0,
   item,
   navigationRoute = 'EventDetail',
   width = false,
@@ -30,7 +29,7 @@ const MainCard = ({
         },
       ]}>
       <Image
-        source={require('../../assets/images/card.png')}
+        source={{uri: item?.bannerImage || placeholder_img}}
         style={styles.imageStyle}
       />
 
@@ -45,17 +44,19 @@ const MainCard = ({
       </View>
 
       <View style={styles.contentView}>
-        <Flex justifyContent="space-between">
-          <Typography size={14}>{item?.name || '---'}</Typography>
-          <Flex gap={2}>
+        <Flex justifyContent="space-between" gap={6}>
+          <Typography numberOfLines={2} style={{width: '80%'}} size={14}>
+            {item?.name || '---'}
+          </Typography>
+          <Flex gap={2} mT={2} style={{width: '19%'}}>
             <Image source={require('../../assets/images/star.png')} />
             <Typography size={10}>{item?.rating}</Typography>
           </Flex>
         </Flex>
 
-        {item?.category && (
-          <Typography size={10} light mT={8}>
-            {item?.category}
+        {item?.description && (
+          <Typography numberOfLines={2} size={10} light mT={8}>
+            {item?.description}
           </Typography>
         )}
 
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
     marginBottom: sizer.moderateVerticalScale(10),
   },
   imageStyle: {
-    objectFit: 'contain',
+    objectFit: 'cover',
     width: '100%',
     height: sizer.moderateVerticalScale(144),
     marginTop: sizer.moderateVerticalScale(5),

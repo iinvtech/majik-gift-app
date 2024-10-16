@@ -1,4 +1,6 @@
-import {FlatList, ScrollView, StyleSheet, View} from 'react-native';
+import {useEffect, useState} from 'react';
+import {FlatList, StyleSheet, View} from 'react-native';
+import {useDispatch} from 'react-redux';
 
 import {
   BackButton,
@@ -7,18 +9,36 @@ import {
   ScrollableCard,
   SearchField,
 } from '../../components';
-
 import {FilterIcon, NotificationIcon} from '../../assets';
-import {cardData} from '../../components/data';
 import {paddingHorizontal} from '../../../globals';
-import {sizer} from '../../helpers';
+import {ApiManager, sizer} from '../../helpers';
+import {openToast, toggleLoader} from '../../store/reducer';
 
 const Products = () => {
+  const [data, setData] = useState([]);
+  const dispatch = useDispatch();
+  const getProducts = async () => {
+    dispatch(toggleLoader(true));
+    try {
+      const {data} = await ApiManager('get', 'products');
+      setData(data?.response?.details);
+    } catch (error) {
+      dispatch(openToast({message: error?.response?.data?.message}));
+    } finally {
+      dispatch(toggleLoader(false));
+    }
+  };
+
+  useEffect(() => {
+    console.log('dskndk');
+    getProducts();
+  }, []);
+
   return (
     <Container>
       <BackButton title="Products" Icon={NotificationIcon} />
       <FlatList
-        data={cardData}
+        data={data}
         ListHeaderComponent={() => {
           return (
             <View style={{marginBottom: sizer.moderateVerticalScale(23)}}>
