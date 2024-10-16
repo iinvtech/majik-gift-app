@@ -133,6 +133,7 @@ const OrderSummary = () => {
 
         <View
           style={{
+            // overflow: 'hidden',
             borderBottomWidth: 1,
             borderStyle: 'dashed',
             borderBottomColor: '#A6A6A6',
