@@ -10,23 +10,26 @@ import {
   OutlinedButton,
   PasswordField,
 } from '../../components';
-import {sizer} from '../../helpers';
+import {ApiManager, sizer} from '../../helpers';
 import {COLORS} from '../../../globals';
 import {
   validateConfirmPassword,
   validatePassword,
 } from '../../helpers/validator';
+import {openToast, toggleLoader} from '../../store/reducer';
+import {useDispatch} from 'react-redux';
 
 const ChangePasswordFromProfile = () => {
   const [formData, setFormData] = useState({
-    oldPassword: null,
-    newPassword: '',
-    reEnterNewPassword: '',
+    oldPassword: "123123",
+    newPassword: '456456',
+    reEnterNewPassword: '456456',
   });
   const [formErr, setFromErr] = useState({});
   const navigation = useNavigation();
   const newPassRef = useRef();
   const reEnterNewPassRef = useRef();
+  const dispatch = useDispatch();
 
   const {oldPassword, newPassword, reEnterNewPassword} = formData;
 
@@ -58,11 +61,29 @@ const ChangePasswordFromProfile = () => {
     return false;
   };
 
-  const handleSave = () => {
-    // if (validate()) {
-    //   return;
-    // }
-    navigation.navigate('Profile');
+  const handleSave = async () => {
+    if (validate()) return;
+    dispatch(toggleLoader(true));
+    try {
+      const {data} = await ApiManager('patch', 'auth/change-password', {
+        password: formData.oldPassword,
+        new_password: formData?.newPassword,
+      });
+      console.log(data);
+      dispatch(openToast({type: 'success', message: data?.message}));
+      navigation.navigate('Profile');
+    } catch (error) {
+      console.log(error?.response);
+      
+      if (error?.response?.status === 422) {
+        setFromErr(error?.response?.data?.details);
+        dispatch(openToast({message: error?.response?.data?.message}));
+      } else {
+        dispatch(openToast({message: error?.response?.data?.message}));
+      }
+    } finally {
+      dispatch(toggleLoader(false));
+    }
   };
 
   return (
