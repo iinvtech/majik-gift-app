@@ -71,10 +71,7 @@ const SignIn = () => {
       const {data} = await ApiManager('post', 'auth/sign-in', formData);
       await AsyncStorage.setItem('access_token', data?.response?.access_token);
       dispatch(login(data?.response));
-      console.log(data?.response?.access_token);
     } catch (error) {
-      console.log('error', error);
-
       if (error?.response?.status === 422) {
         setFromErr(error?.response?.data?.details);
         dispatch(openToast({message: error?.response?.data?.message}));

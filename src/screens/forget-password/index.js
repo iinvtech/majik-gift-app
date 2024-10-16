@@ -1,5 +1,7 @@
+import {useState} from 'react';
 import {KeyboardAvoidingView, ScrollView, StyleSheet, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
 
 import {
   BackButton,
@@ -9,7 +11,9 @@ import {
   Typography,
 } from '../../components';
 import {ForgetPasswordSvg, MailIcon} from '../../assets';
-import {useState} from 'react';
+import {validateEmail} from '../../helpers/validator';
+import {openToast, toggleLoader} from '../../store/reducer';
+import {ApiManager} from '../../helpers';
 
 const ForgetPassword = () => {
   const [formData, setFormData] = useState({
@@ -17,7 +21,7 @@ const ForgetPassword = () => {
   });
   const [formErr, setFromErr] = useState({});
   const navigation = useNavigation();
-
+  const dispatch = useDispatch();
   const handleFormData = (value, name, onlyNums) => {
     if (onlyNums && isNaN(value)) {
       return;
@@ -32,8 +36,34 @@ const ForgetPassword = () => {
     });
   };
 
-  const handleSubmit = () => {
-    navigation.navigate('OtpVerification');
+  const validate = () => {
+    let obj = {};
+    obj.email = validateEmail(formData.email);
+    if (!Object.values(obj).every(value => value === '')) {
+      setFromErr(obj);
+      return true;
+    }
+    return false;
+  };
+
+  const handleSubmit = async () => {
+    if (validate()) return;
+    dispatch(toggleLoader(true));
+    try {
+      const {data} = await ApiManager('post', 'auth/forget-password', {
+        email: formData.email,
+      });
+      navigation.navigate('OtpVerification', {email: formData.email});
+    } catch (error) {
+      if (error?.response?.status === 422) {
+        setFromErr(error?.response?.data?.details);
+        dispatch(openToast({message: error?.response?.data?.message}));
+      } else {
+        dispatch(openToast({message: error?.response?.data?.message}));
+      }
+    } finally {
+      dispatch(toggleLoader(false));
+    }
   };
 
   return (
