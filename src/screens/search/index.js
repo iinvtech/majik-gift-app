@@ -16,7 +16,7 @@ import {
   HistoryItem,
   MainCard,
 } from '../../components';
-import {paddingHorizontal} from '../../../globals';
+import {COLORS, paddingHorizontal} from '../../../globals';
 import {cardData} from '../../components/data';
 
 const Search = ({mT = 26}) => {
@@ -62,6 +62,7 @@ const Search = ({mT = 26}) => {
           onFocus={() => setIsFocused(true)}
           // onBlur={() => setIsFocused(false)}
           onChangeText={text => setSearchText(text)}
+          placeholderTextColor={COLORS.black}
           value={searchText}
         />
         <TouchableOpacity
