@@ -29,7 +29,11 @@ const MainCard = ({
         },
       ]}>
       <Image
-        source={{uri: item?.bannerImage || placeholder_img}}
+        source={
+          item?.banner_image
+            ? {uri: item?.banner_image || placeholder_img}
+            : require('../../assets/images/card.png')
+        }
         style={styles.imageStyle}
       />
 

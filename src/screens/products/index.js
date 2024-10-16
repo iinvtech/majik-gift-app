@@ -30,7 +30,6 @@ const Products = () => {
   };
 
   useEffect(() => {
-    console.log('dskndk');
     getProducts();
   }, []);
 
