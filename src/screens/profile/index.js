@@ -16,7 +16,7 @@ import {
   NotificationIcon,
   PhoneIconProfile,
 } from '../../assets';
-import {dummy_img} from '../../../globals';
+import {placeholder_profile} from '../../../globals';
 
 const Profile = () => {
   const navigation = useNavigation();
@@ -28,7 +28,7 @@ const Profile = () => {
 
       <View>
         <Image
-          source={{uri: user?.details?.profile_image || dummy_img}}
+          source={{uri: user?.details?.profile_image || placeholder_profile}}
           style={styles.profileImage}
         />
       </View>

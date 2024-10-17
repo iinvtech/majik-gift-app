@@ -22,7 +22,12 @@ import {
 } from '../../components';
 import {ApiManager, sizer} from '../../helpers';
 import {CameraIcon} from '../../assets';
-import {baseOpacity, COLORS, dummy_img} from '../../../globals';
+import {
+  baseOpacity,
+  COLORS,
+  dummy_img,
+  placeholder_profile,
+} from '../../../globals';
 
 import {
   validateEmail,
@@ -36,7 +41,7 @@ const EditProfile = () => {
   const {user} = useSelector(state => state.storeReducer);
 
   const [formData, setFormData] = useState({
-    profile_image: dummy_img || null,
+    profile_image: placeholder_profile || null,
     first_name: user?.details?.first_name || '',
     last_name: user?.details?.last_name || '',
     email: user?.details?.email || '',
