@@ -44,14 +44,14 @@ import {
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
-    first_name: 'ok',
-    last_name: 'khan',
-    email: 'ok@gmail.com',
-    password: '123123',
-    confirmPassword: '123123',
-    phone_number: '1231231231',
-    address: 'dwadwj',
-    note: 'dsdwe',
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    phone_number: '',
+    address: '',
+    note: '',
   });
   const [formErr, setFromErr] = useState({});
   const navigation = useNavigation();

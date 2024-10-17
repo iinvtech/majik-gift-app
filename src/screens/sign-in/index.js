@@ -26,8 +26,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignIn = () => {
   const [formData, setFormData] = useState({
-    email: 'qurat@gmail.com',
-    password: '123123',
+    email: '',
+    password: '',
   });
   const [formErr, setFromErr] = useState({});
   const [isSelected, setSelected] = useState(false);

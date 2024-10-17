@@ -1,28 +1,39 @@
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
 import {Avatar} from 'react-native-paper';
 
-import {baseOpacity, paddingHorizontal} from '../../../globals';
+import {
+  baseOpacity,
+  COLORS,
+  paddingHorizontal,
+  placeholder_profile,
+} from '../../../globals';
 import {sizer} from '../../helpers';
 import {Flex, Typography} from '../';
 import {HorizontalEllipsis, NotificationIcon} from '../../assets';
-import {useNavigation} from '@react-navigation/native';
+
 
 const Header = () => {
   const navigation = useNavigation();
+  const {user} = useSelector(store => store?.storeReducer);
+
   return (
     <View style={styles.main}>
       <Flex alignItems="center" justifyContent="center" style={{flex: 1}}>
         <Avatar.Image
-          source={{
-            uri: 'https://s3-alpha-sig.figma.com/img/1eb1/b334/e13d23c353c9d4b8ee1fc406955b01dc?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=NuKCWZze8sz4E5eZgMXhPBTCtHlvdW2lWQbPPPalENXqpkffH9i2wd9VrcTTnu3lAFcFtPChVDNdUxz39K6v1An9uWyeod5TLkHkDRMPmdsZqzpUj61QPGiOsMdkpvneih5~4KRdVoWpYN-fWx3qndTYnqJ2jjBl~K6bLEZyLLIijrjppYYRhWJeNAN6IBcTdLAfHarusyQWs8G-04pN9M--Quk56r57fGa7MkETk0K61xPP7CrXNvbFqUbhjflnLTr7mwX7iepSguPD~kO0slH21eDhg2r8drCMCMkGuYqR35jJGk8IPnZUC4a7MxYR8QgAv3UUMn1HZbA0IE3eGg__',
-          }}
+          source={{uri: user?.details?.profile_image || placeholder_profile}}
           size={42}
+          style={{backgroundColor: COLORS.white}}
         />
         <View style={styles.welcomeMessage}>
           <Typography size={12} fontType="secondary" letterSpacing={1} bold>
             Welcome 👋🏼{' '}
           </Typography>
-          <Typography size={12}>Johnson Michele</Typography>
+          <Typography size={12}>
+            {user?.details?.first_name + ' ' + user?.details?.last_name ||
+              'user'}
+          </Typography>
         </View>
 
         <Flex alignItems="center" gap={11}>

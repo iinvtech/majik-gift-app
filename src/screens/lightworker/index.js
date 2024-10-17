@@ -71,7 +71,15 @@ const Lightwoker = () => {
         }}
         numColumns={2}
         columnWrapperStyle={{justifyContent: 'space-between'}}
-        renderItem={({item}) => <MainCard key={item.id} item={item} />}
+        renderItem={({item}) => (
+          <MainCard
+            key={item.id}
+            item={item}
+            onPress={() => {
+              navigation.navigate('LightworkerDetail');
+            }}
+          />
+        )}
         keyExtractor={(item, index) => index.toString()}
         showsVerticalScrollIndicator={false}
         style={{

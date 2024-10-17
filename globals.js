@@ -32,6 +32,8 @@ export const dummy_img =
 
 export const placeholder_img =
   'https://vonex.com.au/wp-content/uploads/2021/09/MicrosoftTeams-image-6-768x259.jpg';
+export const placeholder_profile =
+  'https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133352010-stock-illustration-default-placeholder-man-and-woman.jpg';
 
 export const paddingHorizontal = sizer.moderateScale(25);
 

@@ -32,10 +32,8 @@ const RootNavigation = () => {
           SplashScreen.hide();
         }
       } finally {
-        setTimeout(() => {
-          dispatch(toggleLoader(false));
-          SplashScreen.hide();
-        }, 500);
+        dispatch(toggleLoader(false));
+        SplashScreen.hide();
       }
     } else {
       dispatch(logout());
