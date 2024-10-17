@@ -1,9 +1,10 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {
   FlatList,
   Image,
   ScrollView,
   StyleSheet,
+  TouchableOpacity,
   useWindowDimensions,
   View,
 } from 'react-native';
@@ -21,7 +22,7 @@ import {
 } from '../../components';
 
 import {ApiManager, hexToRGBA, sizer} from '../../helpers';
-import {COLORS, paddingHorizontal} from '../../../globals';
+import {baseOpacity, COLORS, paddingHorizontal} from '../../../globals';
 import {NotificationIcon, Star} from '../../assets';
 import {openToast, toggleLoader} from '../../store/reducer';
 
@@ -33,6 +34,7 @@ const ProductDetail = ({route}) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const {width} = useWindowDimensions();
+  const flatlistRef = useRef(null);
 
   const getProduct = async () => {
     dispatch(toggleLoader(true));
@@ -56,6 +58,10 @@ const ProductDetail = ({route}) => {
     setActiveImage(index);
   };
 
+  const scrollToIndex = index => {
+    flatlistRef?.current?.scrollToIndex({index, animated: true});
+  };
+
   return (
     <Container>
       <BackButton Icon={NotificationIcon} />
@@ -65,6 +71,7 @@ const ProductDetail = ({route}) => {
           data={data?.image}
           horizontal
           pagingEnabled
+          ref={flatlistRef}
           renderItem={({item}) => {
             return (
               <View style={{width: width}}>
@@ -93,7 +100,9 @@ const ProductDetail = ({route}) => {
           alignItems="center"
           justifyContent="space-between">
           {data?.image?.map((imgURL, i) => (
-            <View
+            <TouchableOpacity
+              activeOpacity={baseOpacity}
+              onPress={() => scrollToIndex(i)}
               key={i}
               style={
                 ({
@@ -112,7 +121,7 @@ const ProductDetail = ({route}) => {
                   opacity: activeImage === i ? 1 : 0.6,
                 }}
               />
-            </View>
+            </TouchableOpacity>
           ))}
         </Flex>
 
