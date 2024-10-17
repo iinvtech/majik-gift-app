@@ -6,7 +6,7 @@ import {sizer} from '../../helpers';
 import {Stars} from '../../assets';
 
 const EventDetailFooter = ({
-  leftText = '$300.00',
+  leftText = '300',
   btnText = 'Buy Ticket',
   onPress = () => {},
   leftBtn = false,
@@ -22,7 +22,7 @@ const EventDetailFooter = ({
         />
       ) : (
         <Typography size={20} bold fontType="secondary">
-          {leftText}
+          $ {leftText}.00
         </Typography>
       )}
       <Button

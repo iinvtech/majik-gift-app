@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
 import {useDispatch} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 
 import {
   BackButton,
@@ -17,6 +18,7 @@ import {openToast, toggleLoader} from '../../store/reducer';
 const Products = () => {
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
+  const navigation = useNavigation();
   const getProducts = async () => {
     dispatch(toggleLoader(true));
     try {
@@ -50,7 +52,15 @@ const Products = () => {
         }}
         numColumns={2}
         columnWrapperStyle={{justifyContent: 'space-between'}}
-        renderItem={({item}) => <MainCard key={item.id} item={item} />}
+        renderItem={({item}) => (
+          <MainCard
+            key={item.id}
+            item={item}
+            onPress={() => {
+              navigation.navigate('ProductDetail', {id: item?.id});
+            }}
+          />
+        )}
         keyExtractor={(item, index) => index.toString()}
         showsVerticalScrollIndicator={false}
         style={{

@@ -12,14 +12,13 @@ const MainCard = ({
   item,
   navigationRoute = 'EventDetail',
   width = false,
+  onPress = () => {},
 }) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
       activeOpacity={baseOpacity}
-      onPress={() => {
-        navigation.navigate(navigationRoute);
-      }}
+      onPress={onPress}
       style={[
         styles.main,
         {
