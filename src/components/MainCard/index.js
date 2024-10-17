@@ -49,7 +49,7 @@ const MainCard = ({
       <View style={styles.contentView}>
         <Flex justifyContent="space-between" gap={6}>
           <Typography numberOfLines={2} style={{width: '80%'}} size={14}>
-            {item?.name || '---'}
+            {item?.name || `${item?.first_name} ${item?.last_name}` || '---'}
           </Typography>
           <Flex gap={2} mT={2} style={{width: '19%'}}>
             <Image source={require('../../assets/images/star.png')} />

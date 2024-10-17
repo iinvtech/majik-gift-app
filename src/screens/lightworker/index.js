@@ -1,4 +1,7 @@
+import {useEffect, useState} from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
 
 import {
   BackButton,
@@ -9,17 +12,35 @@ import {
 } from '../../components';
 
 import {FilterIcon, NotificationIcon} from '../../assets';
-import {cardData} from '../../components/data';
 import {paddingHorizontal} from '../../../globals';
-import {sizer} from '../../helpers';
+import {ApiManager, sizer} from '../../helpers';
+import {openToast, toggleLoader} from '../../store/reducer';
 
 const Lightwoker = () => {
+  const [data, setData] = useState([]);
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
+  const getLightworkerss = async () => {
+    dispatch(toggleLoader(true));
+    try {
+      const {data} = await ApiManager('get', 'users?role=light_worker');
+      setData(data?.response?.details);
+    } catch (error) {
+      dispatch(openToast({message: error?.response?.data?.message}));
+    } finally {
+      dispatch(toggleLoader(false));
+    }
+  };
+
+  useEffect(() => {
+    getLightworkerss();
+  }, []);
   return (
     <Container>
       <BackButton title="Lightworkers" Icon={NotificationIcon} />
 
       <FlatList
-        data={cardData}
+        data={data}
         ListHeaderComponent={() => {
           return (
             <View style={{marginBottom: sizer.moderateVerticalScale(23)}}>
