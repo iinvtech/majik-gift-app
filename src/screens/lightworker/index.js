@@ -18,13 +18,24 @@ import {openToast, toggleLoader} from '../../store/reducer';
 
 const Lightwoker = () => {
   const [data, setData] = useState([]);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const getLightworkerss = async () => {
     dispatch(toggleLoader(true));
     try {
-      const {data} = await ApiManager('get', 'users?role=light_worker');
-      setData(data?.response?.details);
+      const {data: responseData} = await ApiManager(
+        'get',
+        `users?role=light_worker&page=${page}`,
+      );
+      const moreData = responseData?.response?.details;
+      if (moreData?.length === 0) {
+        setHasMore(false);
+      } else {
+        setData(prev => [...prev, ...moreData]);
+      }
     } catch (error) {
       dispatch(openToast({message: error?.response?.data?.message}));
     } finally {
@@ -34,7 +45,14 @@ const Lightwoker = () => {
 
   useEffect(() => {
     getLightworkerss();
-  }, []);
+  }, [page]);
+
+  const handleLoadMore = () => {
+    if (hasMore) {
+      setPage(prev => prev + 1);
+    }
+  };
+
   return (
     <Container>
       <BackButton title="Lightworkers" Icon={NotificationIcon} />
@@ -60,6 +78,8 @@ const Lightwoker = () => {
           marginTop: sizer.moderateVerticalScale(23),
           paddingHorizontal: sizer.moderateScale(1),
         }}
+        onEndReached={handleLoadMore}
+        onEndReachedThreshold={0.5}
       />
     </Container>
   );
