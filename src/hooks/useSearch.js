@@ -1,6 +1,5 @@
-import {useCallback, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {debounce} from 'lodash';
 
 import {openToast, toggleLoader} from '../store/reducer';
 import {ApiManager} from '../helpers';
@@ -25,18 +24,13 @@ const useSearch = apiPath => {
     }
   };
 
-  const debouncedSetValue = useCallback(
-    debounce(text => {
-      handleSearch(text), 1000;
-    }),
-    [],
-  );
-
   useEffect(() => {
     if (query) {
-      debouncedSetValue(query);
+      handleSearch(query);
+    } else {
+      setSearchedData([]);
     }
-  }, [query, debouncedSetValue]);
+  }, [query]);
 
   return {
     query,

@@ -6,19 +6,12 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import _ from 'lodash';
 
 import {NotificationIcon, SearchHistoryEmpty, SearchIcon} from '../../assets';
 import {sizer} from '../../helpers';
-import {
-  BackButton,
-  Container,
-  Flex,
-  HistoryItem,
-  MainCard,
-} from '../../components';
+import {BackButton, Container, HistoryItem, MainCard} from '../../components';
 import {COLORS, paddingHorizontal} from '../../../globals';
-import {cardData} from '../../components/data';
-import {debounce} from 'lodash';
 import {useSearch} from '../../hooks/useSearch';
 
 const Search = ({mT = 26}) => {
@@ -54,12 +47,12 @@ const Search = ({mT = 26}) => {
     setData(newArr);
   };
 
-  const {searchedData, query, setQuery} = useSearch('products');
+  const {searchedData, setQuery} = useSearch('products');
 
   const debouncedSearch = useCallback(
-    debounce(text => {
-      setQuery(text), 1000;
-    }),
+    _.debounce(text => {
+      setQuery(text);
+    }, 1000),
     [],
   );
 
@@ -111,12 +104,6 @@ const Search = ({mT = 26}) => {
           }
         />
       ) : searchText !== '' ? (
-        // <Flex justifyContent="space-between" mT={24} style={{flexWrap: 'wrap'}}>
-        //   {cardData.map((card, i) => (
-        //     <MainCard key={i} item={card} />
-        //   ))}
-        // </Flex>
-
         <FlatList
           data={searchedData}
           // numColumns={2}
