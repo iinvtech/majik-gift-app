@@ -1,5 +1,5 @@
 import sizer from './src/helpers/sizer';
-const baseUrl = 'https://aea2-103-156-136-200.ngrok-free.app/api/v1/';
+const baseUrl = 'https://5f80-103-156-136-190.ngrok-free.app/api/v1/';
 // const baseUrl = 'http://192.168.15:3001/api/v1/';
 const baseApiUrl = baseUrl.substring(0, baseUrl.indexOf('/api/v1/') + 1);
 

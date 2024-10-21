@@ -22,7 +22,7 @@ const Products = () => {
   const getProducts = async () => {
     dispatch(toggleLoader(true));
     try {
-      const {data} = await ApiManager('get', 'products');
+      const {data} = await ApiManager('get', 'products?registration_status=approved');
       setData(data?.response?.details);
     } catch (error) {
       dispatch(openToast({message: error?.response?.data?.message}));

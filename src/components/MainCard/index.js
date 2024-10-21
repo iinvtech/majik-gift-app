@@ -1,20 +1,12 @@
 import React from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 
 import {Typography, Flex} from '../index';
 import {HeartIcon} from '../../assets';
 import {baseOpacity, COLORS, placeholder_img} from '../../../globals';
 import {sizer} from '../../helpers';
 
-const MainCard = ({
-  mT = 0,
-  item,
-  navigationRoute = 'EventDetail',
-  width = false,
-  onPress = () => {},
-}) => {
-  const navigation = useNavigation();
+const MainCard = ({mT = 0, item, width = false, onPress = () => {}}) => {
   return (
     <TouchableOpacity
       activeOpacity={baseOpacity}
@@ -100,7 +92,6 @@ const styles = StyleSheet.create({
     objectFit: 'cover',
     width: '100%',
     height: sizer.moderateVerticalScale(144),
-    marginTop: sizer.moderateVerticalScale(5),
   },
   discountBadge: {
     backgroundColor: COLORS.primary,
@@ -108,7 +99,7 @@ const styles = StyleSheet.create({
     padding: sizer.moderateScale(4),
     alignSelf: 'flex-start',
     marginTop: sizer.moderateVerticalScale(2),
-    top: sizer.moderateVerticalScale(15),
+    top: sizer.moderateVerticalScale(10),
     left: sizer.moderateScale(15),
   },
   heartIconContainer: {
@@ -121,7 +112,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     alignSelf: 'flex-start',
     marginTop: sizer.moderateVerticalScale(2),
-    top: sizer.moderateVerticalScale(15),
+    top: sizer.moderateVerticalScale(10),
     right: sizer.moderateScale(15),
   },
   contentView: {
