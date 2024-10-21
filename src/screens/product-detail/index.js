@@ -8,7 +8,7 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 
 import {
@@ -32,9 +32,10 @@ const ProductDetail = ({route}) => {
   const [activeImage, setActiveImage] = useState(0);
   const [data, setData] = useState([]);
   const navigation = useNavigation();
-  const dispatch = useDispatch();
-  const {width} = useWindowDimensions();
   const flatlistRef = useRef(null);
+  const {width} = useWindowDimensions();
+  const dispatch = useDispatch();
+  const isFocused = useIsFocused();
 
   const getProduct = async () => {
     dispatch(toggleLoader(true));
@@ -49,8 +50,10 @@ const ProductDetail = ({route}) => {
   };
 
   useEffect(() => {
-    getProduct();
-  }, []);
+    if (isFocused) {
+      getProduct();
+    }
+  }, [isFocused]);
 
   const handleScroll = event => {
     const contentOffsetX = event.nativeEvent.contentOffset.x;

@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {useNavigation} from '@react-navigation/native';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 
 import {
   BackButton,
@@ -19,10 +19,14 @@ const Products = () => {
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
   const navigation = useNavigation();
+  const isFocused = useIsFocused();
   const getProducts = async () => {
     dispatch(toggleLoader(true));
     try {
-      const {data} = await ApiManager('get', 'products?registration_status=approved');
+      const {data} = await ApiManager(
+        'get',
+        'products?registration_status=approved',
+      );
       setData(data?.response?.details);
     } catch (error) {
       dispatch(openToast({message: error?.response?.data?.message}));
@@ -32,9 +36,10 @@ const Products = () => {
   };
 
   useEffect(() => {
-    getProducts();
-  }, []);
-
+    if (isFocused) {
+      getProducts();
+    }
+  }, [isFocused]);
   return (
     <Container>
       <BackButton title="Products" Icon={NotificationIcon} />
