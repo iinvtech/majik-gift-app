@@ -17,9 +17,11 @@ import {openToast, toggleLoader} from '../../store/reducer';
 
 const Products = () => {
   const [data, setData] = useState([]);
+
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const isFocused = useIsFocused();
+
   const getProducts = async () => {
     dispatch(toggleLoader(true));
     try {
@@ -40,6 +42,7 @@ const Products = () => {
       getProducts();
     }
   }, [isFocused]);
+
   return (
     <Container>
       <BackButton title="Products" Icon={NotificationIcon} />

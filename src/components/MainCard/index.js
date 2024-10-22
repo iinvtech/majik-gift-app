@@ -1,16 +1,19 @@
-import React from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {Typography, Flex} from '../index';
 import {HeartIcon, HeartIconFilled} from '../../assets';
 import {baseOpacity, COLORS, placeholder_img} from '../../../globals';
 import {ApiManager, sizer} from '../../helpers';
 import {openToast, toggleLoader} from '../../store/reducer';
-import {useDispatch, useSelector} from 'react-redux';
 
 const MainCard = ({mT = 0, item, width = false, onPress = () => {}}) => {
   const dispatch = useDispatch();
   const {user} = useSelector(store => store?.storeReducer);
+
+  const isOwnWishlist = item?.wishlists?.find(obj => {
+    return obj.user.id === user?.details?.id;
+  });
 
   const handleAddInWishlist = async () => {
     dispatch(toggleLoader(true));
@@ -58,7 +61,7 @@ const MainCard = ({mT = 0, item, width = false, onPress = () => {}}) => {
         hitSlop={{top: 5, right: 5, bottom: 5, left: 5}}
         onPress={handleAddInWishlist}
         style={styles.heartIconContainer}>
-        {user?.details?.id === item?.user?.id ? (
+        {user?.details?.id === item?.user?.id || isOwnWishlist ? (
           <HeartIconFilled />
         ) : (
           <HeartIcon />
