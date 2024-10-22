@@ -4,9 +4,26 @@ import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Typography, Flex} from '../index';
 import {HeartIcon} from '../../assets';
 import {baseOpacity, COLORS, placeholder_img} from '../../../globals';
-import {sizer} from '../../helpers';
+import {ApiManager, sizer} from '../../helpers';
+import {openToast, toggleLoader} from '../../store/reducer';
+import {useDispatch} from 'react-redux';
 
 const MainCard = ({mT = 0, item, width = false, onPress = () => {}}) => {
+  const dispatch = useDispatch();
+  const handleAddInWishlist = async () => {
+    dispatch(toggleLoader(true));
+    try {
+      const {data} = await ApiManager('post', 'wishlists', {
+        productId: item?.id,
+      });
+      dispatch(openToast({type: 'success', message: data?.message}));
+    } catch (error) {
+      dispatch(openToast({message: error?.response?.data?.message}));
+    } finally {
+      dispatch(toggleLoader(false));
+    }
+  };
+
   return (
     <TouchableOpacity
       activeOpacity={baseOpacity}
@@ -34,9 +51,13 @@ const MainCard = ({mT = 0, item, width = false, onPress = () => {}}) => {
         </View>
       )}
 
-      <View style={styles.heartIconContainer}>
+      <TouchableOpacity
+        activeOpacity={baseOpacity}
+        hitSlop={{top: 5, right: 5, bottom: 5, left: 5}}
+        onPress={handleAddInWishlist}
+        style={styles.heartIconContainer}>
         <HeartIcon />
-      </View>
+      </TouchableOpacity>
 
       <View style={styles.contentView}>
         <Flex justifyContent="space-between" gap={6}>

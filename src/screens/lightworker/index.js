@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 
 import {
@@ -23,6 +23,7 @@ const Lightwoker = () => {
 
   const dispatch = useDispatch();
   const navigation = useNavigation();
+  const isFocused = useIsFocused();
   const getLightworkerss = async () => {
     dispatch(toggleLoader(true));
     try {
@@ -44,8 +45,10 @@ const Lightwoker = () => {
   };
 
   useEffect(() => {
-    getLightworkerss();
-  }, [page]);
+    if (isFocused) {
+      getLightworkerss();
+    }
+  }, [page, isFocused]);
 
   const handleLoadMore = () => {
     if (hasMore) {
