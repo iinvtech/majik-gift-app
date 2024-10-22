@@ -1,4 +1,8 @@
+import {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {useIsFocused} from '@react-navigation/native';
+
 import {
   Catagories,
   Container,
@@ -7,13 +11,38 @@ import {
   MainCard,
   ScrollableCard,
   SearchField,
-  Typography,
   ViewAll,
 } from '../../components';
 import {paddingHorizontal} from '../../../globals';
 import {cardData, HOME_SUGGESTIONS} from '../../components/data';
+import {openToast, toggleLoader} from '../../store/reducer';
+import {ApiManager} from '../../helpers';
 
 const Home = () => {
+  const [data, setData] = useState([]);
+
+  const dispatch = useDispatch();
+  const isFocused = useIsFocused();
+
+  const getCatagories = async () => {
+    dispatch(toggleLoader(true));
+    try {
+      const {data} = await ApiManager('get', 'service-category');
+      setData(data?.response?.details);
+      console.log(data?.response?.details);
+    } catch (error) {
+      dispatch(openToast({message: error?.response?.data?.message}));
+    } finally {
+      dispatch(toggleLoader(false));
+    }
+  };
+
+  useEffect(() => {
+    if (isFocused) {
+      getCatagories();
+    }
+  }, [isFocused]);
+
   return (
     <Container>
       <Header />
@@ -32,8 +61,8 @@ const Home = () => {
         <ViewAll label="Categories" />
 
         <HorizontalFlatlist
-          data={[1, 2, 3, 4, 5, 6]}
-          renderItem={({item}) => <Catagories mT={30} />}
+          data={data}
+          renderItem={({item}) => <Catagories mT={30} item={item} />}
           contentContainerStyle={{gap: 20}}
         />
 
