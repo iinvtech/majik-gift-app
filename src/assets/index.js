@@ -62,6 +62,7 @@ import PhoneIcon from './images/phone-icon.svg';
 import NotificationIconFilled from './images/notification-icon-filled.svg';
 import CircleTick from './images/circle-tick.svg';
 import TickSecondaryOutlined from './images/tick-secondary-outlined.svg';
+import HeartIconFilled from './images/heart-icon-filled.svg';
 
 export {
   notificationIcon,
@@ -128,4 +129,5 @@ export {
   NotificationIconFilled,
   CircleTick,
   TickSecondaryOutlined,
+  HeartIconFilled,
 };

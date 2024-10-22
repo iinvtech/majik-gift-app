@@ -1,25 +1,45 @@
 import {FlatList, StyleSheet, View} from 'react-native';
 
-import {
-  BackButton,
-  Container,
-  MainCard,
-  ScrollableCard,
-  SearchField,
-} from '../../components';
-
+import {BackButton, Container, MainCard, SearchField} from '../../components';
 import {FilterIcon, NotificationIcon} from '../../assets';
 import {cardData} from '../../components/data';
-import {paddingHorizontal} from '../../../globals';
-import {sizer} from '../../helpers';
+import {ApiManager, sizer} from '../../helpers';
+import {openToast, toggleLoader} from '../../store/reducer';
+import {useDispatch, useSelector} from 'react-redux';
+import {useIsFocused} from '@react-navigation/native';
+import {useEffect, useState} from 'react';
 
 const Wishlist = () => {
+  const [data, setData] = useState([]);
+
+  const dispatch = useDispatch();
+  const isFocused = useIsFocused();
+
+  const getWishlists = async () => {
+    dispatch(toggleLoader(true));
+    try {
+      const {data} = await ApiManager('get', 'wishlists');
+      setData(data?.response?.details);
+    } catch (error) {
+      dispatch(openToast({message: error?.response?.data?.message}));
+    } finally {
+      dispatch(toggleLoader(false));
+    }
+  };
+
+  useEffect(() => {
+    if (isFocused) {
+      getWishlists();
+    }
+  }, [isFocused]);
+  // console.log(data);
+
   return (
     <Container>
       <BackButton title="Wishlist" Icon={NotificationIcon} />
 
       <FlatList
-        data={cardData}
+        data={data}
         ListHeaderComponent={() => {
           return (
             <View style={{marginBottom: sizer.moderateVerticalScale(23)}}>
@@ -29,7 +49,9 @@ const Wishlist = () => {
         }}
         numColumns={2}
         columnWrapperStyle={{justifyContent: 'space-between'}}
-        renderItem={({item}) => <MainCard mB={24} key={item.id} item={item} />}
+        renderItem={({item}) => (
+          <MainCard mB={24} key={item.id} item={{...item, ...item.product}} />
+        )}
         keyExtractor={(item, index) => index.toString()}
         showsVerticalScrollIndicator={false}
         style={{
