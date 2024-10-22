@@ -32,7 +32,6 @@ const Wishlist = () => {
       getWishlists();
     }
   }, [isFocused]);
-  // console.log(data);
 
   return (
     <Container>

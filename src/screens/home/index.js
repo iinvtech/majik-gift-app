@@ -29,7 +29,6 @@ const Home = () => {
     try {
       const {data} = await ApiManager('get', 'service-category');
       setData(data?.response?.details);
-      console.log(data?.response?.details);
     } catch (error) {
       dispatch(openToast({message: error?.response?.data?.message}));
     } finally {
