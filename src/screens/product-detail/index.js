@@ -31,14 +31,18 @@ const ProductDetail = ({route}) => {
 
   const [activeImage, setActiveImage] = useState(0);
   const [data, setData] = useState([]);
+  const [count, setCount] = useState(1);
+  const [disabled, setDisabled] = useState(false);
+  const [decrementDisable, setDecrementDisable] = useState(false);
+
   const navigation = useNavigation();
   const flatlistRef = useRef(null);
-  const {width} = useWindowDimensions();
   const dispatch = useDispatch();
   const isFocused = useIsFocused();
+  const {width} = useWindowDimensions();
 
   const getProduct = async () => {
-    dispatch(toggleLoader(true));
+    // dispatch(toggleLoader(true));
     try {
       const {data} = await ApiManager('get', `products/${id}`);
       setData(data?.response?.details);
@@ -49,11 +53,21 @@ const ProductDetail = ({route}) => {
     }
   };
 
-  useEffect(() => {
-    if (isFocused) {
-      getProduct();
+  const productIncrement = () => {
+    if (count < 9) {
+      setCount(prev => prev + 1);
+    } else {
+      setDisabled(true);
     }
-  }, [isFocused]);
+  };
+
+  const productDecrement = () => {
+    if (count > 0) {
+      setCount(prev => prev - 1);
+    } else {
+      setDecrementDisable(true);
+    }
+  };
 
   const handleScroll = event => {
     const contentOffsetX = event.nativeEvent.contentOffset.x;
@@ -64,6 +78,21 @@ const ProductDetail = ({route}) => {
   const scrollToIndex = index => {
     flatlistRef?.current?.scrollToIndex({index, animated: true});
   };
+
+  useEffect(() => {
+    if (isFocused) {
+      dispatch(toggleLoader(true));
+      getProduct();
+    }
+  }, [isFocused]);
+
+  useEffect(() => {
+    if (count == 1) {
+      setDecrementDisable(true);
+    } else {
+      setDecrementDisable(false);
+    }
+  }, [count]);
 
   return (
     <Container>
@@ -83,7 +112,6 @@ const ProductDetail = ({route}) => {
                   style={{
                     width: '100%',
                     height: sizer.moderateVerticalScale(300),
-                    // objectFit: "fill"
                   }}
                 />
               </View>
@@ -133,6 +161,28 @@ const ProductDetail = ({route}) => {
             <Typography size={24} fontType="secondary">
               {data?.name}
             </Typography>
+
+            <Flex gap={11} size={24} fontType="secondary">
+              <TouchableOpacity
+                activeOpacity={baseOpacity}
+                disabled={decrementDisable}
+                onPress={productDecrement}
+                hitSlop={{top: 5, right: 5, left: 5, bottom: 5}}
+                style={[styles.addProduct, decrementDisable && {opacity: 0.3}]}>
+                <Typography bold>-</Typography>
+              </TouchableOpacity>
+
+              <Typography size={17}>{count}</Typography>
+
+              <TouchableOpacity
+                activeOpacity={baseOpacity}
+                onPress={productIncrement}
+                disabled={disabled}
+                hitSlop={{top: 5, right: 5, left: 5, bottom: 5}}
+                style={[styles.addProduct, disabled && {opacity: 0.5}]}>
+                <Typography bold>+</Typography>
+              </TouchableOpacity>
+            </Flex>
           </Flex>
 
           <Flex mT={18} gap={5} alignItems="center">
@@ -193,7 +243,12 @@ const ProductDetail = ({route}) => {
         leftText={data?.price || '---'}
         btnText="Order"
         onPress={() => {
-          navigation.navigate('OrderSummary');
+          const addedPrice = data?.price * count;
+          navigation.navigate('OrderSummary', {
+            productName: data?.name,
+            price: addedPrice,
+            quantity: count,
+          });
         }}
       />
     </Container>
@@ -215,6 +270,14 @@ const styles = StyleSheet.create({
     marginTop: sizer.moderateVerticalScale(2),
     top: sizer.moderateVerticalScale(24),
     right: sizer.moderateScale(24),
+  },
+  addProduct: {
+    borderWidth: 1,
+    height: sizer.moderateVerticalScale(18),
+    width: sizer.moderateScale(18),
+    borderRadius: 3,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   imgSuggestionBadgeFlexCont: {
     height: sizer.moderateVerticalScale(60),

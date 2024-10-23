@@ -14,15 +14,18 @@ import {
   DropdownComponent,
   EventDetailFooter,
   Flex,
-  PaymentMethodButtons,
   Typography,
 } from '../../components';
 import {NotificationIcon, TickSvg} from '../../assets';
 import {Lato, sizer} from '../../helpers';
 import {COLORS} from '../../../globals';
 
-const OrderSummary = () => {
+const OrderSummary = ({route}) => {
+  const {productName, price, quantity} = route?.params;
+
   const [isSelected, setSelected] = useState(false);
+  const shipping = 5;
+
   return (
     <Container>
       <BackButton title="Order Summary" Icon={NotificationIcon} />
@@ -34,7 +37,7 @@ const OrderSummary = () => {
           <Typography size={14} medium>
             Product Name
           </Typography>
-          <Typography size={14}>Antique Bowl</Typography>
+          <Typography size={14}>{productName || '---'}</Typography>
         </Flex>
 
         <Flex
@@ -44,7 +47,7 @@ const OrderSummary = () => {
           <Typography size={14} medium>
             Quantity
           </Typography>
-          <Typography size={14}>2</Typography>
+          <Typography size={14}> {quantity || 0}</Typography>
         </Flex>
 
         <Typography size={14} mT={19}>
@@ -89,11 +92,11 @@ const OrderSummary = () => {
           />
         </Flex>
 
-        <Typography mT={19} size={14}>
+        {/* <Typography mT={19} size={14}>
           Payment Method
-        </Typography>
+        </Typography> */}
 
-        <PaymentMethodButtons />
+        {/* <PaymentMethodButtons /> */}
 
         <Flex gap={10} mT={30} alignItems="center">
           <TouchableOpacity
@@ -161,20 +164,20 @@ const OrderSummary = () => {
           <Typography size={14} light>
             Sub Total
           </Typography>
-          <Typography size={14}>$55.00</Typography>
+          <Typography size={14}>${price}</Typography>
         </Flex>
 
         <Flex mT={22} justifyContent="space-between">
           <Typography size={14} light>
             Shipping
           </Typography>
-          <Typography size={14}>$5.00</Typography>
+          <Typography size={14}>${shipping}</Typography>
         </Flex>
 
         <Flex mT={22} justifyContent="space-between" mB={21}>
           <Typography size={14}>Grand Total</Typography>
           <Typography size={14} bold>
-            $60.00
+            ${price + shipping}
           </Typography>
         </Flex>
       </ScrollView>
