@@ -1,11 +1,12 @@
 import {useEffect, useState} from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, View} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
 
 import {
   BackButton,
   Container,
+  EmptyState,
   MainCard,
   ScrollableCard,
   SearchField,
@@ -23,7 +24,7 @@ const Products = () => {
   const isFocused = useIsFocused();
 
   const getProducts = async () => {
-    dispatch(toggleLoader(true));
+    dispatch(toggleLoader({loader: true, background: 'white'}));
     try {
       const {data} = await ApiManager(
         'get',
@@ -75,11 +76,10 @@ const Products = () => {
           marginTop: sizer.moderateVerticalScale(23),
           paddingHorizontal: sizer.moderateScale(1),
         }}
+        ListEmptyComponent={<EmptyState message={'No Products Found'} />}
       />
     </Container>
   );
 };
 
 export default Products;
-
-const styles = StyleSheet.create({});
