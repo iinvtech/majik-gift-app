@@ -19,7 +19,7 @@ const RootNavigation = () => {
   const dispatch = useDispatch();
 
   const validateToken = async () => {
-    dispatch(toggleLoader(true));
+    dispatch(toggleLoader({loader: true, background: 'white'}));
     const access_token = await AsyncStorage.getItem('access_token');
     if (access_token) {
       try {
