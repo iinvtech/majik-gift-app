@@ -34,7 +34,6 @@ const ProductDetail = ({route}) => {
   const [count, setCount] = useState(1);
   const [disabled, setDisabled] = useState(false);
   const [decrementDisable, setDecrementDisable] = useState(false);
-
   const navigation = useNavigation();
   const flatlistRef = useRef(null);
   const dispatch = useDispatch();
@@ -42,7 +41,7 @@ const ProductDetail = ({route}) => {
   const {width} = useWindowDimensions();
 
   const getProduct = async () => {
-    // dispatch(toggleLoader(true));
+    dispatch(toggleLoader({loader: true, background: 'white'}));
     try {
       const {data} = await ApiManager('get', `products/${id}`);
       setData(data?.response?.details);
@@ -81,7 +80,6 @@ const ProductDetail = ({route}) => {
 
   useEffect(() => {
     if (isFocused) {
-      dispatch(toggleLoader(true));
       getProduct();
     }
   }, [isFocused]);

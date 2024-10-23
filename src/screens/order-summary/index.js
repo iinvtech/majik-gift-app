@@ -17,14 +17,36 @@ import {
   Typography,
 } from '../../components';
 import {NotificationIcon, TickSvg} from '../../assets';
-import {Lato, sizer} from '../../helpers';
+import {ApiManager, Lato, sizer} from '../../helpers';
 import {COLORS} from '../../../globals';
+import {useStripe} from '@stripe/stripe-react-native';
+import {openToast, toggleLoader} from '../../store/reducer';
+import {useDispatch, useSelector} from 'react-redux';
 
 const OrderSummary = ({route}) => {
   const {productName, price, quantity} = route?.params;
 
   const [isSelected, setSelected] = useState(false);
+  const dispatch = useDispatch();
+  const {user} = useSelector(state => state?.storeReducer);
+  const {initPaymentSheet, presentPaymentSheet} = useStripe();
+
   const shipping = 5;
+
+  const handleOrder = async () => {
+    dispatch(toggleLoader(true));
+    try {
+      const {data} = await ApiManager('post', 'stripe/create-payment-intent', {
+        amount: price,
+        customerId: user?.details?.stripe_customer_id,
+      });
+      console.log(data);
+    } catch (error) {
+      dispatch(openToast({message: error?.response?.data?.message}));
+    } finally {
+      dispatch(toggleLoader(false));
+    }
+  };
 
   return (
     <Container>
