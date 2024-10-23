@@ -21,6 +21,7 @@ import ChangePasswordFromProfile from './change-password-from-profile';
 import Subscription from './subscription';
 import Notifications from './notifications';
 import ProductDetail from './product-detail';
+import SignupAs from './sign-up-as';
 
 export {
   Home,
@@ -46,4 +47,5 @@ export {
   Subscription,
   Notifications,
   ProductDetail,
+  SignupAs,
 };

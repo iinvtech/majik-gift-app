@@ -42,7 +42,9 @@ import {
   validatePhone,
 } from '../../helpers/validator';
 
-const SignUp = () => {
+const SignUp = ({route}) => {
+  const {role} = route?.params;
+
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -135,6 +137,7 @@ const SignUp = () => {
       const newData = {
         ...remaining,
         phone_number: phone_number.replace(/\D+/g, ''),
+        role: role,
       };
       const {data} = await ApiManager('post', 'auth/sign-up', newData);
       await AsyncStorage.setItem('access_token', data?.response?.access_token);

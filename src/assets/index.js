@@ -63,6 +63,7 @@ import NotificationIconFilled from './images/notification-icon-filled.svg';
 import CircleTick from './images/circle-tick.svg';
 import TickSecondaryOutlined from './images/tick-secondary-outlined.svg';
 import HeartIconFilled from './images/heart-icon-filled.svg';
+import TickSecondaryOutlinedGrey from './images/tick-secondary-outlined-grey.svg';
 
 export {
   notificationIcon,
@@ -130,4 +131,5 @@ export {
   CircleTick,
   TickSecondaryOutlined,
   HeartIconFilled,
+  TickSecondaryOutlinedGrey,
 };

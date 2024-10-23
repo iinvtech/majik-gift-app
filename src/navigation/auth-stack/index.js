@@ -5,6 +5,7 @@ import {
   ForgetPassword,
   SignIn,
   Signup,
+  SignupAs,
   Verification,
 } from '../../screens';
 
@@ -22,6 +23,7 @@ const AuthStack = () => {
       }}>
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="SignUp" component={Signup} />
+      <Stack.Screen name="SignupAs" component={SignupAs} />
       <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
       <Stack.Screen name="OtpVerification" component={Verification} />
       <Stack.Screen name="ChangePassword" component={ChangePassword} />

@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
   Container,
@@ -22,7 +23,6 @@ import {COLORS} from '../../../globals';
 import {ApiManager, sizer} from '../../helpers';
 import {validateEmail, validatePassword} from '../../helpers/validator';
 import {login, openToast, toggleLoader} from '../../store/reducer';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignIn = () => {
   const [formData, setFormData] = useState({
@@ -165,7 +165,7 @@ const SignIn = () => {
             <TouchableOpacity
               activeOpacity={0.6}
               onPress={() => {
-                navigation.navigate('SignUp');
+                navigation.navigate('SignupAs');
               }}>
               <Typography size={14} color={COLORS.secondary}>
                 Sign up
